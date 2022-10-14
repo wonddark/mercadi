@@ -5,7 +5,12 @@ interface Props {
   toggle: () => void;
 }
 function CloseOffer({ isOpen, toggle }: Props) {
-  const message = <p>¿Estás seguro que quieres cerrar esta oferta?</p>;
+  const message = (
+    <p>
+      ¿Estás seguro que quieres cerrar esta oferta? Tu artículo se quedará con
+      el valor de la última puja
+    </p>
+  );
   return (
     <CommonDlg
       isOpen={isOpen}

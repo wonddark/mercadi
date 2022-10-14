@@ -1,4 +1,6 @@
 import { Button, Card, Col, Container, Row } from "reactstrap";
+import useToggleOpen from "../hooks/toggle-open.hooks";
+import CloseOffer from "./CloseOffer";
 
 interface Props {
   name: string;
@@ -6,6 +8,7 @@ interface Props {
   currentOffer: string;
 }
 function AuctionArticleQuick({ name, initialOffer, currentOffer }: Props) {
+  const { isOpen, toggleIsOpen } = useToggleOpen();
   return (
     <Card body className="my-2">
       <Container>
@@ -26,7 +29,12 @@ function AuctionArticleQuick({ name, initialOffer, currentOffer }: Props) {
           <Col xs={12} className="mt-2">
             <Row className="justify-content-center">
               <Col xs={8}>
-                <Button className="w-100" color="primary" size="sm">
+                <Button
+                  className="w-100"
+                  color="primary"
+                  size="sm"
+                  onClick={toggleIsOpen}
+                >
                   Cerrar
                 </Button>
               </Col>
@@ -34,6 +42,7 @@ function AuctionArticleQuick({ name, initialOffer, currentOffer }: Props) {
           </Col>
         </Row>
       </Container>
+      {isOpen && <CloseOffer isOpen={isOpen} toggle={toggleIsOpen} />}
     </Card>
   );
 }

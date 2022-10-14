@@ -1,16 +1,15 @@
 import { Button, Nav, Navbar, NavbarBrand, NavItem, Tooltip } from "reactstrap";
-import { useState } from "react";
+import useToggleOpen from "../hooks/toggle-open.hooks";
 
 function UserNav() {
-  const [notificationsTooltipIsOpen, setNotificationTooltipIsOpen] =
-    useState(false);
-  const [addArticleTooltipIsOpen, setAddArticleTooltipIsOpen] = useState(false);
-  const toggleNotificationTooltipIsOpen = () => {
-    setNotificationTooltipIsOpen((prevState) => !prevState);
-  };
-  const toggleAddArticleTooltipIsOpen = () => {
-    setAddArticleTooltipIsOpen((prevState) => !prevState);
-  };
+  const {
+    isOpen: notificationsTooltipIsOpen,
+    toggleIsOpen: toggleNotificationTooltipIsOpen,
+  } = useToggleOpen();
+  const {
+    isOpen: addArticleTooltipIsOpen,
+    toggleIsOpen: toggleAddArticleTooltipIsOpen,
+  } = useToggleOpen();
   return (
     <header>
       <Navbar dark color="dark" container expand>

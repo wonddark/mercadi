@@ -1,5 +1,6 @@
 import { Button, Nav, Navbar, NavbarBrand, NavItem, Tooltip } from "reactstrap";
 import useToggleOpen from "../hooks/toggle-open.hooks";
+import AddArticle from "./AddArticle";
 
 function UserNav() {
   const {
@@ -10,6 +11,8 @@ function UserNav() {
     isOpen: addArticleTooltipIsOpen,
     toggleIsOpen: toggleAddArticleTooltipIsOpen,
   } = useToggleOpen();
+  const { isOpen: addArticle, toggleIsOpen: toggleAddArticle } =
+    useToggleOpen();
   return (
     <header>
       <Navbar dark color="dark" container expand>
@@ -33,6 +36,7 @@ function UserNav() {
               color="primary"
               aria-label="Agregar artículo"
               id="add-article"
+              onClick={toggleAddArticle}
             >
               <i className="bi bi-plus-circle-fill" />
             </Button>
@@ -47,6 +51,9 @@ function UserNav() {
           </NavItem>
         </Nav>
       </Navbar>
+      {addArticle && (
+        <AddArticle isOpen={addArticle} toggle={toggleAddArticle} />
+      )}
     </header>
   );
 }

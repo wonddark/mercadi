@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/node": "^16.11.65",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
     "prettier": "^2.7.1",
@@ -38,5 +35,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/node": "^18.8.5",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6"
   }
 }

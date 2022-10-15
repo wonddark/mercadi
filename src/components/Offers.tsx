@@ -1,11 +1,17 @@
 import { Container } from "reactstrap";
 import OfferQuickView from "./OfferQuickView";
-import { dummyArticles } from "../data/dummy-articles";
+import { dummyOffers } from "../data/dummy-offers";
+import { Link } from "react-router-dom";
 
 function Offers() {
   return (
     <Container className="px-0">
-      <p className="small text- fw-bold text-muted">Tus ofertas</p>
+      <Link
+        to="/user/offers"
+        className="small fw-bold text-muted text-decoration-none"
+      >
+        Tus ofertas
+      </Link>
       <Container
         className="px-0 pe-1"
         style={{
@@ -13,13 +19,13 @@ function Offers() {
           overflow: "auto",
         }}
       >
-        {dummyArticles.slice(0, 3).map((item, index) => (
+        {dummyOffers.slice(0, 3).map((item) => (
           <OfferQuickView
-            id={`${index}`}
+            id={item.id}
             name={item.name}
-            initialOffer={item.initialOffer}
-            currentOffer={item.currentOffer}
-            key={index}
+            initialOffer={item.initialBid}
+            currentOffer={item.currentBid}
+            key={item.id}
           />
         ))}
       </Container>

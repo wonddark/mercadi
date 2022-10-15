@@ -1,11 +1,17 @@
 import { Container } from "reactstrap";
-import { dummyOffers } from "../data/dummy-offers";
+import { dummyBids } from "../data/dummy-bids";
 import BidsQuickView from "./BidsQuickView";
+import { Link } from "react-router-dom";
 
 function Bids() {
   return (
     <Container className="px-0">
-      <p className="small text- fw-bold text-muted">Tus pujas</p>
+      <Link
+        to="/user/bids"
+        className="small fw-bold text-muted text-decoration-none"
+      >
+        Tus pujas
+      </Link>
       <Container
         className="px-0 pe-1"
         style={{
@@ -13,14 +19,14 @@ function Bids() {
           overflow: "auto",
         }}
       >
-        {dummyOffers.slice(0, 3).map((item, index) => (
+        {dummyBids.slice(0, 3).map((item) => (
           <BidsQuickView
-            id={`${index}`}
+            id={item.id}
             name={item.name}
-            initialOffer={item.initialOffer}
-            currentOffer={item.currentOffer}
-            myOffer={item.myOffer}
-            key={index}
+            initialOffer={item.initialBid}
+            currentOffer={item.currentBid}
+            myOffer={item.myBid}
+            key={item.id}
           />
         ))}
       </Container>

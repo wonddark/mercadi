@@ -21,7 +21,7 @@ export const dummyOffers = [
     initialBid: "1000",
     currentBid: "1010.00",
     publishedAt: new Date().toString(),
-    status: "Open",
+    status: "Closed",
   },
   {
     id: "4",
@@ -53,7 +53,7 @@ export const dummyOffers = [
     initialBid: "1000",
     currentBid: "1010.00",
     publishedAt: new Date().toString(),
-    status: "Open",
+    status: "Closed",
   },
   {
     id: "8",
@@ -61,6 +61,6 @@ export const dummyOffers = [
     initialBid: "1000",
     currentBid: "1010.00",
     publishedAt: new Date().toString(),
-    status: "Open",
+    status: "Closed",
   },
 ];

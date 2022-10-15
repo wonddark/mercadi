@@ -6,6 +6,8 @@ import {
 import HomeFeed from "./components/HomeFeed";
 import Home from "./components/Home";
 import UserHome from "./components/UserHome";
+import UserOffers from "./components/UserOffers";
+import UserBids from "./components/UserBids";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -13,6 +15,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="user" element={<UserHome />}>
         <Route path="feed" element={<HomeFeed />} />
+        <Route path="offers" element={<UserOffers />} />
+        <Route path="bids" element={<UserBids />} />
       </Route>
     </Route>
   )

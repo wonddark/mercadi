@@ -1,11 +1,17 @@
 import { Container } from "reactstrap";
 import { dummyOffers } from "../data/dummy-offers";
 import BidsQuickView from "./BidsQuickView";
+import { Link } from "react-router-dom";
 
 function Bids() {
   return (
     <Container className="px-0">
-      <p className="small text- fw-bold text-muted">Tus pujas</p>
+      <Link
+        to="/user/bids"
+        className="small fw-bold text-muted text-decoration-none"
+      >
+        Tus pujas
+      </Link>
       <Container
         className="px-0 pe-1"
         style={{

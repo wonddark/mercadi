@@ -22,6 +22,13 @@ function AddOffer({ isOpen, toggle }: Props) {
         placeholder="Descripción de la oferta"
         name="offer-description"
       />
+      <Input
+        type="file"
+        placeholder="Agrega imágenes"
+        name="offer-files"
+        accept="image/png, image/jpeg"
+        multiple
+      />
     </Form>
   );
   return (

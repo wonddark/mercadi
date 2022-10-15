@@ -15,6 +15,7 @@ function Offers() {
       >
         {dummyArticles.slice(0, 3).map((item, index) => (
           <OfferQuickView
+            id={`${index}`}
             name={item.name}
             initialOffer={item.initialOffer}
             currentOffer={item.currentOffer}

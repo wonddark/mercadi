@@ -15,6 +15,7 @@ function Bids() {
       >
         {dummyOffers.slice(0, 3).map((item, index) => (
           <BidsQuickView
+            id={`${index}`}
             name={item.name}
             initialOffer={item.initialOffer}
             currentOffer={item.currentOffer}

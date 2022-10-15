@@ -1,6 +1,7 @@
 import { Button, Card, Col, Container, Row } from "reactstrap";
 import useToggleOpen from "../hooks/toggle-open.hooks";
-import RetireOffer from "./RetireOffer";
+import RetireBid from "./RetireBid";
+import { formatMoney } from "../helpers/formatters.helper";
 
 interface Props {
   name: string;
@@ -8,12 +9,7 @@ interface Props {
   currentOffer: string;
   myOffer: string;
 }
-function AuctionOfferQuick({
-  name,
-  initialOffer,
-  currentOffer,
-  myOffer,
-}: Props) {
+function BidsQuickView({ name, initialOffer, currentOffer, myOffer }: Props) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
   return (
     <Card body className="my-2">
@@ -24,17 +20,17 @@ function AuctionOfferQuick({
           </Col>
           <Col>
             <span className="small text-muted">
-              Oferta inicial: <span className="fw-bold">{initialOffer}</span>
+              Puja inicial: <strong>{formatMoney(initialOffer)}</strong>
             </span>
           </Col>
           <Col>
             <span className="small text-muted">
-              Oferta actual: <span className="fw-bold">{currentOffer}</span>
+              Puja actual: <strong>{formatMoney(currentOffer)}</strong>
             </span>
           </Col>
           <Col>
             <span className="small text-muted">
-              Tu oferta: <span className="fw-bold">{myOffer}</span>
+              Tu puja: <strong>{formatMoney(myOffer)}</strong>
             </span>
           </Col>
           <Col className="mt-2">
@@ -46,16 +42,16 @@ function AuctionOfferQuick({
                   size="sm"
                   onClick={toggleIsOpen}
                 >
-                  Retirar oferta
+                  Retirar puja
                 </Button>
               </Col>
             </Row>
           </Col>
         </Row>
       </Container>
-      {isOpen && <RetireOffer isOpen={isOpen} toggle={toggleIsOpen} />}
+      {isOpen && <RetireBid isOpen={isOpen} toggle={toggleIsOpen} />}
     </Card>
   );
 }
 
-export default AuctionOfferQuick;
+export default BidsQuickView;

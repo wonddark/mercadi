@@ -1,6 +1,6 @@
 import { Button, Nav, Navbar, NavbarBrand, NavItem, Tooltip } from "reactstrap";
 import useToggleOpen from "../hooks/toggle-open.hooks";
-import AddArticle from "./AddArticle";
+import AddOffer from "./AddOffer";
 
 function UserNav() {
   const {
@@ -34,7 +34,7 @@ function UserNav() {
           <NavItem>
             <Button
               color="primary"
-              aria-label="Agregar artículo"
+              aria-label="Agregar oferta"
               id="add-article"
               onClick={toggleAddArticle}
             >
@@ -46,14 +46,12 @@ function UserNav() {
               toggle={toggleAddArticleTooltipIsOpen}
               placement="bottom-end"
             >
-              Agregar artículo
+              Agregar oferta
             </Tooltip>
           </NavItem>
         </Nav>
       </Navbar>
-      {addArticle && (
-        <AddArticle isOpen={addArticle} toggle={toggleAddArticle} />
-      )}
+      {addArticle && <AddOffer isOpen={addArticle} toggle={toggleAddArticle} />}
     </header>
   );
 }

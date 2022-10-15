@@ -1,11 +1,11 @@
 import { Container } from "reactstrap";
-import AuctionArticleQuick from "./AuctionArticleQuick";
-import { dummyArticles } from "../data/dummy-articles";
+import { dummyOffers } from "../data/dummy-offers";
+import BidsQuickView from "./BidsQuickView";
 
-function AuctionArticles() {
+function Bids() {
   return (
     <Container className="px-0">
-      <p className="small text- fw-bold text-muted">Tus artículos</p>
+      <p className="small text- fw-bold text-muted">Tus pujas</p>
       <Container
         className="px-0 pe-1"
         style={{
@@ -13,11 +13,12 @@ function AuctionArticles() {
           overflow: "auto",
         }}
       >
-        {dummyArticles.slice(0, 3).map((item, index) => (
-          <AuctionArticleQuick
+        {dummyOffers.slice(0, 3).map((item, index) => (
+          <BidsQuickView
             name={item.name}
             initialOffer={item.initialOffer}
             currentOffer={item.currentOffer}
+            myOffer={item.myOffer}
             key={index}
           />
         ))}
@@ -26,4 +27,4 @@ function AuctionArticles() {
   );
 }
 
-export default AuctionArticles;
+export default Bids;

@@ -6,21 +6,21 @@ interface Props {
   isOpen: boolean;
   toggle: () => void;
 }
-function AddArticle({ isOpen, toggle }: Props) {
+function AddOffer({ isOpen, toggle }: Props) {
   const form = (
     <Form>
-      <Input placeholder="Nombre del artículo" name="article-name" />
+      <Input placeholder="Nombre de la oferta" name="offer-name" />
       <Input
         type="number"
         min={50}
         max={1000000}
-        placeholder="Oferta inicial"
-        name="article-initial-offer"
+        placeholder="Puja inicial"
+        name="offer-initial-bid"
       />
       <Input
         type="textarea"
-        placeholder="Descripción del artículo"
-        name="article-description"
+        placeholder="Descripción de la oferta"
+        name="offer-description"
       />
     </Form>
   );
@@ -28,7 +28,7 @@ function AddArticle({ isOpen, toggle }: Props) {
     <CommonDlg
       isOpen={isOpen}
       toggle={toggle}
-      title="Agregar artículo"
+      title="Agregar oferta"
       titleColor="success"
       icon={<i className="bi bi-plus-circle-fill me-2" />}
       size="lg"
@@ -38,4 +38,4 @@ function AddArticle({ isOpen, toggle }: Props) {
   );
 }
 
-export default AddArticle;
+export default AddOffer;

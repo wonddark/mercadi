@@ -1,8 +1,8 @@
 import { Container } from "reactstrap";
-import { dummyOffers } from "../data/dummy-offers";
-import AuctionOfferQuick from "./AuctionOfferQuick";
+import OfferQuickView from "./OfferQuickView";
+import { dummyArticles } from "../data/dummy-articles";
 
-function AuctionOffers() {
+function Offers() {
   return (
     <Container className="px-0">
       <p className="small text- fw-bold text-muted">Tus ofertas</p>
@@ -13,12 +13,11 @@ function AuctionOffers() {
           overflow: "auto",
         }}
       >
-        {dummyOffers.slice(0, 3).map((item, index) => (
-          <AuctionOfferQuick
+        {dummyArticles.slice(0, 3).map((item, index) => (
+          <OfferQuickView
             name={item.name}
             initialOffer={item.initialOffer}
             currentOffer={item.currentOffer}
-            myOffer={item.myOffer}
             key={index}
           />
         ))}
@@ -27,4 +26,4 @@ function AuctionOffers() {
   );
 }
 
-export default AuctionOffers;
+export default Offers;

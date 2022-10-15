@@ -1,13 +1,14 @@
 import { Button, Card, Col, Container, Row } from "reactstrap";
 import useToggleOpen from "../hooks/toggle-open.hooks";
 import CloseOffer from "./CloseOffer";
+import { formatMoney } from "../helpers/formatters.helper";
 
 interface Props {
   name: string;
   initialOffer: string;
   currentOffer: string;
 }
-function AuctionArticleQuick({ name, initialOffer, currentOffer }: Props) {
+function OfferQuickView({ name, initialOffer, currentOffer }: Props) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
   return (
     <Card body className="my-2">
@@ -18,12 +19,12 @@ function AuctionArticleQuick({ name, initialOffer, currentOffer }: Props) {
           </Col>
           <Col xs={12}>
             <span className="small text-muted">
-              Oferta inicial: ${initialOffer}
+              Puja inicial: <strong>{formatMoney(initialOffer)}</strong>
             </span>
           </Col>
           <Col xs={12}>
             <span className="small text-muted">
-              Oferta actual: ${currentOffer}
+              Puja actual: <strong>{formatMoney(currentOffer)}</strong>
             </span>
           </Col>
           <Col xs={12} className="mt-2">
@@ -35,7 +36,7 @@ function AuctionArticleQuick({ name, initialOffer, currentOffer }: Props) {
                   size="sm"
                   onClick={toggleIsOpen}
                 >
-                  Cerrar
+                  Cerrar oferta
                 </Button>
               </Col>
             </Row>
@@ -47,4 +48,4 @@ function AuctionArticleQuick({ name, initialOffer, currentOffer }: Props) {
   );
 }
 
-export default AuctionArticleQuick;
+export default OfferQuickView;

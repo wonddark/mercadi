@@ -70,6 +70,14 @@ function UserNav() {
               </DropdownMenu>
             </Dropdown>
           </NavItem>
+          <NavItem className="me-1">
+            <Button color="light" outline>
+              Acceder
+            </Button>
+          </NavItem>
+          <NavItem>
+            <Button color="primary">Crear cuenta</Button>
+          </NavItem>
         </Nav>
       </Navbar>
       {addArticle && <AddOffer isOpen={addArticle} toggle={toggleAddArticle} />}

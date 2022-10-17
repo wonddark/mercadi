@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Row, Tooltip } from "reactstrap";
+import { Button, Card, Col, Container, Row } from "reactstrap";
 import useToggleOpen from "../hooks/toggle-open.hooks";
 import RetireBid from "./RetireBid";
 import { formatMoney } from "../helpers/formatters.helper";
@@ -10,15 +10,8 @@ interface Props {
   currentOffer: string;
   myOffer: string;
 }
-function BidsQuickView({
-  id,
-  name,
-  initialOffer,
-  currentOffer,
-  myOffer,
-}: Props) {
+function BidsQuickView({ name, initialOffer, currentOffer, myOffer }: Props) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
-  const { isOpen: tooltipOpen, toggleIsOpen: toggleTooltip } = useToggleOpen();
   return (
     <Card body className="my-2">
       <Container>
@@ -43,18 +36,10 @@ function BidsQuickView({
                 color="danger"
                 size="sm"
                 onClick={toggleIsOpen}
-                id={`retire-bid-${id}`}
+                title="Retirar la puja"
               >
                 <i className="bi bi-door-open-fill" />
               </Button>
-              <Tooltip
-                target={`retire-bid-${id}`}
-                isOpen={tooltipOpen}
-                toggle={toggleTooltip}
-                placement="left"
-              >
-                Retirar la puja
-              </Tooltip>
             </Col>
           </Row>
         </Row>

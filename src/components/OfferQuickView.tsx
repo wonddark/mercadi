@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Row, Tooltip } from "reactstrap";
+import { Button, Card, Col, Container, Row } from "reactstrap";
 import useToggleOpen from "../hooks/toggle-open.hooks";
 import CloseOffer from "./CloseOffer";
 import { formatMoney } from "../helpers/formatters.helper";
@@ -9,9 +9,8 @@ interface Props {
   initialOffer: string;
   currentOffer: string;
 }
-function OfferQuickView({ id, name, initialOffer, currentOffer }: Props) {
+function OfferQuickView({ name, initialOffer, currentOffer }: Props) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
-  const { isOpen: openTooltip, toggleIsOpen: toggleTooltip } = useToggleOpen();
   return (
     <Card body className="my-2">
       <Container>
@@ -33,18 +32,10 @@ function OfferQuickView({ id, name, initialOffer, currentOffer }: Props) {
                 color="primary"
                 onClick={toggleIsOpen}
                 size="sm"
-                id={`close-offer-${id}`}
+                title="Cerrar oferta"
               >
                 <i className="bi bi-x-circle-fill" />
               </Button>
-              <Tooltip
-                target={`close-offer-${id}`}
-                isOpen={openTooltip}
-                toggle={toggleTooltip}
-                placement="left"
-              >
-                Cerrar oferta
-              </Tooltip>
             </Col>
           </Row>
         </Row>

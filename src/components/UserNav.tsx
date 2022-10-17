@@ -13,6 +13,7 @@ import useToggleOpen from "../hooks/toggle-open.hooks";
 import AddOffer from "./AddOffer";
 import useSessionMenuActions from "../hooks/session-menu.hooks";
 import Login from "./Login";
+import Register from "./Register";
 
 function UserNav() {
   const { isOpen: addArticle, toggleIsOpen: toggleAddArticle } =
@@ -20,6 +21,7 @@ function UserNav() {
   const { isOpen: sessionMenuOpen, toggleIsOpen: toggleSessionMenuOpen } =
     useToggleOpen();
   const { isOpen: login, toggleIsOpen: toggleLogin } = useToggleOpen();
+  const { isOpen: register, toggleIsOpen: toggleRegister } = useToggleOpen();
   const { goToOffers, goToBids, goToFeed } = useSessionMenuActions(
     toggleSessionMenuOpen
   );
@@ -78,12 +80,15 @@ function UserNav() {
             </Button>
           </NavItem>
           <NavItem>
-            <Button color="primary">Crear cuenta</Button>
+            <Button color="primary" onClick={toggleRegister}>
+              Crear cuenta
+            </Button>
           </NavItem>
         </Nav>
       </Navbar>
       {addArticle && <AddOffer isOpen={addArticle} toggle={toggleAddArticle} />}
       {login && <Login isOpen={login} toggle={toggleLogin} />}
+      {register && <Register isOpen={register} toggle={toggleRegister} />}
     </header>
   );
 }

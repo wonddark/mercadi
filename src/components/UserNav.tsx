@@ -1,10 +1,26 @@
-import { Button, Nav, Navbar, NavbarBrand, NavItem } from "reactstrap";
+import {
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Nav,
+  Navbar,
+  NavbarBrand,
+  NavItem,
+} from "reactstrap";
 import useToggleOpen from "../hooks/toggle-open.hooks";
 import AddOffer from "./AddOffer";
+import useSessionMenuActions from "../hooks/session-menu.hooks";
 
 function UserNav() {
   const { isOpen: addArticle, toggleIsOpen: toggleAddArticle } =
     useToggleOpen();
+  const { isOpen: sessionMenuOpen, toggleIsOpen: toggleSessionMenuOpen } =
+    useToggleOpen();
+  const { goToOffers, goToBids, goToFeed } = useSessionMenuActions(
+    toggleSessionMenuOpen
+  );
   return (
     <header>
       <Navbar dark color="dark" container expand>
@@ -31,9 +47,28 @@ function UserNav() {
             </Button>
           </NavItem>
           <NavItem>
-            <Button color="transparent" className="text-white" title="Perfil">
-              <i className="bi bi-person-circle" />
-            </Button>
+            <Dropdown
+              isOpen={sessionMenuOpen}
+              toggle={toggleSessionMenuOpen}
+              nav
+              inNavbar
+              direction="end"
+            >
+              <DropdownToggle
+                nav
+                title="Perfil"
+                color="transparent"
+                className="text-white"
+              >
+                <i className="bi bi-person-circle" />
+              </DropdownToggle>
+              <DropdownMenu dark>
+                <DropdownItem onClick={goToFeed}>Feed</DropdownItem>
+                <DropdownItem onClick={goToOffers}>Tus ofertas</DropdownItem>
+                <DropdownItem onClick={goToBids}>Tus pujas</DropdownItem>
+                <DropdownItem>Cerrar sesión</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </NavItem>
         </Nav>
       </Navbar>

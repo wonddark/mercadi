@@ -12,6 +12,16 @@ function UserNav() {
         <Nav navbar className="ms-auto">
           <NavItem className="me-1">
             <Button
+              color="primary"
+              aria-label="Agregar oferta"
+              title="Agregar oferta"
+              onClick={toggleAddArticle}
+            >
+              <i className="bi bi-plus-circle-fill" />
+            </Button>
+          </NavItem>
+          <NavItem className="me-1">
+            <Button
               aria-label="Notifications"
               title="Notificaciones"
               color="transparent"
@@ -21,13 +31,8 @@ function UserNav() {
             </Button>
           </NavItem>
           <NavItem>
-            <Button
-              color="primary"
-              aria-label="Agregar oferta"
-              title="Agregar oferta"
-              onClick={toggleAddArticle}
-            >
-              <i className="bi bi-plus-circle-fill" />
+            <Button color="transparent" className="text-white" title="Perfil">
+              <i className="bi bi-person-circle" />
             </Button>
           </NavItem>
         </Nav>

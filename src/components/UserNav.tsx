@@ -12,12 +12,14 @@ import {
 import useToggleOpen from "../hooks/toggle-open.hooks";
 import AddOffer from "./AddOffer";
 import useSessionMenuActions from "../hooks/session-menu.hooks";
+import Login from "./Login";
 
 function UserNav() {
   const { isOpen: addArticle, toggleIsOpen: toggleAddArticle } =
     useToggleOpen();
   const { isOpen: sessionMenuOpen, toggleIsOpen: toggleSessionMenuOpen } =
     useToggleOpen();
+  const { isOpen: login, toggleIsOpen: toggleLogin } = useToggleOpen();
   const { goToOffers, goToBids, goToFeed } = useSessionMenuActions(
     toggleSessionMenuOpen
   );
@@ -71,7 +73,7 @@ function UserNav() {
             </Dropdown>
           </NavItem>
           <NavItem className="me-1">
-            <Button color="light" outline>
+            <Button color="light" outline onClick={toggleLogin}>
               Acceder
             </Button>
           </NavItem>
@@ -81,6 +83,7 @@ function UserNav() {
         </Nav>
       </Navbar>
       {addArticle && <AddOffer isOpen={addArticle} toggle={toggleAddArticle} />}
+      {login && <Login isOpen={login} toggle={toggleLogin} />}
     </header>
   );
 }

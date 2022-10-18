@@ -1,4 +1,3 @@
-import { Nav, Navbar, NavbarBrand } from "reactstrap";
 import { useSelector } from "react-redux";
 import { selectIsLogged } from "../state/slices/session";
 import LoggedNavItems from "./LoggedNavItems";
@@ -8,13 +7,17 @@ function UserNav() {
   const isLogged = useSelector(selectIsLogged);
   return (
     <header>
-      <Navbar dark color="dark" container expand>
-        <NavbarBrand>Subastia</NavbarBrand>
-        <Nav navbar className="ms-auto">
-          {isLogged && <LoggedNavItems />}
-          {!isLogged && <NotLoggedNavItems />}
-        </Nav>
-      </Navbar>
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/">
+            Subastia
+          </a>
+          <ul className="navbar-nav ms-auto">
+            {isLogged && <LoggedNavItems />}
+            {!isLogged && <NotLoggedNavItems />}
+          </ul>
+        </div>
+      </nav>
     </header>
   );
 }

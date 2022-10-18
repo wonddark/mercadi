@@ -1,18 +1,18 @@
-import { Col, Container, Row } from "reactstrap";
 import FeedQuickAccess from "./FeedQuickAccess";
+import FeedsColumn from "./FeedsColumn";
 
 function HomeFeed() {
   return (
-    <Container>
-      <Row xs={1} md={2}>
-        <Col md={8}>
-          <h1>Here will go the stories</h1>
-        </Col>
-        <Col md={4}>
+    <div className="container">
+      <div className="row row-cols-1 row-cols-md-2">
+        <div className="col col-md-8">
+          <FeedsColumn />
+        </div>
+        <div className="col col-md-4">
           <FeedQuickAccess />
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }
 

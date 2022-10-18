@@ -31,7 +31,7 @@ function UserNav() {
   return (
     <header>
       <Navbar dark color="dark" container expand>
-        <NavbarBrand>Casa de Subastas</NavbarBrand>
+        <NavbarBrand>Subastia</NavbarBrand>
         <Nav navbar className="ms-auto">
           {isLogged && (
             <>

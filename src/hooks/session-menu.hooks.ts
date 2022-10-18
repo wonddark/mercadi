@@ -1,18 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
-function useSessionMenuActions(toggleMenu: () => void) {
+function useSessionMenuActions() {
   const navigate = useNavigate();
   const goToOffers = () => {
     navigate("/user/offers");
-    toggleMenu();
   };
   const goToBids = () => {
     navigate("/user/bids");
-    toggleMenu();
   };
   const goToFeed = () => {
     navigate("/user/feed");
-    toggleMenu();
   };
   return { goToOffers, goToBids, goToFeed };
 }

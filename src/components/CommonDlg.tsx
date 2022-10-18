@@ -14,6 +14,7 @@ interface Props {
   cancelFunction?: () => void;
   acceptLabel?: string;
   acceptIcon?: React.ReactElement;
+  acceptFunction?: () => void;
 }
 function CommonDlg({
   isOpen,
@@ -28,6 +29,7 @@ function CommonDlg({
   cancelFunction,
   acceptLabel,
   acceptIcon,
+  acceptFunction,
 }: Props) {
   return (
     <Modal isOpen={isOpen} toggle={toggle} size={size ?? "md"} fade centered>
@@ -42,7 +44,7 @@ function CommonDlg({
           {cancelLabel ?? "Cancelar"}
         </Button>
         {acceptLabel && (
-          <Button color="primary">
+          <Button color="primary" onClick={acceptFunction ?? undefined}>
             {acceptIcon ?? <i className="bi bi-check-circle me-2" />}
             {acceptLabel}
           </Button>

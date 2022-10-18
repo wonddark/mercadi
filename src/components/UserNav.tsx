@@ -50,30 +50,28 @@ function UserNav() {
               <i className="bi bi-bell" />
             </Button>
           </NavItem>
-          <NavItem>
-            <Dropdown
-              isOpen={sessionMenuOpen}
-              toggle={toggleSessionMenuOpen}
+          <Dropdown
+            isOpen={sessionMenuOpen}
+            toggle={toggleSessionMenuOpen}
+            nav
+            inNavbar
+            direction="end"
+          >
+            <DropdownToggle
               nav
-              inNavbar
-              direction="end"
+              title="Perfil"
+              color="transparent"
+              className="text-white"
             >
-              <DropdownToggle
-                nav
-                title="Perfil"
-                color="transparent"
-                className="text-white"
-              >
-                <i className="bi bi-person-circle" />
-              </DropdownToggle>
-              <DropdownMenu dark>
-                <DropdownItem onClick={goToFeed}>Feed</DropdownItem>
-                <DropdownItem onClick={goToOffers}>Tus ofertas</DropdownItem>
-                <DropdownItem onClick={goToBids}>Tus pujas</DropdownItem>
-                <DropdownItem>Cerrar sesión</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </NavItem>
+              <i className="bi bi-person-circle" />
+            </DropdownToggle>
+            <DropdownMenu dark>
+              <DropdownItem onClick={goToFeed}>Feed</DropdownItem>
+              <DropdownItem onClick={goToOffers}>Tus ofertas</DropdownItem>
+              <DropdownItem onClick={goToBids}>Tus pujas</DropdownItem>
+              <DropdownItem>Cerrar sesión</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
           <NavItem className="me-1">
             <Button color="light" outline onClick={toggleLogin}>
               Acceder

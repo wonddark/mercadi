@@ -42,7 +42,8 @@ function UserNav() {
                   title="Agregar oferta"
                   onClick={toggleAddArticle}
                 >
-                  <i className="bi bi-plus-circle-fill" />
+                  <i className="bi bi-plus-circle-fill me-md-2" />
+                  <span className="d-none d-md-inline">Crear oferta</span>
                 </Button>
               </NavItem>
               <NavItem className="me-1">
@@ -52,7 +53,8 @@ function UserNav() {
                   color="transparent"
                   className="text-white"
                 >
-                  <i className="bi bi-bell" />
+                  <i className="bi bi-bell me-md-2" />
+                  <span className="d-none d-md-inline">Notificaciones</span>
                 </Button>
               </NavItem>
               <Dropdown
@@ -68,7 +70,8 @@ function UserNav() {
                   color="transparent"
                   className="text-white"
                 >
-                  <i className="bi bi-person-circle" />
+                  <i className="bi bi-person-circle me-md-2" />
+                  <span className="d-none d-md-inline">Perfil</span>
                 </DropdownToggle>
                 <DropdownMenu dark>
                   <DropdownItem onClick={goToFeed}>Feed</DropdownItem>

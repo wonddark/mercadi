@@ -82,13 +82,15 @@ function UserNav() {
           {!isLogged && (
             <>
               <NavItem className="me-1">
-                <Button color="light" outline onClick={toggleLogin}>
-                  Acceder
+                <Button color="light" onClick={toggleLogin}>
+                  <i className="bi bi-box-arrow-in-right me-md-2" />
+                  <span className="d-none d-md-inline">Acceder</span>
                 </Button>
               </NavItem>
               <NavItem>
                 <Button color="primary" onClick={toggleRegister}>
-                  Crear cuenta
+                  <i className="bi bi-person-plus-fill me-md-2" />
+                  <span className="d-none d-md-inline">Crear cuenta</span>
                 </Button>
               </NavItem>
             </>

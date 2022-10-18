@@ -1,70 +1,74 @@
-import {
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  NavItem,
-} from "reactstrap";
 import useSessionMenuActions from "../hooks/session-menu.hooks";
 import useToggleOpen from "../hooks/toggle-open.hooks";
 import AddOffer from "./AddOffer";
 
 function LoggedNavItems() {
-  const { isOpen: sessionMenuOpen, toggleIsOpen: toggleSessionMenuOpen } =
-    useToggleOpen();
-  const { goToOffers, goToBids, goToFeed } = useSessionMenuActions(
-    toggleSessionMenuOpen
-  );
+  const { goToOffers, goToBids, goToFeed } = useSessionMenuActions();
   const { isOpen: addArticle, toggleIsOpen: toggleAddArticle } =
     useToggleOpen();
   return (
     <>
-      <NavItem className="me-1">
-        <Button
-          color="primary"
+      <li className="nav-item me-1">
+        <button
+          className="btn btn-primary"
           aria-label="Agregar oferta"
           title="Agregar oferta"
           onClick={toggleAddArticle}
         >
           <i className="bi bi-plus-circle-fill me-md-2" />
           <span className="d-none d-md-inline">Crear oferta</span>
-        </Button>
-      </NavItem>
-      <NavItem className="me-1">
-        <Button
+        </button>
+      </li>
+      <li className="nav-item me-1">
+        <button
+          className="btn bg-transparent text-white"
           aria-label="Notifications"
           title="Notificaciones"
-          color="transparent"
-          className="text-white"
         >
           <i className="bi bi-bell me-md-2" />
           <span className="d-none d-md-inline">Notificaciones</span>
-        </Button>
-      </NavItem>
-      <Dropdown
-        isOpen={sessionMenuOpen}
-        toggle={toggleSessionMenuOpen}
-        nav
-        inNavbar
-        direction="end"
-      >
-        <DropdownToggle
-          nav
-          title="Perfil"
-          color="transparent"
-          className="text-white"
+        </button>
+      </li>
+      <li className="nav-item dropdown">
+        <button
+          className="btn bg-transparent text-white dropdown-toggle"
+          id="dropdown-profile"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
         >
           <i className="bi bi-person-circle me-md-2" />
           <span className="d-none d-md-inline">Perfil</span>
-        </DropdownToggle>
-        <DropdownMenu dark>
-          <DropdownItem onClick={goToFeed}>Feed</DropdownItem>
-          <DropdownItem onClick={goToOffers}>Tus ofertas</DropdownItem>
-          <DropdownItem onClick={goToBids}>Tus pujas</DropdownItem>
-          <DropdownItem>Cerrar sesión</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+        </button>
+        <ul
+          className="dropdown-menu dropdown-menu-dark dropdown-menu-end"
+          aria-labelledby="dropdown-profile"
+        >
+          <li>
+            <button className="dropdown-item" onClick={goToFeed}>
+              Feed
+            </button>
+          </li>
+          <li>
+            <hr className="dropdown-divider" />
+          </li>
+          <li>
+            <button className="dropdown-item" onClick={goToOffers}>
+              Tus ofertas
+            </button>
+          </li>
+          <li>
+            <button className="dropdown-item" onClick={goToBids}>
+              Tus pujas
+            </button>
+          </li>
+          <li>
+            <hr className="dropdown-divider" />
+          </li>
+          <li>
+            <button className="dropdown-item">Cerrar sesión</button>
+          </li>
+        </ul>
+      </li>
       {addArticle && <AddOffer isOpen={addArticle} toggle={toggleAddArticle} />}
     </>
   );

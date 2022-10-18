@@ -12,13 +12,7 @@ function Offers() {
       >
         Tus ofertas
       </Link>
-      <Container
-        className="px-0 pe-1"
-        style={{
-          height: "calc(32vh)",
-          overflow: "auto",
-        }}
-      >
+      <Container className="px-0">
         {dummyOffers.slice(0, 3).map((item) => (
           <OfferQuickView
             id={item.id}

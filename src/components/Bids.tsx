@@ -12,13 +12,7 @@ function Bids() {
       >
         Tus pujas
       </Link>
-      <Container
-        className="px-0 pe-1"
-        style={{
-          height: "calc(32vh)",
-          overflow: "auto",
-        }}
-      >
+      <Container className="px-0">
         {dummyBids.slice(0, 3).map((item) => (
           <BidsQuickView
             id={item.id}

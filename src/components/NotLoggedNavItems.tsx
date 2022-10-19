@@ -14,7 +14,7 @@ function NotLoggedNavItems() {
         </button>
       </li>
       <li className="nav-item">
-        <button className="btn-primary" onClick={toggleRegister}>
+        <button className="btn btn-primary" onClick={toggleRegister}>
           <i className="bi bi-person-plus-fill me-md-2" />
           <span className="d-none d-md-inline">Crear cuenta</span>
         </button>

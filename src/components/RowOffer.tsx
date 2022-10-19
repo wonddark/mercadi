@@ -1,4 +1,3 @@
-import { Card, Col, Row } from "reactstrap";
 import { formatMoney } from "../helpers/formatters.helper";
 
 interface Props {
@@ -14,21 +13,21 @@ function RowOffer({
   item: { name, initialBid, currentBid, publishedAt, status },
 }: Props) {
   return (
-    <Card body className="my-1" style={{ cursor: "pointer" }}>
-      <Row
-        className={
+    <div className="card card-body my-1" style={{ cursor: "pointer" }}>
+      <div
+        className={`row ${
           status === "Closed" ? "text-decoration-line-through text-muted" : ""
-        }
+        }`}
       >
-        <Col>{name}</Col>
-        <Col className="text-end">{formatMoney(initialBid)}</Col>
-        <Col className="text-end">{formatMoney(currentBid)}</Col>
-        <Col className="text-center">
+        <div className="col">{name}</div>
+        <div className="col text-end">{formatMoney(initialBid)}</div>
+        <div className="col text-end">{formatMoney(currentBid)}</div>
+        <div className="col text-center">
           {new Date(publishedAt).toLocaleString()}
-        </Col>
-        <Col className="text-center">{status}</Col>
-      </Row>
-    </Card>
+        </div>
+        <div className="col text-center">{status}</div>
+      </div>
+    </div>
   );
 }
 

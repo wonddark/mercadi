@@ -1,4 +1,4 @@
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import React from "react";
 
 interface Props {
@@ -7,7 +7,6 @@ interface Props {
   size?: string;
   title: string;
   icon?: React.ReactElement;
-  titleColor?: string;
   content: React.ReactElement | string;
   cancelLabel?: string;
   cancelIcon?: React.ReactElement;
@@ -22,7 +21,6 @@ function CommonDlg({
   size,
   title,
   icon,
-  titleColor,
   content,
   cancelLabel,
   cancelIcon,
@@ -32,11 +30,21 @@ function CommonDlg({
   acceptFunction,
 }: Props) {
   return (
-    <Modal isOpen={isOpen} toggle={toggle} size={size ?? "md"} fade centered>
-      <ModalHeader className={`text-${titleColor ?? "body"}`}>
-        {icon ?? <i className="bi bi-info-circle-fill me-2" />}
-        {title}
-      </ModalHeader>
+    <Modal
+      isOpen={isOpen}
+      toggle={toggle}
+      size={size ?? "md"}
+      fade
+      centered
+      scrollable
+    >
+      <div className="modal-header">
+        <h5 className="modal-title">
+          {icon ?? <i className="bi bi-info-circle-fill me-2" />}
+          {title}
+        </h5>
+        <Button close onClick={toggle} />
+      </div>
       <ModalBody>{content}</ModalBody>
       <ModalFooter>
         <Button color="light" onClick={cancelFunction ?? toggle}>

@@ -1,7 +1,7 @@
 {
-  "name": "auction",
-  "version": "0.1.0",
-  "private": true,
+  "name": "subastia",
+  "version": "0.0.0",
+  "private": false,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
     "bootstrap": "^5.2.2",

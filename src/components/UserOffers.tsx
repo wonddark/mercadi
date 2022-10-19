@@ -1,4 +1,3 @@
-import { Button, Container } from "reactstrap";
 import useGoBack from "../hooks/go-back.hooks";
 import { dummyOffers } from "../data/dummy-offers";
 import RowOffer from "./RowOffer";
@@ -8,10 +7,10 @@ function UserOffers() {
   document.title = "Ofertas";
   const { goBackTo: goBackToFeed } = useGoBack("/user/feed");
   return (
-    <Container>
-      <Button onClick={goBackToFeed}>
+    <div className="container-fluid">
+      <button className="btn btn-secondary" onClick={goBackToFeed}>
         <i className="bi bi-arrow-left-circle-fill" />
-      </Button>
+      </button>
       <HeaderOffer />
       <div
         className="pe-1"
@@ -24,7 +23,7 @@ function UserOffers() {
           <RowOffer item={item} key={item.id} />
         ))}
       </div>
-    </Container>
+    </div>
   );
 }
 

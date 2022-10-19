@@ -1,18 +1,17 @@
-import { Container } from "reactstrap";
 import OfferQuickView from "./OfferQuickView";
 import { dummyOffers } from "../data/dummy-offers";
 import { Link } from "react-router-dom";
 
 function Offers() {
   return (
-    <Container className="px-0">
+    <div className="container-fluid">
       <Link
         to="/user/offers"
         className="small fw-bold text-muted text-decoration-none"
       >
         Tus ofertas
       </Link>
-      <Container className="px-0">
+      <div className="container-fluid">
         {dummyOffers.slice(0, 3).map((item) => (
           <OfferQuickView
             id={item.id}
@@ -22,8 +21,8 @@ function Offers() {
             key={item.id}
           />
         ))}
-      </Container>
-    </Container>
+      </div>
+    </div>
   );
 }
 

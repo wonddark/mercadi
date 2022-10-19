@@ -1,5 +1,4 @@
 import CommonDlg from "./CommonDlg";
-import { Form, FormGroup, Input, Label } from "reactstrap";
 
 interface Props {
   isOpen: boolean;
@@ -7,37 +6,69 @@ interface Props {
 }
 function Register({ isOpen, toggle }: Props) {
   const registerForm = (
-    <Form>
-      <FormGroup>
-        <Input type="text" placeholder="Nombre" name="user-first-name" />
-      </FormGroup>
-      <FormGroup>
-        <Input type="text" placeholder="Apellidos" name="user-last-name" />
-      </FormGroup>
-      <FormGroup>
-        <Input
+    <form>
+      <div className="form-floating mb-3">
+        <input
+          type="text"
+          placeholder="Nombre"
+          name="user-first-name"
+          id="user-first-name"
+          className="form-control"
+        />
+        <label htmlFor="user-first-name">Nombre</label>
+      </div>
+      <div className="form-floating mb-3">
+        <input
+          type="text"
+          placeholder="Apellidos"
+          name="user-last-name"
+          id="user-last-name"
+          className="form-control"
+        />
+        <label htmlFor="user-last-name">Apellidos</label>
+      </div>
+      <div className="form-floating mb-3">
+        <input
           type="email"
           placeholder="Correo electrónico"
           name="user-email"
+          id="user-email"
+          className="form-control"
         />
-      </FormGroup>
-      <FormGroup>
-        <Input type="password" placeholder="Contraseña" name="user-password" />
-      </FormGroup>
-      <FormGroup>
-        <Input
+        <label htmlFor="user-email">Correo electrónico</label>
+      </div>
+      <div className="form-floating mb-3">
+        <input
+          type="password"
+          placeholder="Contraseña"
+          name="user-password"
+          id="user-password"
+          className="form-control"
+        />
+        <label htmlFor="user-password">Contraseña</label>
+      </div>
+      <div className="form-floating mb-3">
+        <input
           type="password"
           placeholder="Confirmar contraseña"
           name="user-password-confirm"
+          id="user-password-confirm"
+          className="form-control"
         />
-      </FormGroup>
-      <FormGroup check>
-        <Input type="checkbox" name="accept-terms" id="accept-terms" />
-        <Label check htmlFor="accept-terms">
+        <label htmlFor="user-password-confirm">Confirmar</label>
+      </div>
+      <div className="form-check mb-3">
+        <input
+          type="checkbox"
+          name="accept-terms"
+          id="accept-terms"
+          className="form-check-input"
+        />
+        <label htmlFor="accept-terms" className="form-check-label">
           Al registrarte en este sitio aceptas nuestros términos y condiciones
-        </Label>
-      </FormGroup>
-    </Form>
+        </label>
+      </div>
+    </form>
   );
   return (
     <CommonDlg

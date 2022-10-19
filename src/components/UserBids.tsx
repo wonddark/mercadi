@@ -1,5 +1,4 @@
 import useGoBack from "../hooks/go-back.hooks";
-import { Button, Container } from "reactstrap";
 import HeaderBid from "./HeaderBid";
 import { dummyBids } from "../data/dummy-bids";
 import RowBid from "./RowBid";
@@ -8,10 +7,10 @@ function UserBids() {
   document.title = "Pujas";
   const { goBackTo: goBackToFeed } = useGoBack("/user/feed");
   return (
-    <Container>
-      <Button onClick={goBackToFeed}>
+    <div className="container-fluid">
+      <button className="btn btn-secondary" onClick={goBackToFeed}>
         <i className="bi bi-arrow-left-circle-fill" />
-      </Button>
+      </button>
       <HeaderBid />
       <div
         className="pe-1"
@@ -24,7 +23,7 @@ function UserBids() {
           <RowBid item={item} key={item.id} />
         ))}
       </div>
-    </Container>
+    </div>
   );
 }
 

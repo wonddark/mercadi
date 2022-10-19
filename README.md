@@ -15,3 +15,8 @@
 
 Users need to be registered to post new offers and bids.
 Each offer/bid is linked to the user that created it
+
+### Technology used
+- React
+- Bootstrap
+- Redux

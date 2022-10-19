@@ -17,6 +17,7 @@ Users need to be registered to post new offers and bids.
 Each offer/bid is linked to the user that created it
 
 ### Technology used
-- React
-- Bootstrap
-- Redux
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Redux](https://redux-toolkit.js.org/)

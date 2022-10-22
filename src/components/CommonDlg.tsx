@@ -14,6 +14,7 @@ interface Props {
   acceptLabel?: string;
   acceptIcon?: React.ReactElement;
   acceptFunction?: () => void;
+  acceptDisabled?: boolean;
 }
 function CommonDlg({
   isOpen,
@@ -28,6 +29,7 @@ function CommonDlg({
   acceptLabel,
   acceptIcon,
   acceptFunction,
+  acceptDisabled,
 }: Props) {
   return (
     <Modal
@@ -52,7 +54,11 @@ function CommonDlg({
           {cancelLabel ?? "Cancelar"}
         </Button>
         {acceptLabel && (
-          <Button color="primary" onClick={acceptFunction ?? undefined}>
+          <Button
+            color="primary"
+            onClick={acceptFunction ?? undefined}
+            disabled={acceptDisabled}
+          >
             {acceptIcon ?? <i className="bi bi-check-circle me-2" />}
             {acceptLabel}
           </Button>

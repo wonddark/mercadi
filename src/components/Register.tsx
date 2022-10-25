@@ -6,11 +6,8 @@ interface Props {
   toggle: () => void;
 }
 function Register({ isOpen, toggle }: Props) {
-  const { registerForm, submitForm, termsAccepted, isValid } = useRegister();
-  const runRegister = () => {
-    submitForm();
-    toggle();
-  };
+  const { registerForm, submitForm, termsAccepted, isValid, isLoading } =
+    useRegister(toggle);
   return (
     <CommonDlg
       isOpen={isOpen}
@@ -19,8 +16,8 @@ function Register({ isOpen, toggle }: Props) {
       icon={<i className="bi bi-person-plus-fill me-2" />}
       content={registerForm}
       acceptLabel="Registrar"
-      acceptFunction={runRegister}
-      acceptDisabled={!termsAccepted || !isValid}
+      acceptFunction={submitForm}
+      acceptDisabled={!termsAccepted || !isValid || isLoading}
     />
   );
 }

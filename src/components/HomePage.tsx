@@ -25,50 +25,59 @@ function HomePage() {
                 <Controller
                   name="email"
                   control={control}
-                  render={({ field }) => (
+                  render={({ field, fieldState: { error } }) => (
                     <div className="form-floating mb-3">
                       <input
                         type="email"
-                        className="form-control"
+                        className={`form-control ${error ? "is-invalid" : ""}`}
                         id="floatingInput"
                         placeholder="name@example.com"
                         {...field}
                       />
                       <label htmlFor="floatingInput">Correo electrónico</label>
+                      {error && (
+                        <div className="invalid-feedback">{error.message}</div>
+                      )}
                     </div>
                   )}
                 />
                 <Controller
                   name="password"
                   control={control}
-                  render={({ field }) => (
+                  render={({ field, fieldState: { error } }) => (
                     <div className="form-floating mb-3">
                       <input
                         type="password"
-                        className="form-control"
+                        className={`form-control ${error ? "is-invalid" : ""}`}
                         id="floatingPassword"
                         placeholder="Password"
                         {...field}
                       />
                       <label htmlFor="floatingPassword">Contraseña</label>
+                      {error && (
+                        <div className="invalid-feedback">{error.message}</div>
+                      )}
                     </div>
                   )}
                 />
                 <Controller
                   name="password_confirm"
                   control={control}
-                  render={({ field }) => (
+                  render={({ field, fieldState: { error } }) => (
                     <div className="form-floating mb-3">
                       <input
                         type="password"
-                        className="form-control"
-                        id="floatingPassword"
+                        className={`form-control ${error ? "is-invalid" : ""}`}
+                        id="floatingPasswordConfirm"
                         placeholder="Password"
                         {...field}
                       />
                       <label htmlFor="floatingPassword">
                         Confirmar contraseña
                       </label>
+                      {error && (
+                        <div className="invalid-feedback">{error.message}</div>
+                      )}
                     </div>
                   )}
                 />

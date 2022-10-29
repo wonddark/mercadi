@@ -1,10 +1,8 @@
 import Login from "./Login";
-import Register from "./Register";
 import useToggleOpen from "../hooks/toggle-open.hooks";
 
 function NotLoggedNavItems() {
   const { isOpen: login, toggleIsOpen: toggleLogin } = useToggleOpen();
-  const { isOpen: register, toggleIsOpen: toggleRegister } = useToggleOpen();
   return (
     <>
       <li className="nav-item me-1">
@@ -14,13 +12,12 @@ function NotLoggedNavItems() {
         </button>
       </li>
       <li className="nav-item">
-        <button className="btn btn-primary" onClick={toggleRegister}>
+        <button className="btn btn-primary">
           <i className="bi bi-person-plus-fill me-md-2" />
           <span className="d-none d-md-inline">Crear cuenta</span>
         </button>
       </li>
       {login && <Login isOpen={login} toggle={toggleLogin} />}
-      {register && <Register isOpen={register} toggle={toggleRegister} />}
     </>
   );
 }

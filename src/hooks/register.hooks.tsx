@@ -33,7 +33,6 @@ function useRegister() {
       })
     ),
   });
-  console.log(isValid, errors);
   const navigate = useNavigate();
   const [queryRegister, { isLoading }] = useRegisterMutation();
   const register = (data: any) => {

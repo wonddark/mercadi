@@ -2,7 +2,14 @@ import { Controller } from "react-hook-form";
 import useRegister from "../hooks/register.hooks";
 
 function HomePage() {
-  const { submitForm, control, isLoading, isValid } = useRegister();
+  const {
+    submitForm,
+    control,
+    checkEmail,
+    isLoading,
+    isValid,
+    emailAvailable,
+  } = useRegister();
   return (
     <div className="container-fluid p-0">
       <header>
@@ -29,14 +36,22 @@ function HomePage() {
                     <div className="form-floating mb-3">
                       <input
                         type="email"
-                        className={`form-control ${error ? "is-invalid" : ""}`}
+                        className={`form-control ${
+                          error || !emailAvailable ? "is-invalid" : ""
+                        } ${emailAvailable ? "is-valid" : ""}`}
                         id="floatingInput"
-                        placeholder="name@example.com"
+                        placeholder="nombre@dominio.com"
                         {...field}
+                        onChange={({ target: { value } }) =>
+                          checkEmail(value, field.onChange, error)
+                        }
                       />
                       <label htmlFor="floatingInput">Correo electrónico</label>
                       {error && (
                         <div className="invalid-feedback">{error.message}</div>
+                      )}
+                      {!emailAvailable && (
+                        <div className="invalid-feedback">Ya registrado</div>
                       )}
                     </div>
                   )}

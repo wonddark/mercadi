@@ -46,6 +46,6 @@ export const {
   useRegisterMutation,
   useCheckRegistrationQuery,
   useActivateRegistrationMutation,
-  useTestEmailQuery,
+  useLazyTestEmailQuery,
 } = api;
 export default api;

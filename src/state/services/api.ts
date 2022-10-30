@@ -33,6 +33,11 @@ const api = createApi({
         },
       }),
     }),
+    testEmail: builder.query({
+      query: (email: string) => ({
+        url: `/registration/test/${email}`,
+      }),
+    }),
   }),
 });
 
@@ -41,5 +46,6 @@ export const {
   useRegisterMutation,
   useCheckRegistrationQuery,
   useActivateRegistrationMutation,
+  useTestEmailQuery,
 } = api;
 export default api;

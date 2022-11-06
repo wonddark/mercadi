@@ -35,7 +35,9 @@ function useRegister() {
     mode: "onChange",
     resolver: yupResolver(schema),
   });
-  const [emailAvailable, setEmailAvailable] = useState(true);
+  const [emailAvailable, setEmailAvailable] = useState<boolean | undefined>(
+    undefined
+  );
   const navigate = useNavigate();
   const [queryRegister, { isLoading }] = useRegisterMutation();
   const [testEmail, { data, isLoading: testingEmail }] =

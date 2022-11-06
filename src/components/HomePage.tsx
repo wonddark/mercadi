@@ -37,7 +37,7 @@ function HomePage() {
                       <input
                         type="email"
                         className={`form-control ${
-                          error || !emailAvailable ? "is-invalid" : ""
+                          error || emailAvailable === false ? "is-invalid" : ""
                         } ${emailAvailable ? "is-valid" : ""}`}
                         id="floatingInput"
                         placeholder="nombre@dominio.com"
@@ -50,7 +50,7 @@ function HomePage() {
                       {error && (
                         <div className="invalid-feedback">{error.message}</div>
                       )}
-                      {!emailAvailable && (
+                      {emailAvailable === false && (
                         <div className="invalid-feedback">Ya registrado</div>
                       )}
                     </div>

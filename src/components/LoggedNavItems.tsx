@@ -1,19 +1,13 @@
 import useSessionMenuActions from "../hooks/session-menu.hooks";
 import useToggleOpen from "../hooks/toggle-open.hooks";
 import AddOffer from "./AddOffer";
-import { useAppDispatch, useAppSelector } from "../hooks/state.hooks";
-import { logout, selectName } from "../state/slices/session";
+import useProfile from "../hooks/profile.hook";
 
 function LoggedNavItems() {
   const { goToOffers, goToBids, goToFeed } = useSessionMenuActions();
   const { isOpen: addArticle, toggleIsOpen: toggleAddArticle } =
     useToggleOpen();
-  const dispatch = useAppDispatch();
-  const closeSession = () => {
-    dispatch(logout());
-  };
-  const state = useAppSelector((state) => state);
-  const name = selectName(state);
+  const { name, closeSession } = useProfile();
   return (
     <>
       <li className="nav-item me-1">

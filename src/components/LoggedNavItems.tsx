@@ -1,11 +1,17 @@
 import useSessionMenuActions from "../hooks/session-menu.hooks";
 import useToggleOpen from "../hooks/toggle-open.hooks";
 import AddOffer from "./AddOffer";
+import { useAppDispatch } from "../hooks/state.hooks";
+import { logout } from "../state/slices/session";
 
 function LoggedNavItems() {
   const { goToOffers, goToBids, goToFeed } = useSessionMenuActions();
   const { isOpen: addArticle, toggleIsOpen: toggleAddArticle } =
     useToggleOpen();
+  const dispatch = useAppDispatch();
+  const closeSession = () => {
+    dispatch(logout());
+  };
   return (
     <>
       <li className="nav-item me-1">
@@ -65,7 +71,9 @@ function LoggedNavItems() {
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <button className="dropdown-item">Cerrar sesión</button>
+            <button className="dropdown-item" onClick={closeSession}>
+              Cerrar sesión
+            </button>
           </li>
         </ul>
       </li>

@@ -1,140 +1,83 @@
-import { ChangeEvent, useRef, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { useRegisterMutation } from "../state/services/api";
+import { useForm } from "react-hook-form";
+import {
+  useLazyTestEmailQuery,
+  useRegisterMutation,
+} from "../state/services/api";
+import { useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useEffect, useState } from "react";
+
+const schema = yup.object({
+  email: yup
+    .string()
+    .email("Necesitamos un email válido")
+    .required("Campo requerido"),
+  password: yup
+    .string()
+    .required("Campo requerido")
+    .min(8, "No menos de 8 caracteres")
+    .max(16, "No más de 16 caracteres"),
+  password_confirm: yup.string().oneOf([yup.ref("password")], "No coincide"),
+});
 
 function useRegister() {
-  const formRef = useRef<HTMLInputElement>(null);
   const {
     handleSubmit,
     control,
     formState: { isValid },
   } = useForm({
     defaultValues: {
-      name: "",
-      lastname: "",
       email: "",
       password: "",
       password_confirm: "",
     },
+    mode: "onChange",
+    resolver: yupResolver(schema),
   });
-  const [termsAccepted, setTermsAccepted] = useState(false);
-  const [queryRegister] = useRegisterMutation();
-  const register = (data: any) => {
-    console.log(data);
-    queryRegister({
-      name: data.name,
-      email: data.email,
-      lastname: data.lastname,
-      password: data.password,
-    });
-  };
-  const submitForm = () => {
-    formRef.current && formRef.current.click();
-  };
-  const toggleTermsAccepted = ({
-    target: { checked },
-  }: ChangeEvent<HTMLInputElement>) => {
-    setTermsAccepted(checked);
-  };
-  const registerForm = (
-    <form onSubmit={handleSubmit(register)} method="post">
-      <Controller
-        name="name"
-        control={control}
-        render={({ field }) => (
-          <div className="form-floating mb-3">
-            <input
-              type="text"
-              placeholder="Nombre"
-              id="user-first-name"
-              className="form-control"
-              {...field}
-            />
-            <label htmlFor="user-first-name">Nombre</label>
-          </div>
-        )}
-      />
-      <Controller
-        name="lastname"
-        control={control}
-        render={({ field }) => (
-          <div className="form-floating mb-3">
-            <input
-              type="text"
-              placeholder="Apellidos"
-              id="user-last-name"
-              className="form-control"
-              {...field}
-            />
-            <label htmlFor="user-last-name">Apellidos</label>
-          </div>
-        )}
-      />
-      <Controller
-        name="email"
-        control={control}
-        render={({ field }) => (
-          <div className="form-floating mb-3">
-            <input
-              type="email"
-              placeholder="Correo electrónico"
-              id="user-email"
-              className="form-control"
-              {...field}
-            />
-            <label htmlFor="user-email">Correo electrónico</label>
-          </div>
-        )}
-      />
-      <Controller
-        name="password"
-        control={control}
-        render={({ field }) => (
-          <div className="form-floating mb-3">
-            <input
-              type="password"
-              placeholder="Contraseña"
-              id="user-password"
-              className="form-control"
-              {...field}
-            />
-            <label htmlFor="user-password">Contraseña</label>
-          </div>
-        )}
-      />
-      <Controller
-        name="password_confirm"
-        control={control}
-        render={({ field }) => (
-          <div className="form-floating mb-3">
-            <input
-              type="password"
-              placeholder="Confirmar contraseña"
-              id="user-password-confirm"
-              className="form-control"
-              {...field}
-            />
-            <label htmlFor="user-password-confirm">Confirmar</label>
-          </div>
-        )}
-      />
-      <div className="form-check mb-3">
-        <input
-          type="checkbox"
-          id="accept-terms"
-          className="form-check-input"
-          name="accept-terms"
-          checked={termsAccepted}
-          onChange={toggleTermsAccepted}
-        />
-        <label htmlFor="accept-terms" className="form-check-label">
-          Al registrarte en este sitio aceptas nuestros términos y condiciones
-        </label>
-      </div>
-      <input type="submit" hidden ref={formRef} />
-    </form>
+  const [emailAvailable, setEmailAvailable] = useState<boolean | undefined>(
+    undefined
   );
-  return { registerForm, submitForm, termsAccepted, isValid };
+  const navigate = useNavigate();
+  const [queryRegister, { isLoading }] = useRegisterMutation();
+  const [testEmail, { data, isLoading: testingEmail }] =
+    useLazyTestEmailQuery();
+
+  const register = (data: any) => {
+    queryRegister({
+      email: data.email,
+      password: data.password,
+    })
+      .unwrap()
+      .then(() => {
+        navigate("/registration/confirm");
+      })
+      .catch(() => null);
+  };
+  const submitForm = handleSubmit(register);
+
+  const checkEmail = (
+    value: string,
+    onChange: (value: string) => void,
+    error: any | undefined
+  ) => {
+    onChange(value);
+    if (value.includes("@") && !error) testEmail(value);
+  };
+
+  useEffect(() => {
+    data && setEmailAvailable(data["hydra:totalItems"] === 0);
+  }, [data]);
+
+  return {
+    submitForm,
+    control,
+    checkEmail,
+    isValid,
+    isLoading,
+    testingEmail,
+    emailAvailable,
+  };
 }
 
 export default useRegister;

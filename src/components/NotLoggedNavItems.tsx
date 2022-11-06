@@ -1,26 +1,20 @@
-import Login from "./Login";
-import Register from "./Register";
-import useToggleOpen from "../hooks/toggle-open.hooks";
+import { Link } from "react-router-dom";
 
 function NotLoggedNavItems() {
-  const { isOpen: login, toggleIsOpen: toggleLogin } = useToggleOpen();
-  const { isOpen: register, toggleIsOpen: toggleRegister } = useToggleOpen();
   return (
     <>
       <li className="nav-item me-1">
-        <button className="btn btn-light" onClick={toggleLogin}>
+        <Link to="/acceder" className="btn btn-light">
           <i className="bi bi-box-arrow-in-right me-md-2" />
           <span className="d-none d-md-inline">Acceder</span>
-        </button>
+        </Link>
       </li>
       <li className="nav-item">
-        <button className="btn btn-primary" onClick={toggleRegister}>
+        <Link to="/registro" className="btn btn-primary">
           <i className="bi bi-person-plus-fill me-md-2" />
           <span className="d-none d-md-inline">Crear cuenta</span>
-        </button>
+        </Link>
       </li>
-      {login && <Login isOpen={login} toggle={toggleLogin} />}
-      {register && <Register isOpen={register} toggle={toggleRegister} />}
     </>
   );
 }

@@ -10,6 +10,8 @@ import UserBids from "./components/UserBids";
 import ConfirmRegistration from "./components/ConfirmRegistration";
 import StaticLayoutContainer from "./components/StaticLayoutContainer";
 import ActivateRegistration from "./components/ActivateRegistration";
+import LoginPage from "./components/LoginPage";
+import CompleteRegistration from "./components/CompleteRegistration";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,7 +23,9 @@ const router = createBrowserRouter(
           path="activate/:registrationId"
           element={<ActivateRegistration />}
         />
+        <Route path="complete" element={<CompleteRegistration />} />
       </Route>
+      <Route path="acceder" element={<LoginPage />} />
 
       <Route path="user" element={<UserHome />}>
         <Route path="feed" element={<HomeFeed />} />

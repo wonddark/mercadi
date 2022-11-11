@@ -12,6 +12,7 @@ import StaticLayoutContainer from "./components/StaticLayoutContainer";
 import ActivateRegistration from "./components/ActivateRegistration";
 import LoginPage from "./components/LoginPage";
 import CompleteRegistration from "./components/CompleteRegistration";
+import SecureRoute from "./components/SecureRoute";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,14 +24,49 @@ const router = createBrowserRouter(
           path="activate/:registrationId"
           element={<ActivateRegistration />}
         />
-        <Route path="complete" element={<CompleteRegistration />} />
+        <Route
+          path="complete"
+          element={
+            <SecureRoute>
+              <CompleteRegistration />
+            </SecureRoute>
+          }
+        />
       </Route>
       <Route path="acceder" element={<LoginPage />} />
 
-      <Route path="user" element={<UserHome />}>
-        <Route path="feed" element={<HomeFeed />} />
-        <Route path="offers" element={<UserOffers />} />
-        <Route path="bids" element={<UserBids />} />
+      <Route
+        path="user"
+        element={
+          <SecureRoute>
+            <UserHome />
+          </SecureRoute>
+        }
+      >
+        <Route
+          path="feed"
+          element={
+            <SecureRoute>
+              <HomeFeed />
+            </SecureRoute>
+          }
+        />
+        <Route
+          path="offers"
+          element={
+            <SecureRoute>
+              <UserOffers />
+            </SecureRoute>
+          }
+        />
+        <Route
+          path="bids"
+          element={
+            <SecureRoute>
+              <UserBids />
+            </SecureRoute>
+          }
+        />
       </Route>
     </Route>
   )

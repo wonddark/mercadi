@@ -12,7 +12,7 @@ function LoggedNavItems() {
     <>
       <li className="nav-item me-1">
         <button
-          className="btn btn-primary"
+          className="btn btn-success"
           aria-label="Agregar oferta"
           title="Agregar oferta"
           onClick={toggleAddArticle}

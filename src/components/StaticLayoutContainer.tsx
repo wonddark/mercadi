@@ -1,12 +1,11 @@
-import HomePage from "./HomePage";
 import { Outlet } from "react-router-dom";
+import SiteLayout from "./SiteLayout";
 
 function StaticLayoutContainer() {
   return (
-    <>
-      <HomePage />
+    <SiteLayout>
       <Outlet />
-    </>
+    </SiteLayout>
   );
 }
 

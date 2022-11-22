@@ -5,7 +5,7 @@ import RowBid from "./RowBid";
 
 function UserBids() {
   document.title = "Pujas";
-  const { goBackTo: goBackToFeed } = useGoBack("/user/feed");
+  const { goBackTo: goBackToFeed } = useGoBack("/perfil/muro");
   return (
     <div className="container-fluid">
       <button className="btn btn-secondary" onClick={goBackToFeed}>

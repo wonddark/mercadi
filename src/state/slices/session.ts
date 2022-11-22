@@ -70,6 +70,8 @@ export const { logout } = sessionSlice.actions;
 export const selectIsLogged = (state: RootState) =>
   state[SESSION_STORE_KEY].isLogged;
 export const selectName = (state: RootState) => state[SESSION_STORE_KEY].name;
+export const selectLastname = (state: RootState) =>
+  state[SESSION_STORE_KEY].lastname;
 export const selectId = (state: RootState) => state[SESSION_STORE_KEY].id;
 
 export default sessionSlice.reducer;

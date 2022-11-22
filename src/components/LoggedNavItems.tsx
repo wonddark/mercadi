@@ -1,22 +1,18 @@
 import useSessionMenuActions from "../hooks/session-menu.hooks";
 import useToggleOpen from "../hooks/toggle-open.hooks";
 import AddOffer from "./AddOffer";
-import { useAppDispatch } from "../hooks/state.hooks";
-import { logout } from "../state/slices/session";
+import useProfile from "../hooks/profile.hook";
 
 function LoggedNavItems() {
   const { goToOffers, goToBids, goToFeed } = useSessionMenuActions();
   const { isOpen: addArticle, toggleIsOpen: toggleAddArticle } =
     useToggleOpen();
-  const dispatch = useAppDispatch();
-  const closeSession = () => {
-    dispatch(logout());
-  };
+  const { name, closeSession } = useProfile();
   return (
     <>
       <li className="nav-item me-1">
         <button
-          className="btn btn-primary"
+          className="btn btn-success"
           aria-label="Agregar oferta"
           title="Agregar oferta"
           onClick={toggleAddArticle}
@@ -43,12 +39,17 @@ function LoggedNavItems() {
           aria-expanded="false"
         >
           <i className="bi bi-person-circle me-md-2" />
-          <span className="d-none d-md-inline">Perfil</span>
         </button>
         <ul
           className="dropdown-menu dropdown-menu-dark dropdown-menu-end"
           aria-labelledby="dropdown-profile"
         >
+          <li>
+            <span className="dropdown-header">{name}</span>
+          </li>
+          <li>
+            <hr className="dropdown-divider" />
+          </li>
           <li>
             <button className="dropdown-item" onClick={goToFeed}>
               Feed

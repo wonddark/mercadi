@@ -63,9 +63,9 @@ function useLogin() {
   const goToUserFeed = () => {
     if (isLogged) {
       if (name) {
-        navigate("/user/feed");
+        navigate("/perfil/muro");
       } else {
-        navigate("/registration/complete");
+        navigate("/registro/completar");
       }
     }
   };

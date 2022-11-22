@@ -12,25 +12,64 @@ import StaticLayoutContainer from "./components/StaticLayoutContainer";
 import ActivateRegistration from "./components/ActivateRegistration";
 import LoginPage from "./components/LoginPage";
 import CompleteRegistration from "./components/CompleteRegistration";
+import SecureRoute from "./components/SecureRoute";
+import HomePage from "./components/HomePage";
+import Registration from "./components/Registration";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/">
-      <Route index element={<StaticLayoutContainer />} />
-      <Route path="registration">
-        <Route path="confirm" element={<ConfirmRegistration />} />
+    <Route path="/" element={<StaticLayoutContainer />}>
+      <Route index element={<HomePage />} />
+      <Route path="registro">
+        <Route index element={<Registration />} />
+        <Route path="confirmar" element={<ConfirmRegistration />} />
         <Route
-          path="activate/:registrationId"
+          path="activar/:registrationId"
           element={<ActivateRegistration />}
         />
-        <Route path="complete" element={<CompleteRegistration />} />
+        <Route
+          path="completar"
+          element={
+            <SecureRoute>
+              <CompleteRegistration />
+            </SecureRoute>
+          }
+        />
       </Route>
       <Route path="acceder" element={<LoginPage />} />
 
-      <Route path="user" element={<UserHome />}>
-        <Route path="feed" element={<HomeFeed />} />
-        <Route path="offers" element={<UserOffers />} />
-        <Route path="bids" element={<UserBids />} />
+      <Route
+        path="perfil"
+        element={
+          <SecureRoute>
+            <UserHome />
+          </SecureRoute>
+        }
+      >
+        <Route
+          path="muro"
+          element={
+            <SecureRoute>
+              <HomeFeed />
+            </SecureRoute>
+          }
+        />
+        <Route
+          path="ofertas"
+          element={
+            <SecureRoute>
+              <UserOffers />
+            </SecureRoute>
+          }
+        />
+        <Route
+          path="pujas"
+          element={
+            <SecureRoute>
+              <UserBids />
+            </SecureRoute>
+          }
+        />
       </Route>
     </Route>
   )

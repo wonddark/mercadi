@@ -3,7 +3,7 @@ import FeedOffer from "./FeedOffer";
 
 function FeedsColumn() {
   return (
-    <div style={{ height: "calc(85vh)", overflow: "auto" }}>
+    <div className="feed-column">
       {dummyOffers.map((item) => (
         <FeedOffer key={item.id} />
       ))}

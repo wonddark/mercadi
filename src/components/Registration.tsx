@@ -1,7 +1,7 @@
 import { Controller } from "react-hook-form";
 import useRegister from "../hooks/register.hooks";
 
-function HomePage() {
+function Registration() {
   const {
     submitForm,
     control,
@@ -115,4 +115,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default Registration;

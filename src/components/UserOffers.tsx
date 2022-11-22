@@ -5,7 +5,7 @@ import HeaderOffer from "./HeaderOffer";
 
 function UserOffers() {
   document.title = "Ofertas";
-  const { goBackTo: goBackToFeed } = useGoBack("/user/feed");
+  const { goBackTo: goBackToFeed } = useGoBack("/perfil/muro");
   return (
     <div className="container-fluid">
       <button className="btn btn-secondary" onClick={goBackToFeed}>

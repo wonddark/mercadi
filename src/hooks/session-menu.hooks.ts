@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 function useSessionMenuActions() {
   const navigate = useNavigate();
   const goToOffers = () => {
-    navigate("/user/offers");
+    navigate("/perfil/ofertas");
   };
   const goToBids = () => {
-    navigate("/user/bids");
+    navigate("/perfil/pujas");
   };
   const goToFeed = () => {
-    navigate("/user/feed");
+    navigate("/perfil/muro");
   };
   return { goToOffers, goToBids, goToFeed };
 }

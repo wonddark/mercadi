@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { RegisterBodyTypes } from "./register-body.types";
+import { RegisterBodyTypes } from "../../types/register-body.types";
 import { RootState } from "../store";
 import { SESSION_STORE_KEY } from "../slices/session";
+import { POSTOfferParameters } from "../../types/offer.types";
 
 export const API_STORE_KEY = "api";
 const api = createApi({
@@ -72,6 +73,13 @@ const api = createApi({
         },
       }),
     }),
+    postOffer: builder.mutation({
+      query: (args: POSTOfferParameters) => ({
+        url: "/offers",
+        method: "POST",
+        body: args,
+      }),
+    }),
   }),
 });
 
@@ -84,5 +92,6 @@ export const {
   useAuthenticateMutation,
   useLazyWhoAmIQuery,
   useUpdateUserDataMutation,
+  usePostOfferMutation,
 } = api;
 export default api;

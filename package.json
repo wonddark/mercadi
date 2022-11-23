@@ -23,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "minify-css": "postcss src/theme/main.css > public/theme/main.css"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +47,9 @@
   "devDependencies": {
     "@types/node": "^18.8.5",
     "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6"
+    "@types/react-dom": "^18.0.6",
+    "cssnano": "^5.1.14",
+    "postcss": "^8.4.19",
+    "postcss-cli": "^10.0.0"
   }
 }

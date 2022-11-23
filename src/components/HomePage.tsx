@@ -16,9 +16,7 @@ function HomePage() {
         <div className="col-lg-7 text-center text-lg-start">
           <h1 className="display-4 fw-bold lh-1 mb-3">Subastia</h1>
           <p className="col-lg-10 fs-4">
-            Below is an example form built entirely with Bootstrap’s form
-            controls. Each required form group has a validation state that can
-            be triggered by attempting to submit the form without completing it.
+            Vende tus productos a la mejor oferta
           </p>
         </div>
         <div className="col-md-10 mx-auto col-lg-5">

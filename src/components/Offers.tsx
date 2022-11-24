@@ -7,16 +7,15 @@ function Offers() {
     <div className="container-fluid">
       <Link
         to="/perfil/ofertas"
-        className="small fw-bold text-muted text-decoration-none"
+        className="small fw-bold text-muted text-decoration-none fs-6"
       >
         Tus ofertas
       </Link>
-      <div className="container-fluid">
+      <div className="container-fluid p-0">
         {dummyOffers.slice(0, 3).map((item) => (
           <OfferQuickView
             id={item.id}
             name={item.name}
-            initialOffer={item.initialBid}
             currentOffer={item.currentBid}
             key={item.id}
           />

@@ -1,4 +1,3 @@
-import { Button, Card, Col, Container, Row } from "reactstrap";
 import useToggleOpen from "../hooks/toggle-open.hooks";
 import RetireBid from "./RetireBid";
 import { formatMoney } from "../helpers/formatters.helper";
@@ -6,46 +5,36 @@ import { formatMoney } from "../helpers/formatters.helper";
 interface Props {
   id: string;
   name: string;
-  initialOffer: string;
   currentOffer: string;
   myOffer: string;
 }
-function BidsQuickView({ name, initialOffer, currentOffer, myOffer }: Props) {
+function BidsQuickView({ name, currentOffer, myOffer }: Props) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
   return (
-    <Card body className="my-2">
-      <Container>
-        <Row xs={1}>
-          <Col>
+    <div className="card card-body my-2">
+      <div className="container-fluid p-0">
+        <div className="row justify-content-between">
+          <div className="col col-9">
             <span className="h6">{name}</span>
-          </Col>
-          <Row className="justify-content-between">
-            <Col xs={10}>
-              <span className="small text-muted d-block">
-                Puja inicial: <strong>{formatMoney(initialOffer)}</strong>
-              </span>
-              <span className="small text-muted d-block">
-                Puja actual: <strong>{formatMoney(currentOffer)}</strong>
-              </span>
-              <span className="small text-muted d-block">
-                Tu puja: <strong>{formatMoney(myOffer)}</strong>
-              </span>
-            </Col>
-            <Col xs={1}>
-              <Button
-                color="danger"
-                size="sm"
-                onClick={toggleIsOpen}
-                title="Retirar la puja"
-              >
-                <i className="bi bi-door-open-fill" />
-              </Button>
-            </Col>
-          </Row>
-        </Row>
-      </Container>
+            <span className="small text-muted d-block">
+              Tu puja: <strong>{formatMoney(myOffer)}</strong>
+            </span>
+            <span className="small text-muted d-block">
+              Puja actual: <strong>{formatMoney(currentOffer)}</strong>
+            </span>
+          </div>
+          <div className="col col-2">
+            <i
+              className="bi bi-x-circle-fill text-danger fs-6"
+              onClick={toggleIsOpen}
+              title="Retirar la puja"
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+        </div>
+      </div>
       {isOpen && <RetireBid isOpen={isOpen} toggle={toggleIsOpen} />}
-    </Card>
+    </div>
   );
 }
 

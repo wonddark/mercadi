@@ -9,7 +9,7 @@ function Offers() {
         to="/perfil/ofertas"
         className="small fw-bold text-muted text-decoration-none fs-6"
       >
-        Tus ofertas
+        Tus artículos
       </Link>
       <div className="container-fluid p-0">
         {dummyOffers.slice(0, 3).map((item) => (

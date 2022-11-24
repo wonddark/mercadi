@@ -17,17 +17,17 @@ function BidsQuickView({ name, currentOffer, myOffer }: Props) {
           <div className="col col-9">
             <span className="h6">{name}</span>
             <span className="small text-muted d-block">
-              Tu puja: <strong>{formatMoney(myOffer)}</strong>
+              Tu oferta: <strong>{formatMoney(myOffer)}</strong>
             </span>
             <span className="small text-muted d-block">
-              Puja actual: <strong>{formatMoney(currentOffer)}</strong>
+              Oferta actual: <strong>{formatMoney(currentOffer)}</strong>
             </span>
           </div>
           <div className="col col-2">
             <i
               className="bi bi-x-circle-fill text-danger fs-6"
               onClick={toggleIsOpen}
-              title="Retirar la puja"
+              title="Retirar oferta"
               style={{ cursor: "pointer" }}
             />
           </div>

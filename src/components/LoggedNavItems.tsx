@@ -18,7 +18,7 @@ function LoggedNavItems() {
           onClick={toggleAddArticle}
         >
           <i className="bi bi-plus-circle-fill me-md-2" />
-          <span className="d-none d-md-inline">Crear oferta</span>
+          <span className="d-none d-md-inline">Crear artículo</span>
         </button>
       </li>
       <li className="nav-item me-1">
@@ -60,12 +60,12 @@ function LoggedNavItems() {
           </li>
           <li>
             <button className="dropdown-item" onClick={goToOffers}>
-              Tus ofertas
+              Tus artículos
             </button>
           </li>
           <li>
             <button className="dropdown-item" onClick={goToBids}>
-              Tus pujas
+              Tus ofertas
             </button>
           </li>
           <li>

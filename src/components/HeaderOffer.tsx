@@ -10,14 +10,14 @@ function HeaderOffer() {
           />
         </div>
         <div className="col text-end">
-          Puja inicial
+          Oferta inicial
           <i
             className="bi bi-caret-down-fill small ms-2"
             style={{ cursor: "pointer" }}
           />
         </div>
         <div className="col text-end">
-          Puja actual
+          Oferta actual
           <i
             className="bi bi-caret-down-fill small ms-2"
             style={{ cursor: "pointer" }}

@@ -9,7 +9,7 @@ function Bids() {
         to="/perfil/pujas"
         className="small fw-bold text-muted text-decoration-none fs-6"
       >
-        Tus pujas
+        Tus ofertas
       </Link>
       <div className="container-fluid p-0">
         {dummyBids.slice(0, 3).map((item) => (

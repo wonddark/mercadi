@@ -6,7 +6,7 @@ function Offers() {
   return (
     <div className="container-fluid">
       <Link
-        to="/user/offers"
+        to="/perfil/ofertas"
         className="small fw-bold text-muted text-decoration-none"
       >
         Tus ofertas

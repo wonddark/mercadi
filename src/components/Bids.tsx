@@ -7,7 +7,7 @@ function Bids() {
   return (
     <Container className="px-0">
       <Link
-        to="/user/bids"
+        to="/perfil/pujas"
         className="small fw-bold text-muted text-decoration-none"
       >
         Tus pujas

@@ -9,8 +9,8 @@ function LoginPage() {
     <div className="container col-xl-10 col-xxl-8 px-4">
       <div className="row align-items-center py-3">
         <div className="col-md-10 mx-auto col-lg-5">
-          <h1 className="display-4 fw-bold lh-1 mb-3 text-center">Subastia</h1>
           <form onSubmit={submitForm} className="form-accented">
+            <p className="display-6">Acceder</p>
             <Controller
               name="email"
               control={control}
@@ -49,9 +49,7 @@ function LoginPage() {
               Acceder
             </button>
             <hr />
-            <Link to="/registro" className="form-accented-link link-success">
-              Crea tu cuenta
-            </Link>
+            <Link to="/registro">Crea tu cuenta</Link>
           </form>
         </div>
       </div>

@@ -10,14 +10,14 @@ function HeaderBid() {
           />
         </div>
         <div className="col text-end d-none d-md-block">
-          Mi puja
+          Mi oferta
           <i
             className="bi bi-caret-down-fill small ms-2"
             style={{ cursor: "pointer" }}
           />
         </div>
         <div className="col text-end">
-          Puja actual
+          Oferta actual
           <i
             className="bi bi-caret-down-fill small ms-2"
             style={{ cursor: "pointer" }}

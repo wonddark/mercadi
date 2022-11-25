@@ -1,71 +1,70 @@
-function FeedOffer() {
+import dayjs from "dayjs";
+
+type Props = {
+  item: {
+    bids: any[];
+    description: string;
+    medias: any[];
+    name: string;
+    publishedAt: string;
+    user: {
+      name: string;
+    };
+  };
+};
+
+function FeedOffer({ item }: Props) {
   return (
-    <div className="container mb-4">
-      <div className="row row-cols-2">
-        <div className="col col-2 text-center">
-          <div
-            className="card mx-auto"
-            style={{ width: "48px", height: "48px" }}
-          >
-            <div className="placeholder-glow h-100 rounded-circle">
-              <div className="placeholder col-12 h-100"></div>
+    <div className="card card-body shadow-sm mb-4">
+      <div className="container">
+        <div className="row row-cols-2">
+          <div className="col col-2">
+            <div
+              className="mx-auto mt-4 card card-body p-1"
+              style={{ width: "64px", height: "64px" }}
+            >
+              <img
+                src="/images/user.jpg"
+                alt="user-placeholder"
+                className="img-fluid"
+              />
             </div>
+            <span className="d-block mb-4 text-center">{item.user.name}</span>
+            <span className="text-start d-block text-muted small">Ofertas</span>
+            <>
+              {item.bids.map((token) => (
+                <span key={token.id} className="me-auto">
+                  ${token.quantity}
+                </span>
+              ))}
+            </>
           </div>
-          <span className="placeholder-wave d-block mb-4">
-            <span className="placeholder col-10" />
-          </span>
-          <span className="text-start d-block text-muted small">Pujas</span>
-          <span className="placeholder-wave">
-            <span className="placeholder col-12" />
-          </span>
-          <span className="placeholder-wave">
-            <span className="placeholder col-12" />
-          </span>
-          <span className="placeholder-wave">
-            <span className="placeholder col-12" />
-          </span>
-          <span className="placeholder-wave">
-            <span className="placeholder col-12" />
-          </span>
-          <span className="placeholder-wave">
-            <span className="placeholder col-12" />
-          </span>
-        </div>
-        <div className="col col-10">
-          <div className="row row-cols-1">
-            <div className="col">
-              <span className="placeholder-wave m-0 p-0">
-                <span className="placeholder col-10" />
-              </span>
-            </div>
-          </div>
-          <div className="row row-cols-2 g-1">
-            <div className="col" style={{ minHeight: "340px" }}>
-              <div className="placeholder-glow h-100">
-                <div className="placeholder col-12 h-100"></div>
+          <div className="col col-10">
+            <span className="fw-light fs-4 lh-sm">{item.name}</span>
+            <div className="container">
+              <div className="row gap-1 my-3">
+                {item.medias.slice(0, 4).map((token) => (
+                  <div
+                    key={token.id}
+                    className="col offer-media"
+                    style={{
+                      backgroundImage: `url("${
+                        process.env.REACT_APP_API_URL + token.contentUrl
+                      }")`,
+                    }}
+                  />
+                ))}
               </div>
             </div>
-            <div className="col" style={{ minHeight: "260px" }}>
-              <div className="row row-cols-1 h-100 g-1">
-                <div className="col">
-                  <div className="placeholder-glow h-100">
-                    <div className="placeholder col-12 h-100"></div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="placeholder-glow h-100">
-                    <div className="placeholder col-12 h-100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p className="m-0">{item.description}</p>
+            <p className="m-0 text-muted">
+              {dayjs(item.publishedAt).format("DD/MM/YYYY HH:mm")}
+            </p>
+            <button className="btn btn-primary mt-3">
+              <i className="bi bi-flag-fill me-2" />
+              Haz tu oferta
+            </button>
           </div>
-          <p className="placeholder-wave m-0 p-0">
-            <span className="placeholder col-12" />
-          </p>
-          <p className="placeholder-wave m-0 p-0">
-            <span className="placeholder col-5" />
-          </p>
         </div>
       </div>
     </div>

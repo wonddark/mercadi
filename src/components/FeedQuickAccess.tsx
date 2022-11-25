@@ -3,13 +3,7 @@ import Bids from "./Bids";
 
 function FeedQuickAccess() {
   return (
-    <div
-      className="container"
-      style={{
-        height: "calc(85vh)",
-        overflow: "auto",
-      }}
-    >
+    <div className="container quick-access-container">
       <Offers />
       <hr className="my-3" />
       <Bids />

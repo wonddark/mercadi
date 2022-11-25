@@ -59,6 +59,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../node_modules/bootstrap/scss/buttons";
 @import "../../node_modules/bootstrap/scss/dropdown";
 @import "../../node_modules/bootstrap/scss/placeholders";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/card";
 @import "../../node_modules/bootstrap/scss/modal";
 @import "../../node_modules/bootstrap/scss/close";
 @import "../../node_modules/bootstrap/scss/transitions";
@@ -140,4 +142,17 @@ $form-accented-shade-percent: 20%;
 
 .feed-column {
 
+}
+
+.offer-media {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+}
+
+.quick-access-container{
+  position: sticky;
+  top: 72px;
+  height: 85vh;
+  overflow: auto;
 }

@@ -8,9 +8,9 @@ export const API_STORE_KEY = "api";
 const api = createApi({
   reducerPath: API_STORE_KEY,
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://127.0.0.1:8000",
+    baseUrl: process.env.REACT_APP_API_URL,
     mode: "cors",
-    cache: "no-cache",
+    cache: "no-store",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState)[SESSION_STORE_KEY].token;
       if (token) {
@@ -19,6 +19,7 @@ const api = createApi({
       return headers;
     },
   }),
+  refetchOnMountOrArgChange: true,
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (arg: RegisterBodyTypes) => ({
@@ -80,6 +81,19 @@ const api = createApi({
         body: args,
       }),
     }),
+    getOffers: builder.query({
+      query: (page: number) => ({
+        url: "/offers",
+        params: { page },
+      }),
+    }),
+    postMedia: builder.mutation({
+      query: (arg: FormData) => ({
+        url: "/media_objects",
+        body: arg,
+        method: "POST",
+      }),
+    }),
   }),
 });
 
@@ -93,5 +107,7 @@ export const {
   useLazyWhoAmIQuery,
   useUpdateUserDataMutation,
   usePostOfferMutation,
+  useGetOffersQuery,
+  usePostMediaMutation,
 } = api;
 export default api;

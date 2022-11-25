@@ -143,3 +143,16 @@ $form-accented-shade-percent: 20%;
 .feed-column {
 
 }
+
+.offer-media {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+}
+
+.quick-access-container{
+  position: sticky;
+  top: 72px;
+  height: 85vh;
+  overflow: auto;
+}

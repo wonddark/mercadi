@@ -80,6 +80,12 @@ const api = createApi({
         body: args,
       }),
     }),
+    getOffers: builder.query({
+      query: (page: number) => ({
+        url: "/offers",
+        params: { page },
+      }),
+    }),
   }),
 });
 
@@ -93,5 +99,6 @@ export const {
   useLazyWhoAmIQuery,
   useUpdateUserDataMutation,
   usePostOfferMutation,
+  useGetOffersQuery,
 } = api;
 export default api;

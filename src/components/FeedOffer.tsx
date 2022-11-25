@@ -33,32 +33,35 @@ function FeedOffer({ item }: Props) {
             <span className="text-start d-block text-muted small">Ofertas</span>
             <>
               {item.bids.map((token) => (
-                <span className="me-auto">${token.quantity}</span>
+                <span key={token.id} className="me-auto">
+                  ${token.quantity}
+                </span>
               ))}
             </>
           </div>
           <div className="col col-10">
-            <div className="row row-cols-1 mb-2">
-              <div className="col">
-                <span className="fw-light fs-4 lh-sm">{item.name}</span>
-              </div>
-            </div>
-            <div className="row row-cols-1 row-cols-md-2">
-              {item.medias.map((token) => (
-                <div key={token.id} className="col">
-                  <img
-                    src={token.contentUrl}
-                    alt="article-media"
-                    className="img-fluid"
+            <span className="fw-light fs-4 lh-sm">{item.name}</span>
+            <div className="container">
+              <div className="row gap-1 my-3">
+                {item.medias.slice(0, 4).map((token) => (
+                  <div
+                    key={token.id}
+                    className="col offer-media"
+                    style={{
+                      backgroundImage: `url("${
+                        process.env.REACT_APP_API_URL + token.contentUrl
+                      }")`,
+                    }}
                   />
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
             <p className="m-0">{item.description}</p>
             <p className="m-0 text-muted">
               {dayjs(item.publishedAt).format("DD/MM/YYYY HH:mm")}
             </p>
-            <button className="btn btn-primary btn-sm mt-3">
+            <button className="btn btn-primary mt-3">
+              <i className="bi bi-flag-fill me-2" />
               Haz tu oferta
             </button>
           </div>

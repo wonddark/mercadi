@@ -7,6 +7,7 @@
     "@reduxjs/toolkit": "^1.8.6",
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
+    "dayjs": "^1.11.6",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -20,6 +20,7 @@ const api = createApi({
     },
   }),
   refetchOnMountOrArgChange: true,
+  refetchOnReconnect: true,
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (arg: RegisterBodyTypes) => ({
@@ -94,6 +95,13 @@ const api = createApi({
         method: "POST",
       }),
     }),
+    postBid: builder.mutation({
+      query: (args: { offer: string; quantity: number }) => ({
+        url: "/bids",
+        body: args,
+        method: "POST",
+      }),
+    }),
   }),
 });
 
@@ -109,5 +117,6 @@ export const {
   usePostOfferMutation,
   useGetOffersQuery,
   usePostMediaMutation,
+  usePostBidMutation,
 } = api;
 export default api;

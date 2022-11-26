@@ -1,17 +1,17 @@
-import useGoBack from "../hooks/go-back.hooks";
-import { dummyOffers } from "../data/dummy-offers";
-import RowOffer from "./RowOffer";
-import HeaderOffer from "./HeaderOffer";
+import useGoBack from "../../hooks/go-back.hooks";
+import HeaderBid from "../bid/HeaderBid";
+import { dummyBids } from "../../data/dummy-bids";
+import RowBid from "../bid/RowBid";
 
-function UserOffers() {
-  document.title = "Ofertas";
+function UserBids() {
+  document.title = "Pujas";
   const { goBackTo: goBackToFeed } = useGoBack("/perfil/muro");
   return (
     <div className="container-fluid">
       <button className="btn btn-secondary" onClick={goBackToFeed}>
         <i className="bi bi-arrow-left-circle-fill" />
       </button>
-      <HeaderOffer />
+      <HeaderBid />
       <div
         className="pe-1"
         style={{
@@ -19,12 +19,12 @@ function UserOffers() {
           overflow: "auto",
         }}
       >
-        {dummyOffers.map((item) => (
-          <RowOffer item={item} key={item.id} />
+        {dummyBids.map((item) => (
+          <RowBid item={item} key={item.id} />
         ))}
       </div>
     </div>
   );
 }
 
-export default UserOffers;
+export default UserBids;

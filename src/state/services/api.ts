@@ -3,6 +3,7 @@ import { RegisterBodyTypes } from "../../types/register-body.types";
 import { RootState } from "../store";
 import { SESSION_STORE_KEY } from "../slices/session";
 import { POSTOfferParameters } from "../../types/offer.types";
+import { BidInputs } from "../../types/bid.types";
 
 export const API_STORE_KEY = "api";
 const api = createApi({
@@ -20,6 +21,7 @@ const api = createApi({
     },
   }),
   refetchOnMountOrArgChange: true,
+  refetchOnReconnect: true,
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (arg: RegisterBodyTypes) => ({
@@ -94,6 +96,13 @@ const api = createApi({
         method: "POST",
       }),
     }),
+    postBid: builder.mutation({
+      query: (args: BidInputs) => ({
+        url: "/bids",
+        body: args,
+        method: "POST",
+      }),
+    }),
   }),
 });
 
@@ -109,5 +118,6 @@ export const {
   usePostOfferMutation,
   useGetOffersQuery,
   usePostMediaMutation,
+  usePostBidMutation,
 } = api;
 export default api;

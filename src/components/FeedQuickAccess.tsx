@@ -1,5 +1,5 @@
-import Offers from "./Offers";
-import Bids from "./Bids";
+import Offers from "./article/Offers";
+import Bids from "./bid/Bids";
 
 function FeedQuickAccess() {
   return (

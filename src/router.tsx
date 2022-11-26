@@ -4,17 +4,17 @@ import {
   Route,
 } from "react-router-dom";
 import HomeFeed from "./components/HomeFeed";
-import UserHome from "./components/UserHome";
-import UserOffers from "./components/UserOffers";
-import UserBids from "./components/UserBids";
-import ConfirmRegistration from "./components/ConfirmRegistration";
-import StaticLayoutContainer from "./components/StaticLayoutContainer";
-import ActivateRegistration from "./components/ActivateRegistration";
-import LoginPage from "./components/LoginPage";
-import CompleteRegistration from "./components/CompleteRegistration";
-import SecureRoute from "./components/SecureRoute";
+import UserHome from "./components/user/UserHome";
+import UserOffers from "./components/user/UserOffers";
+import UserBids from "./components/user/UserBids";
+import ConfirmRegistration from "./components/security/ConfirmRegistration";
+import StaticLayoutContainer from "./components/layout/StaticLayoutContainer";
+import ActivateRegistration from "./components/security/ActivateRegistration";
+import LoginPage from "./components/security/LoginPage";
+import CompleteRegistration from "./components/security/CompleteRegistration";
+import SecureRoute from "./components/security/SecureRoute";
 import HomePage from "./components/HomePage";
-import Registration from "./components/Registration";
+import Registration from "./components/security/Registration";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

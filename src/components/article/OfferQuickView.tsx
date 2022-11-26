@@ -1,14 +1,13 @@
-import useToggleOpen from "../hooks/toggle-open.hooks";
-import RetireBid from "./RetireBid";
-import { formatMoney } from "../helpers/formatters.helper";
+import useToggleOpen from "../../hooks/toggle-open.hooks";
+import CloseOffer from "./CloseOffer";
+import { formatMoney } from "../../helpers/formatters.helper";
 
 interface Props {
   id: string;
   name: string;
   currentOffer: string;
-  myOffer: string;
 }
-function BidsQuickView({ name, currentOffer, myOffer }: Props) {
+function OfferQuickView({ name, currentOffer }: Props) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
   return (
     <div className="card card-body my-2">
@@ -17,25 +16,22 @@ function BidsQuickView({ name, currentOffer, myOffer }: Props) {
           <div className="col col-9">
             <span className="h6">{name}</span>
             <span className="small text-muted d-block">
-              Tu oferta: <strong>{formatMoney(myOffer)}</strong>
-            </span>
-            <span className="small text-muted d-block">
               Oferta actual: <strong>{formatMoney(currentOffer)}</strong>
             </span>
           </div>
-          <div className="col col-2">
+          <div className="col col-2 mt-2">
             <i
-              className="bi bi-x-circle-fill text-danger fs-6"
+              className="bi bi-x-circle-fill fs-6 text-primary"
               onClick={toggleIsOpen}
-              title="Retirar oferta"
+              title="Cerrar venta"
               style={{ cursor: "pointer" }}
             />
           </div>
         </div>
       </div>
-      {isOpen && <RetireBid isOpen={isOpen} toggle={toggleIsOpen} />}
+      {isOpen && <CloseOffer isOpen={isOpen} toggle={toggleIsOpen} />}
     </div>
   );
 }
 
-export default BidsQuickView;
+export default OfferQuickView;

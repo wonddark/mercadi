@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectIsLogged } from "../state/slices/session";
+import { selectIsLogged } from "../../state/slices/session";
 import LoggedNavItems from "./LoggedNavItems";
 import NotLoggedNavItems from "./NotLoggedNavItems";
 import { Link } from "react-router-dom";

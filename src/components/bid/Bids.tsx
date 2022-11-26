@@ -1,4 +1,4 @@
-import { dummyBids } from "../data/dummy-bids";
+import { dummyBids } from "../../data/dummy-bids";
 import BidsQuickView from "./BidsQuickView";
 import { Link } from "react-router-dom";
 

@@ -1,6 +1,6 @@
-import CommonDlg from "./CommonDlg";
+import CommonDlg from "../common/CommonDlg";
 import React, { useRef } from "react";
-import usePostOffer from "../hooks/post-offer.hook";
+import usePostOffer from "../../hooks/post-offer.hook";
 import { Controller } from "react-hook-form";
 
 interface Props {

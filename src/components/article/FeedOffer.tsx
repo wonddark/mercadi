@@ -1,19 +1,26 @@
 import dayjs from "dayjs";
+import PostBidBtn from "../bid/PostBidBtn";
+import { selectId } from "../../state/slices/session";
+import { useAppSelector } from "../../hooks/state.hooks";
 
 type Props = {
   item: {
+    "@id": string;
     bids: any[];
     description: string;
     medias: any[];
     name: string;
     publishedAt: string;
     user: {
+      id: string;
       name: string;
     };
   };
 };
 
 function FeedOffer({ item }: Props) {
+  const state = useAppSelector((state) => state);
+  const userId = selectId(state);
   return (
     <div className="card card-body shadow-sm mb-4">
       <div className="container">
@@ -60,10 +67,14 @@ function FeedOffer({ item }: Props) {
             <p className="m-0 text-muted">
               {dayjs(item.publishedAt).format("DD/MM/YYYY HH:mm")}
             </p>
-            <button className="btn btn-primary mt-3">
-              <i className="bi bi-flag-fill me-2" />
-              Haz tu oferta
-            </button>
+            {item.user.id !== userId && (
+              <div className="mt-3">
+                <PostBidBtn
+                  offerId={item["@id"]}
+                  initialBid={item.bids[0].quantity}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

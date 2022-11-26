@@ -1,4 +1,4 @@
-import RegistrationForm from "./RegistrationForm";
+import RegistrationForm from "./security/RegistrationForm";
 
 function HomePage() {
   return (

@@ -3,6 +3,7 @@ import { RegisterBodyTypes } from "../../types/register-body.types";
 import { RootState } from "../store";
 import { SESSION_STORE_KEY } from "../slices/session";
 import { POSTOfferParameters } from "../../types/offer.types";
+import { BidInputs } from "../../types/bid.types";
 
 export const API_STORE_KEY = "api";
 const api = createApi({
@@ -96,7 +97,7 @@ const api = createApi({
       }),
     }),
     postBid: builder.mutation({
-      query: (args: { offer: string; quantity: number }) => ({
+      query: (args: BidInputs) => ({
         url: "/bids",
         body: args,
         method: "POST",

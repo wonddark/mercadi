@@ -10,7 +10,7 @@ export const dummyBids = [
   },
   {
     id: "2",
-    name: "Some really large name for an offer",
+    name: "Some really large name for an article",
     initialBid: "1000",
     currentBid: "1010.00",
     myBid: "1000.0",

@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import useLogin from "../hooks/login.hook";
+import useLogin from "../../hooks/login.hook";
 import { Link } from "react-router-dom";
 
 function LoginPage() {

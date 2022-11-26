@@ -1,5 +1,5 @@
 import OfferQuickView from "./OfferQuickView";
-import { dummyOffers } from "../data/dummy-offers";
+import { dummyOffers } from "../../data/dummy-offers";
 import { Link } from "react-router-dom";
 
 function Offers() {

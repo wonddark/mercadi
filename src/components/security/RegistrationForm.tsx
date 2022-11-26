@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import useRegister from "../hooks/register.hooks";
+import useRegister from "../../hooks/register.hooks";
 import { Link } from "react-router-dom";
 
 function RegistrationForm() {

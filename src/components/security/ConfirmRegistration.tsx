@@ -1,4 +1,4 @@
-import { ReactComponent as EmailSent } from "../assets/undraw_mail_sent.svg";
+import { ReactComponent as EmailSent } from "../../assets/undraw_mail_sent.svg";
 
 function ConfirmRegistration() {
   return (

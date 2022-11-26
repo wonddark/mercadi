@@ -1,4 +1,4 @@
-import CommonDlg from "./CommonDlg";
+import CommonDlg from "../common/CommonDlg";
 
 interface Props {
   isOpen: boolean;

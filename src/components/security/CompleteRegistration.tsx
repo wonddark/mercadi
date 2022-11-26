@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import useCompleteRegistration from "../hooks/complete-registration.hook";
+import useCompleteRegistration from "../../hooks/complete-registration.hook";
 
 function CompleteRegistration() {
   const { control, submitForm } = useCompleteRegistration();

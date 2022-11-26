@@ -1,7 +1,7 @@
 import { dummyOffers } from "../data/dummy-offers";
-import FeedOffer from "./FeedOffer";
+import FeedOffer from "./article/FeedOffer";
 import useFeed from "../hooks/feed.hook";
-import FeedOfferPlaceholder from "./FeedOfferPlaceholder";
+import FeedOfferPlaceholder from "./article/FeedOfferPlaceholder";
 
 function FeedsColumn() {
   const { data, isLoading } = useFeed();

@@ -1,5 +1,5 @@
-import { ReactComponent as Welcoming } from "../assets/undraw_welcoming_re_x0qo.svg";
-import useActivateRegistration from "../hooks/activate-registration.hook";
+import { ReactComponent as Welcoming } from "../../assets/undraw_welcoming_re_x0qo.svg";
+import useActivateRegistration from "../../hooks/activate-registration.hook";
 import { NavLink } from "react-router-dom";
 
 function ActivateRegistration() {

@@ -1,7 +1,7 @@
-import useSessionMenuActions from "../hooks/session-menu.hooks";
-import useToggleOpen from "../hooks/toggle-open.hooks";
-import AddOffer from "./AddOffer";
-import useProfile from "../hooks/profile.hook";
+import useSessionMenuActions from "../../hooks/session-menu.hooks";
+import useToggleOpen from "../../hooks/toggle-open.hooks";
+import AddOffer from "../article/AddOffer";
+import useProfile from "../../hooks/profile.hook";
 
 function LoggedNavItems() {
   const { goToOffers, goToBids, goToFeed } = useSessionMenuActions();

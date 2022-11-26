@@ -27,7 +27,7 @@ function FeedOffer({ item }: Props) {
         <div className="row row-cols-2">
           <div className="col col-2">
             <div
-              className="mx-auto mt-4 card card-body p-1"
+              className="mt-4 card card-body p-1"
               style={{ width: "64px", height: "64px" }}
             >
               <img
@@ -36,11 +36,11 @@ function FeedOffer({ item }: Props) {
                 className="img-fluid"
               />
             </div>
-            <span className="d-block mb-4 text-center">{item.user.name}</span>
+            <span className="d-block mb-4">{item.user.name}</span>
             <span className="text-start d-block text-muted small">Ofertas</span>
             <>
               {item.bids.map((token) => (
-                <span key={token.id} className="me-auto">
+                <span key={token.id} className="d-block me-auto p-1 ps-0">
                   ${token.quantity}
                 </span>
               ))}

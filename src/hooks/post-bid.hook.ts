@@ -1,14 +1,15 @@
 import { useForm } from "react-hook-form";
 import { usePostBidMutation } from "../state/services/api";
 import { BidInputs } from "../types/bid.types";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-function usePostBid({
-  offerId,
-  successCallback,
-}: {
+type Props = {
   offerId: string;
+  initialBid: number;
   successCallback: () => void;
-}) {
+};
+function usePostBid({ offerId, initialBid, successCallback }: Props) {
   const {
     handleSubmit,
     control,
@@ -18,6 +19,16 @@ function usePostBid({
       offer: offerId,
       quantity: "",
     },
+    mode: "onChange",
+    resolver: yupResolver(
+      yup.object({
+        offer: yup.string().required(),
+        quantity: yup
+          .number()
+          .required()
+          .min(initialBid + 1),
+      })
+    ),
   });
 
   const [postBid, { isLoading }] = usePostBidMutation();

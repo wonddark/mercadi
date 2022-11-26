@@ -1,4 +1,3 @@
-import { dummyOffers } from "../data/dummy-offers";
 import FeedOffer from "./article/FeedOffer";
 import useFeed from "../hooks/feed.hook";
 import FeedOfferPlaceholder from "./article/FeedOfferPlaceholder";
@@ -8,7 +7,7 @@ function FeedsColumn() {
   return (
     <div className="feed-column">
       {isLoading
-        ? dummyOffers.map((item) => <FeedOfferPlaceholder key={item.id} />)
+        ? [1, 2, 3, 4, 5].map((item) => <FeedOfferPlaceholder key={item} />)
         : data.map((item) => <FeedOffer key={item.id} item={item} />)}
     </div>
   );

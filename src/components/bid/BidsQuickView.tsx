@@ -5,8 +5,8 @@ import { formatMoney } from "../../helpers/formatters.helper";
 interface Props {
   id: string;
   name: string;
-  currentOffer: string;
-  myOffer: string;
+  currentOffer: number;
+  myOffer: number;
 }
 function BidsQuickView({ name, currentOffer, myOffer }: Props) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
@@ -17,10 +17,10 @@ function BidsQuickView({ name, currentOffer, myOffer }: Props) {
           <div className="col col-9">
             <span className="h6">{name}</span>
             <span className="small text-muted d-block">
-              Tu oferta: <strong>{formatMoney(myOffer)}</strong>
+              Tu oferta: <strong>{formatMoney(`${myOffer}`)}</strong>
             </span>
             <span className="small text-muted d-block">
-              Oferta actual: <strong>{formatMoney(currentOffer)}</strong>
+              Oferta actual: <strong>{formatMoney(`${currentOffer}`)}</strong>
             </span>
           </div>
           <div className="col col-2">

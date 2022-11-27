@@ -6,10 +6,10 @@ import * as yup from "yup";
 
 type Props = {
   offerId: string;
-  initialBid: number;
+  highestBid: number;
   successCallback: () => void;
 };
-function usePostBid({ offerId, initialBid, successCallback }: Props) {
+function usePostBid({ offerId, highestBid, successCallback }: Props) {
   const {
     handleSubmit,
     control,
@@ -23,10 +23,7 @@ function usePostBid({ offerId, initialBid, successCallback }: Props) {
     resolver: yupResolver(
       yup.object({
         offer: yup.string().required(),
-        quantity: yup
-          .number()
-          .required()
-          .min(initialBid + 1),
+        quantity: yup.number().required().min(highestBid),
       })
     ),
   });

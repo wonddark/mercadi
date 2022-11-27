@@ -2,12 +2,14 @@ import dayjs from "dayjs";
 import PostBidBtn from "../bid/PostBidBtn";
 import { selectId } from "../../state/slices/session";
 import { useAppSelector } from "../../hooks/state.hooks";
+import { useGetHighestBidPerOfferQuery } from "../../state/services/api";
 
 type Props = {
   item: {
     "@id": string;
     bids: any[];
     description: string;
+    id: string;
     medias: any[];
     name: string;
     publishedAt: string;
@@ -21,13 +23,14 @@ type Props = {
 function FeedOffer({ item }: Props) {
   const state = useAppSelector((state) => state);
   const userId = selectId(state);
+  const { data: highestBid } = useGetHighestBidPerOfferQuery(item.id);
   return (
     <div className="card card-body shadow-sm mb-4">
       <div className="container">
         <div className="row row-cols-2">
           <div className="col col-2">
             <div
-              className="mx-auto mt-4 card card-body p-1"
+              className="mt-4 card card-body p-1"
               style={{ width: "64px", height: "64px" }}
             >
               <img
@@ -36,11 +39,11 @@ function FeedOffer({ item }: Props) {
                 className="img-fluid"
               />
             </div>
-            <span className="d-block mb-4 text-center">{item.user.name}</span>
+            <span className="d-block mb-4">{item.user.name}</span>
             <span className="text-start d-block text-muted small">Ofertas</span>
             <>
               {item.bids.map((token) => (
-                <span key={token.id} className="me-auto">
+                <span key={token.id} className="d-block me-auto p-1 ps-0">
                   ${token.quantity}
                 </span>
               ))}
@@ -71,7 +74,7 @@ function FeedOffer({ item }: Props) {
               <div className="mt-3">
                 <PostBidBtn
                   offerId={item["@id"]}
-                  initialBid={item.bids[0].quantity}
+                  highestBid={highestBid.quantity}
                 />
               </div>
             )}

@@ -5,22 +5,23 @@ import { Controller } from "react-hook-form";
 
 type Props = {
   offerId: string;
-  initialBid: number;
+  highestBid: number;
   isOpen: boolean;
   toggle: () => void;
 };
 
-function PostBid({ offerId, initialBid, isOpen, toggle }: Props) {
+function PostBid({ offerId, highestBid, isOpen, toggle }: Props) {
   const { onSubmit, control, isValid, isLoading } = usePostBid({
     offerId,
-    initialBid,
+    highestBid,
     successCallback: toggle,
   });
   const submitRef = useRef<HTMLInputElement>(null);
   const content = () => (
     <>
       <p className="lead">
-        Ofertas comienzan en <strong>${initialBid + 1}</strong>
+        Las ofertas para este artículo comienzan en{" "}
+        <strong>${highestBid}</strong>
       </p>
       <form onSubmit={onSubmit}>
         <Controller

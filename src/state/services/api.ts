@@ -144,6 +144,12 @@ const api = createApi({
       }),
       providesTags: ["ENTITY_BID"],
     }),
+    deleteBid: builder.mutation({
+      query: (bidId: string) => ({
+        url: `/bids/${bidId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -163,5 +169,6 @@ export const {
   useGetHighestBidPerOfferQuery,
   useGetOffersByUserIdQuery,
   useGetBidsPerUserQuery,
+  useDeleteBidMutation,
 } = api;
 export default api;

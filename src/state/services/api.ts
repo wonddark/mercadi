@@ -22,6 +22,7 @@ const api = createApi({
   }),
   refetchOnMountOrArgChange: true,
   refetchOnReconnect: true,
+  tagTypes: ["ENTITY_OFFER", "ENTITY_BID"],
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (arg: RegisterBodyTypes) => ({
@@ -82,12 +83,14 @@ const api = createApi({
         method: "POST",
         body: args,
       }),
+      invalidatesTags: ["ENTITY_OFFER"],
     }),
     getOffers: builder.query({
       query: (page: number) => ({
         url: "/offers",
         params: { page },
       }),
+      providesTags: ["ENTITY_OFFER"],
     }),
     postMedia: builder.mutation({
       query: (arg: FormData) => ({
@@ -95,6 +98,7 @@ const api = createApi({
         body: arg,
         method: "POST",
       }),
+      invalidatesTags: ["ENTITY_OFFER"],
     }),
     postBid: builder.mutation({
       query: (args: BidInputs) => ({
@@ -102,11 +106,13 @@ const api = createApi({
         body: args,
         method: "POST",
       }),
+      invalidatesTags: ["ENTITY_BID"],
     }),
     getHighestBidPerOffer: builder.query({
       query: (offerId) => ({
         url: `/offer/${offerId}/bids/highest`,
       }),
+      providesTags: ["ENTITY_BID"],
     }),
     getOffersByUserId: builder.query({
       query: ({
@@ -121,6 +127,7 @@ const api = createApi({
         url: `/user/${userId}/offers`,
         params: { page, itemsPerPage },
       }),
+      providesTags: ["ENTITY_BID"],
     }),
     getBidsPerUser: builder.query({
       query: ({
@@ -135,6 +142,7 @@ const api = createApi({
         url: `/user/${userId}/bids`,
         params: { page, itemsPerPage },
       }),
+      providesTags: ["ENTITY_BID"],
     }),
   }),
 });

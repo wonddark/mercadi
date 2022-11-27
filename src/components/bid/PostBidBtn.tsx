@@ -3,10 +3,10 @@ import useToggleOpen from "../../hooks/toggle-open.hooks";
 
 function PostBidBtn({
   offerId,
-  initialBid,
+  highestBid,
 }: {
   offerId: string;
-  initialBid: number;
+  highestBid: number;
 }) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
   return (
@@ -20,7 +20,7 @@ function PostBidBtn({
           offerId={offerId}
           isOpen={isOpen}
           toggle={toggleIsOpen}
-          initialBid={initialBid}
+          highestBid={highestBid}
         />
       )}
     </>

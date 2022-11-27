@@ -2,12 +2,14 @@ import dayjs from "dayjs";
 import PostBidBtn from "../bid/PostBidBtn";
 import { selectId } from "../../state/slices/session";
 import { useAppSelector } from "../../hooks/state.hooks";
+import { useGetHighestBidPerOfferQuery } from "../../state/services/api";
 
 type Props = {
   item: {
     "@id": string;
     bids: any[];
     description: string;
+    id: string;
     medias: any[];
     name: string;
     publishedAt: string;
@@ -21,6 +23,7 @@ type Props = {
 function FeedOffer({ item }: Props) {
   const state = useAppSelector((state) => state);
   const userId = selectId(state);
+  const { data: highestBid } = useGetHighestBidPerOfferQuery(item.id);
   return (
     <div className="card card-body shadow-sm mb-4">
       <div className="container">
@@ -71,7 +74,7 @@ function FeedOffer({ item }: Props) {
               <div className="mt-3">
                 <PostBidBtn
                   offerId={item["@id"]}
-                  initialBid={item.bids[0].quantity}
+                  highestBid={highestBid.quantity}
                 />
               </div>
             )}

@@ -3,7 +3,7 @@ import Bids from "./bid/Bids";
 
 function FeedQuickAccess() {
   return (
-    <div className="container quick-access-container">
+    <div className="quick-access-container">
       <Offers />
       <hr className="my-3" />
       <Bids />

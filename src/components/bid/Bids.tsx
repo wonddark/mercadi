@@ -1,8 +1,17 @@
-import { dummyBids } from "../../data/dummy-bids";
 import BidsQuickView from "./BidsQuickView";
 import { Link } from "react-router-dom";
+import { useGetBidsPerUserQuery } from "../../state/services/api";
+import { useAppSelector } from "../../hooks/state.hooks";
+import { selectId } from "../../state/slices/session";
+import BidsQuickViewPlaceholder from "./BidsQuickViewPlaceholder";
 
 function Bids() {
+  const state = useAppSelector((state) => state);
+  const userId = selectId(state);
+  const { data, isLoading } = useGetBidsPerUserQuery({
+    userId,
+    itemsPerPage: 3,
+  });
   return (
     <div className="container-fluid">
       <Link
@@ -12,15 +21,23 @@ function Bids() {
         Tus ofertas
       </Link>
       <div className="container-fluid p-0">
-        {dummyBids.slice(0, 3).map((item) => (
-          <BidsQuickView
-            id={item.id}
-            name={item.name}
-            currentOffer={item.currentBid}
-            myOffer={item.myBid}
-            key={item.id}
-          />
-        ))}
+        {!isLoading
+          ? data["hydra:member"].map(
+              (item: {
+                id: string;
+                quantity: number;
+                offer: { id: string; name: string };
+              }) => (
+                <BidsQuickView
+                  id={item.id}
+                  offerId={item.offer.id}
+                  offerName={item.offer.name}
+                  userBid={item.quantity}
+                  key={item.id}
+                />
+              )
+            )
+          : [1, 2, 3].map((item) => <BidsQuickViewPlaceholder key={item} />)}
       </div>
     </div>
   );

@@ -103,6 +103,11 @@ const api = createApi({
         method: "POST",
       }),
     }),
+    getHighestBidPerOffer: builder.query({
+      query: (offerId) => ({
+        url: `/offer/${offerId}/bids/highest`,
+      }),
+    }),
   }),
 });
 
@@ -119,5 +124,6 @@ export const {
   useGetOffersQuery,
   usePostMediaMutation,
   usePostBidMutation,
+  useGetHighestBidPerOfferQuery,
 } = api;
 export default api;

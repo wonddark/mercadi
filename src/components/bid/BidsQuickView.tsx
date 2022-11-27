@@ -1,16 +1,21 @@
-import useToggleOpen from "../../hooks/toggle-open.hooks";
-import RetireBid from "./RetireBid";
 import { formatMoney } from "../../helpers/formatters.helper";
 import { useGetHighestBidPerOfferQuery } from "../../state/services/api";
+import RetireBidBtn from "./RetireBidBtn";
 
 interface Props {
   id: string;
   offerId: string;
   offerName: string;
   userBid: number;
+  isDeletable: boolean;
 }
-function BidsQuickView({ offerId, offerName, userBid }: Props) {
-  const { isOpen, toggleIsOpen } = useToggleOpen();
+function BidsQuickView({
+  id,
+  offerId,
+  offerName,
+  userBid,
+  isDeletable,
+}: Props) {
   const { data, isLoading } = useGetHighestBidPerOfferQuery(offerId);
   return (
     <div className="card card-body my-2">
@@ -32,17 +37,13 @@ function BidsQuickView({ offerId, offerName, userBid }: Props) {
               )}
             </span>
           </div>
-          <div className="col col-2">
-            <i
-              className="bi bi-x-circle-fill text-danger fs-6"
-              onClick={toggleIsOpen}
-              title="Retirar oferta"
-              style={{ cursor: "pointer" }}
-            />
-          </div>
+          {isDeletable && (
+            <div className="col col-2">
+              <RetireBidBtn bidId={id} />
+            </div>
+          )}
         </div>
       </div>
-      {isOpen && <RetireBid isOpen={isOpen} toggle={toggleIsOpen} />}
     </div>
   );
 }

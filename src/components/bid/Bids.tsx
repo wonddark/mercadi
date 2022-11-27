@@ -26,14 +26,16 @@ function Bids() {
               (item: {
                 id: string;
                 quantity: number;
+                deletable: boolean;
                 offer: { id: string; name: string };
               }) => (
                 <BidsQuickView
+                  key={item.id}
                   id={item.id}
                   offerId={item.offer.id}
                   offerName={item.offer.name}
                   userBid={item.quantity}
-                  key={item.id}
+                  isDeletable={item.deletable}
                 />
               )
             )

@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import PostBidBtn from "../bid/PostBidBtn";
 import { selectId } from "../../state/slices/session";
 import { useAppSelector } from "../../hooks/state.hooks";
+import { formatMoney } from "../../helpers/formatters.helper";
 
 type Props = {
   item: {
@@ -39,14 +40,12 @@ function FeedOffer({ item }: Props) {
               />
             </div>
             <span className="d-block mb-4">{item.user.name}</span>
-            <span className="text-start d-block text-muted small">Ofertas</span>
-            <>
-              {item.bids.map((token) => (
-                <span key={token.id} className="d-block me-auto p-1 ps-0">
-                  ${token.quantity}
-                </span>
-              ))}
-            </>
+            <span className="text-start d-block text-muted small">
+              Oferta más alta
+            </span>
+            <span className="d-block me-auto p-1 ps-0">
+              {formatMoney(item.highestBid.quantity)}
+            </span>
           </div>
           <div className="col col-10">
             <span className="fw-light fs-4 lh-sm">{item.name}</span>

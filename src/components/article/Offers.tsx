@@ -1,8 +1,17 @@
 import OfferQuickView from "./OfferQuickView";
-import { dummyOffers } from "../../data/dummy-offers";
 import { Link } from "react-router-dom";
+import { useGetOffersByUserIdQuery } from "../../state/services/api";
+import { useAppSelector } from "../../hooks/state.hooks";
+import { selectId } from "../../state/slices/session";
+import OfferQuickViewPlaceholder from "./OfferQuickViewPlaceholder";
 
 function Offers() {
+  const state = useAppSelector((state) => state);
+  const userId = selectId(state);
+  const { data, isLoading } = useGetOffersByUserIdQuery({
+    userId,
+    itemsPerPage: 3,
+  });
   return (
     <div className="container-fluid">
       <Link
@@ -12,14 +21,29 @@ function Offers() {
         Tus artículos
       </Link>
       <div className="container-fluid p-0">
-        {dummyOffers.slice(0, 3).map((item) => (
-          <OfferQuickView
-            id={item.id}
-            name={item.name}
-            currentOffer={item.currentBid}
-            key={item.id}
-          />
-        ))}
+        {!isLoading ? (
+          data["hydra:member"].map(
+            (item: {
+              id: string;
+              name: string;
+              currentBid: string;
+              highestBid: any;
+            }) => (
+              <OfferQuickView
+                id={item.id}
+                name={item.name}
+                key={item.id}
+                highestBid={item.highestBid.quantity}
+              />
+            )
+          )
+        ) : (
+          <>
+            {[1, 2, 3].map((item) => (
+              <OfferQuickViewPlaceholder key={item} />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

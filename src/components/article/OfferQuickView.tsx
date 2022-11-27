@@ -5,9 +5,9 @@ import { formatMoney } from "../../helpers/formatters.helper";
 interface Props {
   id: string;
   name: string;
-  currentOffer: string;
+  highestBid: string;
 }
-function OfferQuickView({ name, currentOffer }: Props) {
+function OfferQuickView({ name, highestBid }: Props) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
   return (
     <div className="card card-body my-2">
@@ -16,7 +16,7 @@ function OfferQuickView({ name, currentOffer }: Props) {
           <div className="col col-9">
             <span className="h6">{name}</span>
             <span className="small text-muted d-block">
-              Oferta actual: <strong>{formatMoney(currentOffer)}</strong>
+              Oferta actual: <strong>{formatMoney(highestBid)}</strong>
             </span>
           </div>
           <div className="col col-2 mt-2">

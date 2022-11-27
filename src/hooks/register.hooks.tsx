@@ -50,7 +50,7 @@ function useRegister() {
     })
       .unwrap()
       .then(() => {
-        navigate("/registration/confirm");
+        navigate("/registro/confirmar");
       })
       .catch(() => null);
   };

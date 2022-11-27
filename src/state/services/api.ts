@@ -108,6 +108,20 @@ const api = createApi({
         url: `/offer/${offerId}/bids/highest`,
       }),
     }),
+    getOffersByUserId: builder.query({
+      query: ({
+        userId,
+        page = 1,
+        itemsPerPage = 30,
+      }: {
+        userId: string;
+        page?: number;
+        itemsPerPage?: number;
+      }) => ({
+        url: `/user/${userId}/offers`,
+        params: { page, itemsPerPage },
+      }),
+    }),
   }),
 });
 
@@ -125,5 +139,6 @@ export const {
   usePostMediaMutation,
   usePostBidMutation,
   useGetHighestBidPerOfferQuery,
+  useGetOffersByUserIdQuery,
 } = api;
 export default api;

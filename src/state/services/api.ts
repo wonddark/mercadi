@@ -122,6 +122,20 @@ const api = createApi({
         params: { page, itemsPerPage },
       }),
     }),
+    getBidsPerUser: builder.query({
+      query: ({
+        userId,
+        page = 1,
+        itemsPerPage = 30,
+      }: {
+        userId: string;
+        page?: number;
+        itemsPerPage?: number;
+      }) => ({
+        url: `/user/${userId}/bids`,
+        params: { page, itemsPerPage },
+      }),
+    }),
   }),
 });
 
@@ -140,5 +154,6 @@ export const {
   usePostBidMutation,
   useGetHighestBidPerOfferQuery,
   useGetOffersByUserIdQuery,
+  useGetBidsPerUserQuery,
 } = api;
 export default api;

@@ -4,11 +4,11 @@ import FeedsColumn from "./FeedsColumn";
 function HomeFeed() {
   return (
     <div className="container-fluid mt-3">
-      <div className="row row-cols-1 row-cols-md-2">
-        <div className="col col-md-8">
+      <div className="row">
+        <div className="col col-12 col-lg-8">
           <FeedsColumn />
         </div>
-        <div className="col col-md-4">
+        <div className="col d-none d-lg-block col-lg-4">
           <FeedQuickAccess />
         </div>
       </div>

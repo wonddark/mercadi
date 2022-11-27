@@ -22,17 +22,17 @@ function Bids() {
       </Link>
       <div className="container-fluid p-0">
         {!isLoading
-          ? data.map(
+          ? data["hydra:member"].map(
               (item: {
                 id: string;
                 quantity: number;
-                offer: { name: string; highestBid: { quantity: number } };
+                offer: { id: string; name: string };
               }) => (
                 <BidsQuickView
                   id={item.id}
-                  name={item.offer.name}
-                  currentOffer={item.offer.highestBid.quantity}
-                  myOffer={item.quantity}
+                  offerId={item.offer.id}
+                  offerName={item.offer.name}
+                  userBid={item.quantity}
                   key={item.id}
                 />
               )

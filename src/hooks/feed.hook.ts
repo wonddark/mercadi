@@ -5,9 +5,14 @@ function useFeed() {
   const [response, setResponse] = useState([] as any[]);
   const { data, isLoading } = useGetOffersQuery(1);
 
-  useEffect(() => {
-    if (data) setResponse(data["hydra:member"]);
-  }, [data]);
+  const loadData = () => {
+    if (!isLoading && data) {
+      setResponse(data["hydra:member"]);
+    }
+  };
+
+  useEffect(loadData, [isLoading, data]);
+
   return { data: response, isLoading };
 }
 

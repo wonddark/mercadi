@@ -1,9 +1,10 @@
 import HeaderBid from "../bid/HeaderBid";
 import { dummyBids } from "../../data/dummy-bids";
 import RowBid from "../bid/RowBid";
+import { pageTitle } from "../../helpers/page-title.helper";
 
 function UserBids() {
-  document.title = "Mis ofertas";
+  pageTitle("Mis ofertas");
   return (
     <>
       <HeaderBid />

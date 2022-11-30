@@ -1,25 +1,22 @@
 import useSessionMenuActions from "../../hooks/session-menu.hooks";
-import useToggleOpen from "../../hooks/toggle-open.hooks";
-import AddOffer from "../article/AddOffer";
 import useProfile from "../../hooks/profile.hook";
+import { Link } from "react-router-dom";
 
 function LoggedNavItems() {
   const { goToOffers, goToBids, goToFeed } = useSessionMenuActions();
-  const { isOpen: addArticle, toggleIsOpen: toggleAddArticle } =
-    useToggleOpen();
   const { name, closeSession } = useProfile();
   return (
     <>
       <li className="nav-item me-1">
-        <button
+        <Link
+          to="/perfil/ofertas/crear"
           className="btn btn-success"
           aria-label="Agregar oferta"
-          title="Agregar oferta"
-          onClick={toggleAddArticle}
+          title="Agregar nuevo artículo en venta"
         >
           <i className="bi bi-plus-circle-fill me-md-2" />
           <span className="d-none d-md-inline">Crear artículo</span>
-        </button>
+        </Link>
       </li>
       <li className="nav-item me-1">
         <button
@@ -78,7 +75,6 @@ function LoggedNavItems() {
           </li>
         </ul>
       </li>
-      {addArticle && <AddOffer isOpen={addArticle} toggle={toggleAddArticle} />}
     </>
   );
 }

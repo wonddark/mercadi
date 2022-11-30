@@ -74,7 +74,7 @@ function CreateArticle() {
         <div className="text-end">
           <button
             type="reset"
-            className="btn me-2"
+            className="btn btn-cancel me-2"
             disabled={isLoading}
             onClick={goBackToFeed}
           >

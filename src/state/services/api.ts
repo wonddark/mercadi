@@ -106,7 +106,7 @@ const api = createApi({
         body: args,
         method: "POST",
       }),
-      invalidatesTags: ["ENTITY_BID"],
+      invalidatesTags: ["ENTITY_BID", "ENTITY_OFFER"],
     }),
     getHighestBidPerOffer: builder.query({
       query: (offerId) => ({

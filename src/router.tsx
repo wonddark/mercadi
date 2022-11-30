@@ -15,6 +15,7 @@ import CompleteRegistration from "./components/security/CompleteRegistration";
 import SecureRoute from "./components/security/SecureRoute";
 import HomePage from "./components/HomePage";
 import Registration from "./components/security/Registration";
+import CreateArticle from "./components/article/CreateArticle";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,7 +38,7 @@ const router = createBrowserRouter(
         />
       </Route>
       <Route path="acceder" element={<LoginPage />} />
-
+      <Route path="muro" element={<HomeFeed />} />
       <Route
         path="perfil"
         element={
@@ -46,30 +47,11 @@ const router = createBrowserRouter(
           </SecureRoute>
         }
       >
-        <Route
-          path="muro"
-          element={
-            <SecureRoute>
-              <HomeFeed />
-            </SecureRoute>
-          }
-        />
-        <Route
-          path="ofertas"
-          element={
-            <SecureRoute>
-              <UserOffers />
-            </SecureRoute>
-          }
-        />
-        <Route
-          path="pujas"
-          element={
-            <SecureRoute>
-              <UserBids />
-            </SecureRoute>
-          }
-        />
+        <Route path="ofertas">
+          <Route index element={<UserOffers />} />
+          <Route path="crear" element={<CreateArticle />} />
+        </Route>
+        <Route path="pujas" element={<UserBids />} />
       </Route>
     </Route>
   )

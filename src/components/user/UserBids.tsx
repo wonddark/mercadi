@@ -1,16 +1,11 @@
-import useGoBack from "../../hooks/go-back.hooks";
 import HeaderBid from "../bid/HeaderBid";
 import { dummyBids } from "../../data/dummy-bids";
 import RowBid from "../bid/RowBid";
 
 function UserBids() {
-  document.title = "Pujas";
-  const { goBackTo: goBackToFeed } = useGoBack("/perfil/muro");
+  document.title = "Mis ofertas";
   return (
-    <div className="container-fluid">
-      <button className="btn btn-secondary" onClick={goBackToFeed}>
-        <i className="bi bi-arrow-left-circle-fill" />
-      </button>
+    <>
       <HeaderBid />
       <div
         className="pe-1"
@@ -23,7 +18,7 @@ function UserBids() {
           <RowBid item={item} key={item.id} />
         ))}
       </div>
-    </div>
+    </>
   );
 }
 

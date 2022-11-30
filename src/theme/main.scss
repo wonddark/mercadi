@@ -1,6 +1,16 @@
 @import "../../node_modules/bootstrap/scss/functions";
 
 $white: #fff;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+
 $purple: #6f42c1;
 $purple-extra-light: tint-color($purple, 97%);
 $purple-100: tint-color($purple, 80%);
@@ -38,11 +48,13 @@ $dropdown-dark-bg: $navbar-dark;
 $body-bg: $purple-extra-light;
 $body-color: $yellow-900;
 
+$cancel: $gray-300;
 
 @import "../../node_modules/bootstrap/scss/variables";
 
 $custom-colors: (
-  "navbar-dark": $navbar-dark
+   "navbar-dark": $navbar-dark,
+   "cancel": $cancel
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
@@ -134,10 +146,10 @@ $form-accented-shade-percent: 20%;
   color: $form-accented-link-color;
   font-weight: 500;
 
-    &:hover,
-    &:focus {
-      color: shade-color($form-accented-link-color, $form-accented-shade-percent);
-    }
+  &:hover,
+  &:focus {
+    color: shade-color($form-accented-link-color, $form-accented-shade-percent);
+  }
 }
 
 .feed-column {
@@ -150,7 +162,7 @@ $form-accented-shade-percent: 20%;
   height: 180px;
 }
 
-.quick-access-container{
+.quick-access-container {
   position: sticky;
   top: 72px;
   height: 85vh;

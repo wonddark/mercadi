@@ -1,10 +1,13 @@
 import CommonDlg from "../common/CommonDlg";
+import { useDeleteBidMutation } from "../../state/services/api";
 
 interface Props {
   isOpen: boolean;
   toggle: () => void;
+  bidId: string;
 }
-function RetireBid({ isOpen, toggle }: Props) {
+function RetireBid({ isOpen, toggle, bidId }: Props) {
+  const [deleteBid, { isLoading }] = useDeleteBidMutation();
   const message = (
     <>
       <p>
@@ -13,6 +16,11 @@ function RetireBid({ isOpen, toggle }: Props) {
       </p>
     </>
   );
+  const submitAction = () => {
+    deleteBid(bidId)
+      .unwrap()
+      .then(() => toggle());
+  };
   return (
     <CommonDlg
       isOpen={isOpen}
@@ -21,6 +29,8 @@ function RetireBid({ isOpen, toggle }: Props) {
       content={message}
       acceptLabel="Retirar"
       acceptIcon={<i className="bi bi-door-open-fill me-2" />}
+      acceptFunction={submitAction}
+      acceptDisabled={isLoading}
     />
   );
 }

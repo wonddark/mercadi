@@ -1,6 +1,9 @@
 import { ReactComponent as EmailSent } from "../../assets/undraw_mail_sent.svg";
+import useConfirmRegistration from "../../hooks/confirm-registration.hook";
 
 function ConfirmRegistration() {
+  const { validationId, updateValidationId, submitValidation } =
+    useConfirmRegistration();
   return (
     <div className="container-fluid">
       <div className="px-4 py-5 my-5 text-center">
@@ -16,6 +19,25 @@ function ConfirmRegistration() {
             Subastia, por favor, ve a tu bandeja de entrada, confirma el
             registro y nos vemos aquí de nuevo
           </p>
+          <form className="my-3">
+            <div className="input-group">
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                placeholder="Pega tu código de verificación aquí"
+                value={validationId}
+                onChange={updateValidationId}
+              />
+              <button
+                type="submit"
+                className="btn btn-primary btn-lg"
+                onClick={submitValidation}
+                disabled={!Boolean(validationId)}
+              >
+                Validar
+              </button>
+            </div>
+          </form>
           <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <button
               type="button"

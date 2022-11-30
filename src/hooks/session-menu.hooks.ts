@@ -9,7 +9,7 @@ function useSessionMenuActions() {
     navigate("/perfil/pujas");
   };
   const goToFeed = () => {
-    navigate("/perfil/muro");
+    navigate("/muro");
   };
   return { goToOffers, goToBids, goToFeed };
 }

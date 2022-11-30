@@ -5,6 +5,7 @@ import {
 import { useForm } from "react-hook-form";
 import { POSTOfferParameters } from "../types/offer.types";
 import { ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type POSTOfferInputs = POSTOfferParameters;
 function usePostOffer() {
@@ -22,6 +23,7 @@ function usePostOffer() {
   const [medias, setMedias] = useState([] as any[]);
   const [postOffer, { isLoading }] = usePostOfferMutation();
   const [postMedia, { isLoading: postingMedia }] = usePostMediaMutation();
+  const navigate = useNavigate();
 
   const updateMedias = ({
     target: { files },
@@ -33,16 +35,28 @@ function usePostOffer() {
     }
   };
 
+  const goBackToFeed = () => {
+    navigate("/muro");
+  };
+
   const saveOffer = (data: POSTOfferInputs) => {
     data.initialBid = Number(data.initialBid);
     postOffer(data)
       .unwrap()
       .then((res) => {
-        for (const media of medias) {
-          const formData = new FormData();
-          formData.append("file", media);
-          formData.append("offer_id", res.id);
-          postMedia(formData);
+        if (medias.length > 0) {
+          let promises: Promise<any>[] = [];
+          for (const media of medias) {
+            const formData = new FormData();
+            formData.append("file", media);
+            formData.append("offer_id", res.id);
+            promises = [...promises, postMedia(formData).unwrap()];
+          }
+          Promise.all(promises).then(() => {
+            goBackToFeed();
+          });
+        } else {
+          goBackToFeed();
         }
       });
   };
@@ -53,6 +67,7 @@ function usePostOffer() {
     control,
     updateMedias,
     submit,
+    goBackToFeed,
     isValid,
     isLoading: isLoading || postingMedia,
   };

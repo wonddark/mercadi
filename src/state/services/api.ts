@@ -149,6 +149,7 @@ const api = createApi({
         url: `/bids/${bidId}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["ENTITY_BID", "ENTITY_OFFER"],
     }),
   }),
 });

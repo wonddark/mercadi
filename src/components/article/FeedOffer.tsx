@@ -17,6 +17,7 @@ type Props = {
     user: {
       id: string;
       name: string;
+      lastname: string;
     };
   };
 };
@@ -27,28 +28,16 @@ function FeedOffer({ item }: Props) {
   return (
     <div className="card card-body shadow-sm mb-4">
       <div className="container">
-        <div className="row row-cols-2">
-          <div className="col col-2">
-            <div
-              className="mt-4 card card-body p-1"
-              style={{ width: "64px", height: "64px" }}
-            >
-              <img
-                src="/images/user.jpg"
-                alt="user-placeholder"
-                className="img-fluid"
-              />
-            </div>
-            <span className="d-block mb-4">{item.user.name}</span>
-            <span className="text-start d-block text-muted small">
-              Oferta más alta
+        <div className="row">
+          <div className="col">
+            <span className="fw-light fs-4 lh-sm d-block">{item.name}</span>
+            <span className="small">
+              {`${item.user.name} ${item.user.lastname}`}
             </span>
-            <span className="d-block me-auto p-1 ps-0">
+            <span className="ms-2 py-1 px-2 small fw-bold bg-light-gray text-primary">
+              <i className="bi bi-flag-fill me-1" />
               {formatMoney(item.highestBid.quantity)}
             </span>
-          </div>
-          <div className="col col-10">
-            <span className="fw-light fs-4 lh-sm">{item.name}</span>
             <div className="container">
               <div className="row gap-1 my-3">
                 {item.medias.slice(0, 4).map((token) => (

@@ -9,7 +9,7 @@ function UserNav() {
   return (
     <header>
       <nav className="navbar navbar-expand navbar-dark bg-navbar-dark">
-        <div className="container-fluid">
+        <div className="container-xxl">
           <Link className="navbar-brand" to="/">
             Subastia
           </Link>

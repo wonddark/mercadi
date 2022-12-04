@@ -13,14 +13,14 @@ function Offers() {
     itemsPerPage: 3,
   });
   return (
-    <div className="container-fluid">
+    <div className="container-xxl">
       <Link
         to="/perfil/ofertas"
         className="small fw-bold text-muted text-decoration-none fs-6"
       >
         Tus artículos
       </Link>
-      <div className="container-fluid p-0">
+      <div className="container-xxl p-0">
         {!isLoading ? (
           data["hydra:member"].map(
             (item: {

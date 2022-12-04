@@ -7,7 +7,7 @@ function ConfirmRegistration() {
     useConfirmRegistration();
   pageTitle("Confirmar registro");
   return (
-    <div className="container-fluid">
+    <div className="container-xxl">
       <div className="px-4 py-5 my-5 text-center">
         <EmailSent
           style={{ width: "80px", height: "auto" }}

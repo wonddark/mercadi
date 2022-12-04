@@ -11,7 +11,7 @@ function OfferQuickView({ name, highestBid }: Props) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
   return (
     <div className="card card-body my-2">
-      <div className="container-fluid p-0">
+      <div className="container-xxl p-0">
         <div className="row justify-content-between">
           <div className="col col-9">
             <span className="h6">{name}</span>

@@ -13,14 +13,14 @@ function Bids() {
     itemsPerPage: 3,
   });
   return (
-    <div className="container-fluid">
+    <div className="container-xxl">
       <Link
         to="/perfil/pujas"
         className="small fw-bold text-muted text-decoration-none fs-6"
       >
         Tus ofertas
       </Link>
-      <div className="container-fluid p-0">
+      <div className="container-xxl p-0">
         {!isLoading
           ? data["hydra:member"].map(
               (item: {

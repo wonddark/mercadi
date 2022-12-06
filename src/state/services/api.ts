@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { RegisterBodyTypes } from "../../types/register-body.types";
 import { RootState } from "../store";
 import { SESSION_STORE_KEY } from "../slices/session";
-import { BidInputs } from "../../types/bid.types";
 
 export const API_STORE_KEY = "api";
 const api = createApi({
@@ -76,36 +75,6 @@ const api = createApi({
         },
       }),
     }),
-    postBid: builder.mutation({
-      query: (args: BidInputs) => ({
-        url: "/bids",
-        body: args,
-        method: "POST",
-      }),
-      invalidatesTags: ["ENTITY_BID", "ENTITY_OFFER"],
-    }),
-    getBidsPerUser: builder.query({
-      query: ({
-        userId,
-        page = 1,
-        itemsPerPage = 30,
-      }: {
-        userId: string;
-        page?: number;
-        itemsPerPage?: number;
-      }) => ({
-        url: `/user/${userId}/bids`,
-        params: { page, itemsPerPage },
-      }),
-      providesTags: ["ENTITY_BID"],
-    }),
-    deleteBid: builder.mutation({
-      query: (bidId: string) => ({
-        url: `/bids/${bidId}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: ["ENTITY_BID", "ENTITY_OFFER"],
-    }),
   }),
 });
 
@@ -118,8 +87,5 @@ export const {
   useAuthenticateMutation,
   useLazyWhoAmIQuery,
   useUpdateUserDataMutation,
-  usePostBidMutation,
-  useGetBidsPerUserQuery,
-  useDeleteBidMutation,
 } = api;
 export default api;

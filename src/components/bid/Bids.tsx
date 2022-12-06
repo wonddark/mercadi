@@ -1,6 +1,6 @@
 import BidsQuickView from "./BidsQuickView";
 import { Link } from "react-router-dom";
-import { useGetBidsPerUserQuery } from "../../state/services/api";
+import { useGetBidsPerUserQuery } from "../../state/services/bids.endpoints";
 import { useAppSelector } from "../../hooks/state.hooks";
 import { selectId } from "../../state/slices/session";
 import BidsQuickViewPlaceholder from "./BidsQuickViewPlaceholder";

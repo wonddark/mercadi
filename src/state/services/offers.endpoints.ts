@@ -26,12 +26,6 @@ const offersEndpoints = api.injectEndpoints({
       }),
       invalidatesTags: ["ENTITY_OFFER"],
     }),
-    getHighestBidPerOffer: builder.query({
-      query: (offerId) => ({
-        url: `/offer/${offerId}/bids/highest`,
-      }),
-      providesTags: ["ENTITY_BID"],
-    }),
     getOffersByUserId: builder.query({
       query: ({
         userId,
@@ -55,6 +49,5 @@ export const {
   usePostOfferMutation,
   useGetOffersQuery,
   usePostMediaMutation,
-  useGetHighestBidPerOfferQuery,
   useGetOffersByUserIdQuery,
 } = offersEndpoints;

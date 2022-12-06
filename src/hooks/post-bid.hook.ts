@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { usePostBidMutation } from "../state/services/api";
+import { usePostBidMutation } from "../state/services/bids.endpoints";
 import { BidInputs } from "../types/bid.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";

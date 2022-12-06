@@ -1,6 +1,6 @@
 import OfferQuickView from "./OfferQuickView";
 import { Link } from "react-router-dom";
-import { useGetOffersByUserIdQuery } from "../../state/services/api";
+import { useGetOffersByUserIdQuery } from "../../state/services/offers.endpoints";
 import { useAppSelector } from "../../hooks/state.hooks";
 import { selectId } from "../../state/slices/session";
 import OfferQuickViewPlaceholder from "./OfferQuickViewPlaceholder";

@@ -1,5 +1,5 @@
 import { formatMoney } from "../../helpers/formatters.helper";
-import { useGetHighestBidPerOfferQuery } from "../../state/services/api";
+import { useGetHighestBidPerOfferQuery } from "../../state/services/offers.endpoints";
 import RetireBidBtn from "./RetireBidBtn";
 
 interface Props {

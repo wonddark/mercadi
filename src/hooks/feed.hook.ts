@@ -1,4 +1,4 @@
-import { useGetOffersQuery } from "../state/services/api";
+import { useGetOffersQuery } from "../state/services/offers.endpoints";
 import { useEffect, useState } from "react";
 
 function useFeed() {

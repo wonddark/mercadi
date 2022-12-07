@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 function useFeed() {
   const [response, setResponse] = useState([] as any[]);
-  const { data, isLoading } = useGetOffersQuery(1);
+  const { data, isLoading } = useGetOffersQuery({ page: 1 });
 
   const loadData = () => {
     if (!isLoading && data) {

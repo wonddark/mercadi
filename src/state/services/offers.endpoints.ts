@@ -12,9 +12,17 @@ const offersEndpoints = api.injectEndpoints({
       invalidatesTags: ["ENTITY_OFFER"],
     }),
     getOffers: builder.query({
-      query: (page: number) => ({
+      query: ({
+        page = 1,
+        itemsPerPage = 30,
+        open = true,
+      }: {
+        page?: number;
+        itemsPerPage?: number;
+        open?: boolean;
+      }) => ({
         url: "/offers",
-        params: { page },
+        params: { page, itemsPerPage, open },
       }),
       providesTags: ["ENTITY_OFFER"],
     }),
@@ -31,15 +39,17 @@ const offersEndpoints = api.injectEndpoints({
         userId,
         page = 1,
         itemsPerPage = 30,
+        open = true,
       }: {
         userId: string;
         page?: number;
         itemsPerPage?: number;
+        open?: boolean;
       }) => ({
         url: `/user/${userId}/offers`,
-        params: { page, itemsPerPage },
+        params: { page, itemsPerPage, open },
       }),
-      providesTags: ["ENTITY_BID"],
+      providesTags: ["ENTITY_OFFER"],
     }),
     closeOffer: builder.mutation({
       query: (offerId: string) => ({

@@ -7,7 +7,7 @@ import {
   useLazyWhoAmIQuery,
 } from "../state/services/api";
 import { useAppSelector } from "./state.hooks";
-import { selectIsLogged, selectName } from "../state/slices/session";
+import { selectIsLogged } from "../state/slices/session";
 import { useNavigate } from "react-router-dom";
 
 function useLogin() {
@@ -32,7 +32,6 @@ function useLogin() {
   });
   const state = useAppSelector((state) => state);
   const isLogged = selectIsLogged(state);
-  const name = selectName(state);
   const [
     authenticate,
     { isLoading: isAuthenticating, isError: errorAuthenticating },
@@ -57,28 +56,22 @@ function useLogin() {
   const submitForm = handleSubmit(login);
 
   const getPersonalInfo = () => {
-    isLogged && whoAmI({});
-  };
-
-  const goToUserFeed = () => {
-    if (isLogged) {
-      if (name) {
-        navigate("/muro");
-      } else {
-        navigate("/registro/completar");
-      }
-    }
+    isLogged &&
+      whoAmI({})
+        .unwrap()
+        .then((resp) => {
+          if (resp.name && resp.lastname) {
+            navigate("/muro");
+          } else {
+            navigate("/registro/completar");
+          }
+        });
   };
 
   useEffect(
     getPersonalInfo,
     // eslint-disable-next-line
     [isLogged]
-  );
-  useEffect(
-    goToUserFeed,
-    // eslint-disable-next-line
-    [isLogged, name]
   );
 
   return {

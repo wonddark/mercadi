@@ -1,9 +1,9 @@
 import BidsQuickView from "./BidsQuickView";
 
-function SidebarBidsBlock(data: any) {
+function SidebarBidsBlock({ data }: { data: any }) {
   return (
     <>
-      {data.length > 0 ? (
+      {data["hydra:member"].length > 0 ? (
         data["hydra:member"].map(
           (item: {
             id: string;

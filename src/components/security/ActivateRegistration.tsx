@@ -1,12 +1,13 @@
 import { ReactComponent as Welcoming } from "../../assets/undraw_welcoming_re_x0qo.svg";
 import useActivateRegistration from "../../hooks/activate-registration.hook";
 import { NavLink } from "react-router-dom";
+import { pageTitle } from "../../helpers/page-title.helper";
 
 function ActivateRegistration() {
   const { isLoading, error } = useActivateRegistration();
-  console.log(error);
+  pageTitle("Activar registro");
   return (
-    <div className="container-fluid">
+    <div className="container-xxl">
       <div className="px-4 py-5 my-5 text-center">
         <Welcoming
           style={{ width: "80px", height: "auto" }}

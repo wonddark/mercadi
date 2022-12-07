@@ -34,7 +34,7 @@ function useCompleteRegistration() {
   const submitForm = handleSubmit(completeRegistration);
 
   const goToUserFeed = () => {
-    name && navigate("/perfil/muro");
+    name && navigate("/muro");
   };
 
   useEffect(

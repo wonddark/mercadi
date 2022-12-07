@@ -1,5 +1,5 @@
 import { formatMoney } from "../../helpers/formatters.helper";
-import { useGetHighestBidPerOfferQuery } from "../../state/services/api";
+import { useGetHighestBidPerOfferQuery } from "../../state/services/bids.endpoints";
 import RetireBidBtn from "./RetireBidBtn";
 
 interface Props {
@@ -19,7 +19,7 @@ function BidsQuickView({
   const { data, isLoading } = useGetHighestBidPerOfferQuery(offerId);
   return (
     <div className="card card-body my-2">
-      <div className="container-fluid p-0">
+      <div className="container-xxl p-0">
         <div className="row justify-content-between">
           <div className="col col-9">
             <span className="h6">{offerName}</span>

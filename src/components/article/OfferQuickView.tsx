@@ -7,11 +7,11 @@ interface Props {
   name: string;
   highestBid: string;
 }
-function OfferQuickView({ name, highestBid }: Props) {
+function OfferQuickView({ id, name, highestBid }: Props) {
   const { isOpen, toggleIsOpen } = useToggleOpen();
   return (
     <div className="card card-body my-2">
-      <div className="container-fluid p-0">
+      <div className="container-xxl p-0">
         <div className="row justify-content-between">
           <div className="col col-9">
             <span className="h6">{name}</span>
@@ -29,7 +29,9 @@ function OfferQuickView({ name, highestBid }: Props) {
           </div>
         </div>
       </div>
-      {isOpen && <CloseOffer isOpen={isOpen} toggle={toggleIsOpen} />}
+      {isOpen && (
+        <CloseOffer isOpen={isOpen} toggle={toggleIsOpen} offerId={id} />
+      )}
     </div>
   );
 }

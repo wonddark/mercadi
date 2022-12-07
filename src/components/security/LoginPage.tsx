@@ -1,10 +1,12 @@
 import { Controller } from "react-hook-form";
 import useLogin from "../../hooks/login.hook";
 import { Link } from "react-router-dom";
+import { pageTitle } from "../../helpers/page-title.helper";
 
 function LoginPage() {
   const { registerPassword, submitForm, control, isValid, isLoading } =
     useLogin();
+  pageTitle("Acceder");
   return (
     <div className="container col-xl-10 col-xxl-8 px-4">
       <div className="row align-items-center py-3">

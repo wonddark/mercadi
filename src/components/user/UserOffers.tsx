@@ -1,9 +1,10 @@
 import { dummyOffers } from "../../data/dummy-offers";
 import RowOffer from "../article/RowOffer";
 import HeaderOffer from "../article/HeaderOffer";
+import { pageTitle } from "../../helpers/page-title.helper";
 
 function UserOffers() {
-  document.title = "Ofertas";
+  pageTitle("Artículos");
   return (
     <>
       <HeaderOffer />

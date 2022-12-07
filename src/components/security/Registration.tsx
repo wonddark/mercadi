@@ -1,6 +1,8 @@
 import RegistrationForm from "./RegistrationForm";
+import { pageTitle } from "../../helpers/page-title.helper";
 
 function Registration() {
+  pageTitle("Registro");
   return (
     <div className="container col-xl-10 col-xxl-8 px-4">
       <div className="row align-items-center py-3">

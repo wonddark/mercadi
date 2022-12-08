@@ -44,7 +44,7 @@ const offersEndpoints = api.injectEndpoints({
         userId: string;
         page?: number;
         itemsPerPage?: number;
-        open?: boolean;
+        open?: boolean | null;
       }) => ({
         url: `/user/${userId}/offers`,
         params: { page, itemsPerPage, open },

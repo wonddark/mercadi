@@ -1,9 +1,11 @@
 import HeaderBid from "../bid/HeaderBid";
-import { dummyBids } from "../../data/dummy-bids";
 import RowBid from "../bid/RowBid";
 import { pageTitle } from "../../helpers/page-title.helper";
+import useUserOffers from "../../hooks/user-offers.hook";
+import RowBidPlaceholder from "../bid/RowBidPlaceholder";
 
 function UserBids() {
+  const { data, isLoading } = useUserOffers({});
   pageTitle("Mis ofertas");
   return (
     <>
@@ -15,9 +17,17 @@ function UserBids() {
           overflow: "auto",
         }}
       >
-        {dummyBids.map((item) => (
-          <RowBid item={item} key={item.id} />
-        ))}
+        {!isLoading ? (
+          data["hydra:member"].map((item: any) => (
+            <RowBid item={item} key={item.id} />
+          ))
+        ) : (
+          <>
+            {[1, 2, 3, 4, 5].map((item) => (
+              <RowBidPlaceholder key={item} />
+            ))}
+          </>
+        )}
       </div>
     </>
   );

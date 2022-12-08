@@ -1,17 +1,10 @@
 import { Link } from "react-router-dom";
-import { useGetOffersByUserIdQuery } from "../../state/services/offers.endpoints";
-import { useAppSelector } from "../../hooks/state.hooks";
-import { selectId } from "../../state/slices/session";
 import OfferQuickViewPlaceholder from "./OfferQuickViewPlaceholder";
 import SidebarArticlesBlock from "./SidebarArticlesBlock";
+import useUserArticles from "../../hooks/user-articles.hook";
 
 function Offers() {
-  const state = useAppSelector((state) => state);
-  const userId = selectId(state);
-  const { data, isLoading } = useGetOffersByUserIdQuery({
-    userId,
-    itemsPerPage: 3,
-  });
+  const { data, isLoading } = useUserArticles({ itemsPerPage: 3 });
   return (
     <div className="container-xxl">
       <Link

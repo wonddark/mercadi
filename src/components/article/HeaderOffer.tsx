@@ -23,6 +23,13 @@ function HeaderOffer() {
             style={{ cursor: "pointer" }}
           />
         </div>
+        <div className="col text-end">
+          Ofertas
+          <i
+            className="bi bi-caret-down-fill small ms-2"
+            style={{ cursor: "pointer" }}
+          />
+        </div>
         <div className="col text-center">
           Fecha
           <i
@@ -37,6 +44,7 @@ function HeaderOffer() {
             style={{ cursor: "pointer" }}
           />
         </div>
+        <div className="col col-1 text-center"></div>
       </div>
     </div>
   );

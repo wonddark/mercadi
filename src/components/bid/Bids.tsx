@@ -1,17 +1,10 @@
 import { Link } from "react-router-dom";
-import { useGetBidsPerUserQuery } from "../../state/services/bids.endpoints";
-import { useAppSelector } from "../../hooks/state.hooks";
-import { selectId } from "../../state/slices/session";
 import BidsQuickViewPlaceholder from "./BidsQuickViewPlaceholder";
 import SidebarBidsBlock from "./SidebarBidsBlock";
+import useUserOffers from "../../hooks/user-offers.hook";
 
 function Bids() {
-  const state = useAppSelector((state) => state);
-  const userId = selectId(state);
-  const { data, isLoading } = useGetBidsPerUserQuery({
-    userId,
-    itemsPerPage: 3,
-  });
+  const { data, isLoading } = useUserOffers({ itemsPerPage: 3 });
   return (
     <div className="container-xxl">
       <Link

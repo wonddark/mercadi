@@ -5,7 +5,10 @@ import useUserArticles from "../../hooks/user-articles.hook";
 import RowOfferPlaceholder from "../article/RowOfferPlaceholder";
 
 function UserOffers() {
-  const { data, isLoading } = useUserArticles({ itemsPerPage: 30 });
+  const { data, isLoading } = useUserArticles({
+    itemsPerPage: 30,
+    open: null,
+  });
   pageTitle("Artículos");
   return (
     <>

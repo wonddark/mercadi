@@ -44,6 +44,7 @@ function HeaderOffer() {
             style={{ cursor: "pointer" }}
           />
         </div>
+        <div className="col col-1 text-center"></div>
       </div>
     </div>
   );

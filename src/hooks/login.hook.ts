@@ -1,13 +1,11 @@
 import { useForm } from "react-hook-form";
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {
   useAuthenticateMutation,
   useLazyWhoAmIQuery,
 } from "../state/services/api";
-import { useAppSelector } from "./state.hooks";
-import { selectIsLogged } from "../state/slices/session";
 import { useNavigate } from "react-router-dom";
 
 function useLogin() {
@@ -30,8 +28,7 @@ function useLogin() {
       })
     ),
   });
-  const state = useAppSelector((state) => state);
-  const isLogged = selectIsLogged(state);
+
   const [
     authenticate,
     { isLoading: isAuthenticating, isError: errorAuthenticating },
@@ -50,29 +47,22 @@ function useLogin() {
   };
 
   const login = (data: { email: string; password: string }) => {
-    authenticate(data);
+    authenticate(data)
+      .unwrap()
+      .then(() => {
+        whoAmI({})
+          .unwrap()
+          .then((resp) => {
+            if (resp.name && resp.lastname) {
+              navigate("/muro");
+            } else {
+              navigate("/registro/completar");
+            }
+          });
+      });
   };
 
   const submitForm = handleSubmit(login);
-
-  const getPersonalInfo = () => {
-    isLogged &&
-      whoAmI({})
-        .unwrap()
-        .then((resp) => {
-          if (resp.name && resp.lastname) {
-            navigate("/muro");
-          } else {
-            navigate("/registro/completar");
-          }
-        });
-  };
-
-  useEffect(
-    getPersonalInfo,
-    // eslint-disable-next-line
-    [isLogged]
-  );
 
   return {
     registerPassword,

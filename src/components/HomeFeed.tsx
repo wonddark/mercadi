@@ -3,6 +3,7 @@ import FeedsColumn from "./FeedsColumn";
 import { useAppSelector } from "../hooks/state.hooks";
 import { selectIsLogged } from "../state/slices/session";
 import { pageTitle } from "../helpers/page-title.helper";
+import MustBeAuthenticated from "./MustBeAuthenticated";
 
 function HomeFeed() {
   const state = useAppSelector((state) => state);
@@ -16,9 +17,7 @@ function HomeFeed() {
         </div>
         <div className="col d-none d-lg-block col-lg-4">
           {isLogged && <FeedQuickAccess />}
-          {!isLogged && (
-            <p className="lead">You must be logged to see this column</p>
-          )}
+          {!isLogged && <MustBeAuthenticated />}
         </div>
       </div>
     </div>

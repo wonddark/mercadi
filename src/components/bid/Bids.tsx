@@ -4,7 +4,10 @@ import SidebarBidsBlock from "./SidebarBidsBlock";
 import useUserOffers from "../../hooks/user-offers.hook";
 
 function Bids() {
-  const { data, isLoading } = useUserOffers({ itemsPerPage: 3 });
+  const { data, isLoading } = useUserOffers({
+    itemsPerPage: 3,
+    openOffers: true,
+  });
   return (
     <div className="container-xxl">
       <Link
@@ -14,7 +17,7 @@ function Bids() {
         Tus ofertas
       </Link>
       <div className="container-xxl p-0">
-        {!isLoading ? (
+        {!isLoading && data ? (
           <SidebarBidsBlock data={data} />
         ) : (
           [1, 2, 3].map((item) => <BidsQuickViewPlaceholder key={item} />)

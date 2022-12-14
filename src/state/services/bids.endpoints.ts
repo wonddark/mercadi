@@ -1,5 +1,5 @@
 import api from "./api";
-import { BidInputs } from "../../types/bid.types";
+import { BidInputs, UserBidsInputs } from "../../types/bid.types";
 
 const bidsEndpoints = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -19,7 +19,7 @@ const bidsEndpoints = api.injectEndpoints({
       invalidatesTags: ["ENTITY_BID", "ENTITY_OFFER"],
     }),
     getHighestBidPerOffer: builder.query({
-      query: (offerId) => ({
+      query: (offerId: string) => ({
         url: `/offer/${offerId}/bids/highest`,
       }),
       providesTags: ["ENTITY_BID"],
@@ -29,13 +29,10 @@ const bidsEndpoints = api.injectEndpoints({
         userId,
         page = 1,
         itemsPerPage = 30,
-      }: {
-        userId: string;
-        page?: number;
-        itemsPerPage?: number;
-      }) => ({
+        openOffers = undefined,
+      }: UserBidsInputs) => ({
         url: `/user/${userId}/bids`,
-        params: { page, itemsPerPage },
+        params: { page, itemsPerPage, "offer.open": openOffers },
       }),
       providesTags: ["ENTITY_BID"],
     }),

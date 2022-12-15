@@ -1,4 +1,5 @@
 import OfferQuickView from "./OfferQuickView";
+import SidebarNoArticles from "./SidebarNoArticles";
 
 function SidebarArticlesBlock({ data }: { data: any }) {
   return (
@@ -20,15 +21,7 @@ function SidebarArticlesBlock({ data }: { data: any }) {
           )
         )
       ) : (
-        <div className="card card-body mt-2">
-          <span className="text-center display-1 fs-4 mb-1 text-primary">
-            No tienes ningún artículo
-          </span>
-          <span>
-            Publica lo que sea que quieras vender y nuestra comunidad te dirá
-            cuánto está dispuesta a pagar
-          </span>
-        </div>
+        <SidebarNoArticles />
       )}
     </>
   );

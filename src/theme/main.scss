@@ -53,6 +53,7 @@ $custom-colors: (
   "light-gray": $light-gray
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
+$input-bg: $white;
 
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/reboot";

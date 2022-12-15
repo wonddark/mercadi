@@ -6,7 +6,11 @@ const STORAGE_KEY = "subastia";
 const persistedState = (() => {
   try {
     const rawState = localStorage.getItem(STORAGE_KEY);
-    if (rawState) return JSON.parse(rawState);
+    if (rawState) {
+      const parsed = JSON.parse(rawState);
+      delete parsed[API_STORE_KEY];
+      return parsed;
+    }
     return undefined;
   } catch (e) {
     return undefined;

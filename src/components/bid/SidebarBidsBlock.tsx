@@ -1,4 +1,5 @@
 import BidsQuickView from "./BidsQuickView";
+import SidebarNoOffers from "./SidebarNoOffers";
 
 function SidebarBidsBlock({ data }: { data: any }) {
   return (
@@ -23,13 +24,7 @@ function SidebarBidsBlock({ data }: { data: any }) {
         )
       ) : (
         <div className="card card-body mt-2">
-          <span className="text-center display-1 fs-4 mb-1 text-primary">
-            No tienes ninguna oferta
-          </span>
-          <span>
-            Encuentra un artículo que te interese y déjales saber cuánto estás
-            dispuesto a pagar
-          </span>
+          <SidebarNoOffers />
         </div>
       )}
     </>

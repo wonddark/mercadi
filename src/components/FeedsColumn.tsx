@@ -1,6 +1,7 @@
 import FeedOffer from "./article/FeedOffer";
 import useFeed from "../hooks/feed.hook";
 import FeedOfferPlaceholder from "./article/FeedOfferPlaceholder";
+import FeedNoArticles from "./article/FeedNoArticles";
 
 function FeedsColumn() {
   const { data, isLoading } = useFeed();
@@ -11,7 +12,7 @@ function FeedsColumn() {
       ) : data.length > 0 ? (
         data.map((item) => <FeedOffer key={item.id} item={item} />)
       ) : (
-        <p className="lead">No hay nada para mostrar</p>
+        <FeedNoArticles />
       )}
     </div>
   );

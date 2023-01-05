@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 function NotLoggedNavItems() {
   return (
     <>
-      <li className="nav-item me-1">
+      <li className="nav-item d-none d-md-inline me-md-1">
         <Link to="/acceder" className="nav-link link-light">
-          <span className="d-none d-md-inline">Acceder</span>
+          <span className="">Acceder</span>
         </Link>
       </li>
       <li className="nav-item">

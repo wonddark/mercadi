@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import PostBidBtn from "../bid/PostBidBtn";
-import { selectId } from "../../state/slices/session";
+import { selectId, selectIsLogged } from "../../state/slices/session";
 import { useAppSelector } from "../../hooks/state.hooks";
 import { formatMoney } from "../../helpers/formatters.helper";
 
@@ -25,6 +25,7 @@ type Props = {
 function FeedOffer({ item }: Props) {
   const state = useAppSelector((state) => state);
   const userId = selectId(state);
+  const isAuthenticated = selectIsLogged(state);
   return (
     <div className="card card-body shadow-sm mb-4">
       <div className="container">
@@ -57,7 +58,7 @@ function FeedOffer({ item }: Props) {
               <i className="bi bi-flag-fill me-1" />
               {formatMoney(item.highestBid.quantity)}
             </span>
-            {item.user.id !== userId && (
+            {isAuthenticated && item.user.id !== userId && (
               <div className="mt-1">
                 <PostBidBtn
                   offerId={item["@id"]}

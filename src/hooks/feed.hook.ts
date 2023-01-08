@@ -1,9 +1,13 @@
 import { useGetOffersQuery } from "../state/services/offers.endpoints";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectDescription, selectName } from "../state/slices/search";
 
 function useFeed() {
   const [response, setResponse] = useState([] as any[]);
-  const { data, isLoading } = useGetOffersQuery({ page: 1 });
+  const name = useSelector(selectName);
+  const description = useSelector(selectDescription);
+  const { data, isLoading } = useGetOffersQuery({ page: 1, name, description });
 
   const loadData = () => {
     if (!isLoading && data) {

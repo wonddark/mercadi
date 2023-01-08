@@ -1,5 +1,8 @@
 import api from "./api";
-import { POSTOfferParameters } from "../../types/offer.types";
+import {
+  GETOffersParameters,
+  POSTOfferParameters,
+} from "../../types/offer.types";
 
 const offersEndpoints = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -16,13 +19,11 @@ const offersEndpoints = api.injectEndpoints({
         page = 1,
         itemsPerPage = 30,
         open = true,
-      }: {
-        page?: number;
-        itemsPerPage?: number;
-        open?: boolean;
-      }) => ({
+        name = "",
+        description = "",
+      }: GETOffersParameters) => ({
         url: "/offers",
-        params: { page, itemsPerPage, open },
+        params: { page, itemsPerPage, open, name, description },
       }),
       providesTags: ["ENTITY_OFFER"],
     }),

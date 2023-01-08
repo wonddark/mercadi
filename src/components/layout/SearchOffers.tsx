@@ -22,10 +22,10 @@ function useSearch() {
 function SearchOffers() {
   const { searchTerm, updateSearchTerm, doSearch } = useSearch();
   return (
-    <form className="h-100" onSubmit={doSearch}>
+    <form className="h-100 w-100" onSubmit={doSearch}>
       <input
         type="search"
-        placeholder="Algo"
+        placeholder="Buscar artículos..."
         className="form-control"
         name="search-field"
         value={searchTerm}

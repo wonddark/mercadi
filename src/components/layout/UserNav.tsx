@@ -13,7 +13,7 @@ function UserNav() {
       <nav className="navbar navbar-expand navbar-dark bg-navbar-dark">
         <div className="container-xxl">
           <Link className="navbar-brand" to="/">
-            <SiteLogo style={{ width: 120, height: "auto" }} />
+            <SiteLogo style={{ width: 120, height: "auto", fill: "#fff" }} />
           </Link>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item d-none d-md-flex me-md-1">

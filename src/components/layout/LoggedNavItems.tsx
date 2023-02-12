@@ -14,19 +14,57 @@ function LoggedNavItems() {
           aria-label="Agregar oferta"
           title="Agregar nuevo artículo en venta"
         >
-          <i className="bi bi-plus-circle-fill me-md-2" />
-          <span className="d-none d-md-inline">Crear artículo</span>
+          <i className="bi bi-plus-circle-fill me-sm-2" />
+          <span className="d-none d-sm-inline">Crear artículo</span>
         </Link>
       </li>
       <li className="nav-item me-1">
         <button
-          className="btn bg-transparent text-white"
+          id="dropdown-notifications"
+          className="btn bg-transparent text-white dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
           aria-label="Notifications"
-          title="Notificaciones"
         >
-          <i className="bi bi-bell me-md-2" />
-          <span className="d-none d-md-inline">Notificaciones</span>
+          <i className="bi bi-bell" />
         </button>
+        <ul
+          className="dropdown-menu dropdown-menu-dark dropdown-menu-end"
+          aria-labelledby="dropdown-notifications"
+        >
+          <li>
+            <span className="dropdown-header">Notificaciones</span>
+          </li>
+          <li>
+            <hr className="dropdown-divider" />
+          </li>
+          <li>
+            <button className="dropdown-item" onClick={goToFeed}>
+              Feed
+            </button>
+          </li>
+          <li>
+            <hr className="dropdown-divider" />
+          </li>
+          <li>
+            <button className="dropdown-item" onClick={goToOffers}>
+              Tus artículos
+            </button>
+          </li>
+          <li>
+            <button className="dropdown-item" onClick={goToBids}>
+              Tus ofertas
+            </button>
+          </li>
+          <li>
+            <hr className="dropdown-divider" />
+          </li>
+          <li>
+            <button className="dropdown-item" onClick={closeSession}>
+              Cerrar sesión
+            </button>
+          </li>
+        </ul>
       </li>
       <li className="nav-item dropdown">
         <button
@@ -34,6 +72,7 @@ function LoggedNavItems() {
           id="dropdown-profile"
           data-bs-toggle="dropdown"
           aria-expanded="false"
+          aria-label="Profile"
         >
           <i className="bi bi-person-circle me-md-2" />
         </button>

@@ -17,7 +17,7 @@ const offersEndpoints = api.injectEndpoints({
     getOffers: builder.query({
       query: ({
         page = 1,
-        itemsPerPage = 30,
+        itemsPerPage = 15,
         open = true,
         name = "",
         description = "",
@@ -39,7 +39,7 @@ const offersEndpoints = api.injectEndpoints({
       query: ({
         userId,
         page = 1,
-        itemsPerPage = 30,
+        itemsPerPage = 15,
         open = true,
       }: {
         userId: string;
@@ -66,7 +66,7 @@ const offersEndpoints = api.injectEndpoints({
 
 export const {
   usePostOfferMutation,
-  useGetOffersQuery,
+  useLazyGetOffersQuery,
   usePostMediaMutation,
   useGetOffersByUserIdQuery,
   useCloseOfferMutation,

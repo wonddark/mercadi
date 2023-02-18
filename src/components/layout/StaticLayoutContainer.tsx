@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 import { selectPageTitle } from "../../state/slices/page-title.slice";
 
 function StaticLayoutContainer() {
-  const pageTitle = useSelector(selectPageTitle);
-  document.title = pageTitle;
+  document.title = useSelector(selectPageTitle);
   return (
     <SiteLayout>
       <Outlet />

@@ -1,8 +1,8 @@
 import RegistrationForm from "./RegistrationForm";
-import { pageTitle } from "../../helpers/page-title.helper";
+import usePageTitle from "../../hooks/page-title.hook";
 
 function Registration() {
-  pageTitle("Registro");
+  usePageTitle({ name: "Registro" });
   return (
     <div className="container col-xl-10 col-xxl-8 px-2 px-md-4">
       <div className="row align-items-center py-3">

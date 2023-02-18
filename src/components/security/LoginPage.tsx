@@ -1,8 +1,8 @@
-import { pageTitle } from "../../helpers/page-title.helper";
 import LoginForm from "./LoginForm";
+import usePageTitle from "../../hooks/page-title.hook";
 
 function LoginPage() {
-  pageTitle("Acceder");
+  usePageTitle({ name: "Acceder" });
   return (
     <div className="container col-xl-10 col-xxl-8 px-2 px-md-4">
       <div className="row align-items-center py-3">

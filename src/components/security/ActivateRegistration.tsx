@@ -1,11 +1,11 @@
 import { ReactComponent as Welcoming } from "../../assets/undraw_welcoming_re_x0qo.svg";
 import useActivateRegistration from "../../hooks/activate-registration.hook";
 import { NavLink } from "react-router-dom";
-import { pageTitle } from "../../helpers/page-title.helper";
+import usePageTitle from "../../hooks/page-title.hook";
 
 function ActivateRegistration() {
   const { isLoading, error } = useActivateRegistration();
-  pageTitle("Activar registro");
+  usePageTitle({ name: "Activar registro" });
   return (
     <div className="container-xxl">
       <div className="px-4 py-5 my-5 text-center">

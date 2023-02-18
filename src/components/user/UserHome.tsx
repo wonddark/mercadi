@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
-import { pageTitle } from "../../helpers/page-title.helper";
 import GoBackBtn from "../common/GoBackBtn";
+import usePageTitle from "../../hooks/page-title.hook";
 
 function UserHome() {
-  pageTitle("Perfil");
+  usePageTitle({ name: "Perfil" });
   return (
     <div className="container-xxl mt-3">
       <GoBackBtn to="/muro" />

@@ -1,10 +1,10 @@
 import { Controller } from "react-hook-form";
 import useCompleteRegistration from "../../hooks/complete-registration.hook";
-import { pageTitle } from "../../helpers/page-title.helper";
+import usePageTitle from "../../hooks/page-title.hook";
 
 function CompleteRegistration() {
   const { control, submitForm } = useCompleteRegistration();
-  pageTitle("Completar registro");
+  usePageTitle({ name: "Completar registro" });
   return (
     <div className="container col-xl-10 col-xxl-8 px-4">
       <div className="row align-items-center py-3">

@@ -1,11 +1,11 @@
 import { ReactComponent as EmailSent } from "../../assets/undraw_mail_sent.svg";
 import useConfirmRegistration from "../../hooks/confirm-registration.hook";
-import { pageTitle } from "../../helpers/page-title.helper";
+import usePageTitle from "../../hooks/page-title.hook";
 
 function ConfirmRegistration() {
   const { validationId, updateValidationId, submitValidation } =
     useConfirmRegistration();
-  pageTitle("Confirmar registro");
+  usePageTitle({ name: "Confirmar registro" });
   return (
     <div className="container-xxl">
       <div className="px-4 py-5 my-5 text-center">

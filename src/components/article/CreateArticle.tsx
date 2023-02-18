@@ -1,12 +1,12 @@
 import { Controller } from "react-hook-form";
 import React from "react";
 import usePostOffer from "../../hooks/post-offer.hook";
-import { pageTitle } from "../../helpers/page-title.helper";
+import usePageTitle from "../../hooks/page-title.hook";
 
 function CreateArticle() {
   const { control, updateMedias, submit, goBackToFeed, isValid, isLoading } =
     usePostOffer();
-  pageTitle("Crear artículo");
+  usePageTitle({ name: "Crear artículo" });
   return (
     <div className="container mt-3">
       <form onSubmit={submit}>

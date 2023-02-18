@@ -1,15 +1,15 @@
 import RowOffer from "../article/RowOffer";
 import HeaderOffer from "../article/HeaderOffer";
-import { pageTitle } from "../../helpers/page-title.helper";
 import useUserArticles from "../../hooks/user-articles.hook";
 import RowOfferPlaceholder from "../article/RowOfferPlaceholder";
+import usePageTitle from "../../hooks/page-title.hook";
 
 function UserOffers() {
   const { data, isLoading } = useUserArticles({
     itemsPerPage: 30,
     open: null,
   });
-  pageTitle("Artículos");
+  usePageTitle({ name: "Artículos", loading: isLoading });
   return (
     <>
       <HeaderOffer />

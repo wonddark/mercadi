@@ -3,13 +3,14 @@ import { useGetOfferByIdQuery } from "../state/services/offers.endpoints";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import GoBackBtn from "./common/GoBackBtn";
+import usePageTitle from "../hooks/page-title.hook";
 
 dayjs.extend(relativeTime);
 
 function ViewOffer() {
   const { offerId } = useParams();
   const { data, isLoading } = useGetOfferByIdQuery(`${offerId}`);
-  document.title = isLoading ? "Cargando..." : data.name;
+  usePageTitle({ name: data?.name, loading: isLoading });
   return (
     <div className="container-xxl mt-3">
       <GoBackBtn to="/muro" />

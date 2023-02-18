@@ -1,9 +1,9 @@
 import RegistrationForm from "./security/RegistrationForm";
-import { pageTitle } from "../helpers/page-title.helper";
 import { ReactComponent as SiteLogo } from "../assets/navbar-logo.svg";
+import usePageTitle from "../hooks/page-title.hook";
 
 function HomePage() {
-  pageTitle();
+  usePageTitle({ reset: true });
   return (
     <div className="container col-xl-10 col-xxl-8 px-4">
       <div className="row align-items-center g-lg-5 py-3">

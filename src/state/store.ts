@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import sessionReducer, { SESSION_STORE_KEY } from "./slices/session.slice";
 import api, { API_STORE_KEY, reducer as apiReducer } from "./services/api";
 import searchReducer, { SEARCH_STORE_KEY } from "./slices/search.slice";
+import pageTitleReducer, { PAGE_TITLE_KEY } from "./slices/page-title.slice";
 
 const STORAGE_KEY = "subastia";
 const persistedState = (() => {
@@ -23,6 +24,7 @@ export const store = configureStore({
     [SESSION_STORE_KEY]: sessionReducer,
     [API_STORE_KEY]: apiReducer,
     [SEARCH_STORE_KEY]: searchReducer,
+    [PAGE_TITLE_KEY]: pageTitleReducer,
   },
   preloadedState: persistedState,
   middleware: (getDefaultMiddleware) =>

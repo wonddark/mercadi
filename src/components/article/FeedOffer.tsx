@@ -3,6 +3,7 @@ import PostBidBtn from "../bid/PostBidBtn";
 import { selectId, selectIsLogged } from "../../state/slices/session";
 import { useAppSelector } from "../../hooks/state.hooks";
 import { formatMoney } from "../../helpers/formatters.helper";
+import { Link } from "react-router-dom";
 
 type Props = {
   item: {
@@ -31,7 +32,12 @@ function FeedOffer({ item }: Props) {
       <div className="container">
         <div className="row">
           <div className="col">
-            <span className="fw-light fs-4 lh-sm d-block">{item.name}</span>
+            <Link
+              to={`/muro/oferta/${item.id}`}
+              className="fw-light fs-4 lh-sm d-block text-decoration-none"
+            >
+              {item.name}
+            </Link>
             <span className="small">
               {`${item.user.name} ${item.user.lastname}`}
             </span>

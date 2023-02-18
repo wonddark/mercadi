@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import PostBidBtn from "../bid/PostBidBtn";
-import { selectId, selectIsLogged } from "../../state/slices/session";
+import { selectId, selectIsLogged } from "../../state/slices/session.slice";
 import { useAppSelector } from "../../hooks/state.hooks";
 import { formatMoney } from "../../helpers/formatters.helper";
 import { Link } from "react-router-dom";

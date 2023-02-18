@@ -1,5 +1,9 @@
 import { useAppDispatch, useAppSelector } from "./state.hooks";
-import { logout, selectLastname, selectName } from "../state/slices/session";
+import {
+  logout,
+  selectLastname,
+  selectName,
+} from "../state/slices/session.slice";
 
 function useProfile() {
   const state = useAppSelector((state) => state);

@@ -1,7 +1,7 @@
 import { useLazyGetOffersQuery } from "../state/services/offers.endpoints";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectDescription, selectName } from "../state/slices/search";
+import { selectDescription, selectName } from "../state/slices/search.slice";
 import useInfiniteScroll from "react-easy-infinite-scroll-hook";
 
 function useFeed() {

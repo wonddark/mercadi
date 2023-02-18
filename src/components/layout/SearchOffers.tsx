@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { setDescription, setName } from "../../state/slices/search";
+import { setDescription, setName } from "../../state/slices/search.slice";
 import { useAppDispatch } from "../../hooks/state.hooks";
 
 function useSearch() {

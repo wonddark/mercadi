@@ -7,7 +7,7 @@ import {
 } from "@reduxjs/toolkit/dist/query/react";
 import { RegisterBodyTypes } from "../../types/register-body.types";
 import { RootState } from "../store";
-import { logout, SESSION_STORE_KEY } from "../slices/session";
+import { logout, SESSION_STORE_KEY } from "../slices/session.slice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_API_URL,

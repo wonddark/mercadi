@@ -1,6 +1,6 @@
 import FeedQuickAccess from "./FeedQuickAccess";
 import { useAppSelector } from "../hooks/state.hooks";
-import { selectId, selectIsLogged } from "../state/slices/session";
+import { selectId, selectIsLogged } from "../state/slices/session.slice";
 import { pageTitle } from "../helpers/page-title.helper";
 import MustBeAuthenticated from "./MustBeAuthenticated";
 import { Outlet } from "react-router-dom";

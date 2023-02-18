@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useUpdateUserDataMutation } from "../state/services/api";
 import { useAppSelector } from "./state.hooks";
-import { selectId, selectName } from "../state/slices/session";
+import { selectId, selectName } from "../state/slices/session.slice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 

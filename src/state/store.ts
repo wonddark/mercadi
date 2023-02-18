@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import sessionReducer, { SESSION_STORE_KEY } from "./slices/session";
+import sessionReducer, { SESSION_STORE_KEY } from "./slices/session.slice";
 import api, { API_STORE_KEY, reducer as apiReducer } from "./services/api";
-import searchReducer, { SEARCH_STORE_KEY } from "./slices/search";
+import searchReducer, { SEARCH_STORE_KEY } from "./slices/search.slice";
 
 const STORAGE_KEY = "subastia";
 const persistedState = (() => {

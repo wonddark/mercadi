@@ -11,6 +11,9 @@ function HomePage() {
           <h1 className="display-4 fw-bold lh-1 mb-3">
             <SiteLogo style={{ width: "8em", height: "auto", fill: "#000" }} />
           </h1>
+          <p>
+            <em>El precio ideal para tus ventas</em>
+          </p>
           <p className="col-lg-10 fs-4">
             El lugar para encontrar la mejor oferta para tus artículos en venta
           </p>

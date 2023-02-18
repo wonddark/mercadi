@@ -60,6 +60,11 @@ const offersEndpoints = api.injectEndpoints({
       }),
       invalidatesTags: ["ENTITY_OFFER"],
     }),
+    getOfferById: builder.query({
+      query: (offerId: string) => ({
+        url: `/offers/${offerId}`,
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -70,4 +75,5 @@ export const {
   usePostMediaMutation,
   useGetOffersByUserIdQuery,
   useCloseOfferMutation,
+  useGetOfferByIdQuery,
 } = offersEndpoints;

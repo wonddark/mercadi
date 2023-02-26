@@ -42,7 +42,14 @@ const router = createBrowserRouter(
       <Route path="acceder" element={<LoginPage />} />
       <Route path="muro" element={<HomeFeed />}>
         <Route index element={<FeedsColumn />} />
-        <Route path="oferta/:offerId" element={<ViewOffer />} />
+        <Route
+          path="oferta/:offerId"
+          element={
+            <SecureRoute>
+              <ViewOffer />
+            </SecureRoute>
+          }
+        />
       </Route>
       <Route
         path="perfil"
@@ -53,10 +60,31 @@ const router = createBrowserRouter(
         }
       >
         <Route path="ofertas">
-          <Route index element={<UserOffers />} />
-          <Route path="crear" element={<CreateArticle />} />
+          <Route
+            index
+            element={
+              <SecureRoute>
+                <UserOffers />
+              </SecureRoute>
+            }
+          />
+          <Route
+            path="crear"
+            element={
+              <SecureRoute>
+                <CreateArticle />
+              </SecureRoute>
+            }
+          />
         </Route>
-        <Route path="pujas" element={<UserBids />} />
+        <Route
+          path="pujas"
+          element={
+            <SecureRoute>
+              <UserBids />
+            </SecureRoute>
+          }
+        />
       </Route>
     </Route>
   )

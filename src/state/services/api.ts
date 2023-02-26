@@ -107,6 +107,7 @@ export const {
   useLazyTestEmailQuery,
   useAuthenticateMutation,
   useLazyWhoAmIQuery,
+  useWhoAmIQuery,
   useUpdateUserDataMutation,
 } = api;
 export default api;

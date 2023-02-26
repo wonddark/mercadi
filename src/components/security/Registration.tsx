@@ -1,7 +1,9 @@
 import RegistrationForm from "./RegistrationForm";
 import usePageTitle from "../../hooks/page-title.hook";
+import useIsLogged from "../../hooks/is-logged.hook";
 
 function Registration() {
+  useIsLogged();
   usePageTitle({ name: "Registro" });
   return (
     <div className="container col-xl-10 col-xxl-8 px-2 px-md-4">

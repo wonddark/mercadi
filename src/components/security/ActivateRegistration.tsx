@@ -2,8 +2,10 @@ import { ReactComponent as Welcoming } from "../../assets/undraw_welcoming_re_x0
 import useActivateRegistration from "../../hooks/activate-registration.hook";
 import { NavLink } from "react-router-dom";
 import usePageTitle from "../../hooks/page-title.hook";
+import useIsLogged from "../../hooks/is-logged.hook";
 
 function ActivateRegistration() {
+  useIsLogged();
   const { isLoading, error } = useActivateRegistration();
   usePageTitle({ name: "Activar registro" });
   return (

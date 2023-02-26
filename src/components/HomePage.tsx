@@ -1,8 +1,10 @@
 import RegistrationForm from "./security/RegistrationForm";
 import { ReactComponent as SiteLogo } from "../assets/navbar-logo.svg";
 import usePageTitle from "../hooks/page-title.hook";
+import useIsLogged from "../hooks/is-logged.hook";
 
 function HomePage() {
+  useIsLogged();
   usePageTitle({ reset: true });
   return (
     <div className="container col-xl-10 col-xxl-8 px-4">

@@ -1,8 +1,10 @@
 import { ReactComponent as EmailSent } from "../../assets/undraw_mail_sent.svg";
 import useConfirmRegistration from "../../hooks/confirm-registration.hook";
 import usePageTitle from "../../hooks/page-title.hook";
+import useIsLogged from "../../hooks/is-logged.hook";
 
 function ConfirmRegistration() {
+  useIsLogged();
   const { validationId, updateValidationId, submitValidation } =
     useConfirmRegistration();
   usePageTitle({ name: "Confirmar registro" });

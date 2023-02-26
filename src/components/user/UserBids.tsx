@@ -1,12 +1,12 @@
 import HeaderBid from "../bid/HeaderBid";
 import RowBid from "../bid/RowBid";
-import { pageTitle } from "../../helpers/page-title.helper";
 import useUserOffers from "../../hooks/user-offers.hook";
 import RowBidPlaceholder from "../bid/RowBidPlaceholder";
+import usePageTitle from "../../hooks/page-title.hook";
 
 function UserBids() {
   const { data, isLoading } = useUserOffers({});
-  pageTitle("Mis ofertas");
+  usePageTitle({ name: "Mis ofertas", loading: isLoading });
   return (
     <>
       <HeaderBid />

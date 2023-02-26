@@ -1,5 +1,5 @@
 import { useAppSelector } from "./state.hooks";
-import { selectId } from "../state/slices/session";
+import { selectId } from "../state/slices/session.slice";
 import { useGetBidsPerUserQuery } from "../state/services/bids.endpoints";
 
 function useUserOffers({

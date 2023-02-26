@@ -1,24 +1,32 @@
 import { useSelector } from "react-redux";
-import { selectIsLogged } from "../../state/slices/session";
+import { selectIsLogged } from "../../state/slices/session.slice";
 import LoggedNavItems from "./LoggedNavItems";
 import NotLoggedNavItems from "./NotLoggedNavItems";
 import { Link } from "react-router-dom";
+import { ReactComponent as SiteLogo } from "../../assets/navbar-logo.svg";
+import SearchOffers from "./SearchOffers";
 
 function UserNav() {
-  const isLogged = useSelector(selectIsLogged);
+  const isAuthenticated = useSelector(selectIsLogged);
   return (
-    <header>
+    <header className="bg-navbar-dark pb-2 pb-md-0">
       <nav className="navbar navbar-expand navbar-dark bg-navbar-dark">
         <div className="container-xxl">
           <Link className="navbar-brand" to="/">
-            Subastia
+            <SiteLogo style={{ width: 120, height: "auto", fill: "#fff" }} />
           </Link>
           <ul className="navbar-nav ms-auto">
-            {isLogged && <LoggedNavItems />}
-            {!isLogged && <NotLoggedNavItems />}
+            <li className="nav-item d-none d-md-flex me-md-1">
+              <SearchOffers />
+            </li>
+            {isAuthenticated && <LoggedNavItems />}
+            {!isAuthenticated && <NotLoggedNavItems />}
           </ul>
         </div>
       </nav>
+      <div className="d-flex d-md-none mt-1 mx-2">
+        <SearchOffers />
+      </div>
     </header>
   );
 }

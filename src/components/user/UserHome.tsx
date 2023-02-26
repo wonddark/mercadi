@@ -1,15 +1,12 @@
 import { Outlet } from "react-router-dom";
-import useGoBack from "../../hooks/go-back.hooks";
-import { pageTitle } from "../../helpers/page-title.helper";
+import GoBackBtn from "../common/GoBackBtn";
+import usePageTitle from "../../hooks/page-title.hook";
 
 function UserHome() {
-  const { goBackTo: goBackToFeed } = useGoBack("/muro");
-  pageTitle("Perfil");
+  usePageTitle({ name: "Perfil" });
   return (
     <div className="container-xxl mt-3">
-      <button className="btn btn-secondary" onClick={goBackToFeed}>
-        <i className="bi bi-arrow-left-circle-fill" />
-      </button>
+      <GoBackBtn to="/muro" />
       <Outlet />
     </div>
   );

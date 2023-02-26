@@ -1,8 +1,9 @@
 import dayjs from "dayjs";
 import PostBidBtn from "../bid/PostBidBtn";
-import { selectId } from "../../state/slices/session";
+import { selectId, selectIsLogged } from "../../state/slices/session.slice";
 import { useAppSelector } from "../../hooks/state.hooks";
 import { formatMoney } from "../../helpers/formatters.helper";
+import { Link } from "react-router-dom";
 
 type Props = {
   item: {
@@ -25,12 +26,18 @@ type Props = {
 function FeedOffer({ item }: Props) {
   const state = useAppSelector((state) => state);
   const userId = selectId(state);
+  const isAuthenticated = selectIsLogged(state);
   return (
     <div className="card card-body shadow-sm mb-4">
       <div className="container">
         <div className="row">
           <div className="col">
-            <span className="fw-light fs-4 lh-sm d-block">{item.name}</span>
+            <Link
+              to={`/muro/oferta/${item.id}`}
+              className="fw-light fs-4 lh-sm d-block text-decoration-none"
+            >
+              {item.name}
+            </Link>
             <span className="small">
               {`${item.user.name} ${item.user.lastname}`}
             </span>
@@ -57,7 +64,7 @@ function FeedOffer({ item }: Props) {
               <i className="bi bi-flag-fill me-1" />
               {formatMoney(item.highestBid.quantity)}
             </span>
-            {item.user.id !== userId && (
+            {isAuthenticated && item.user.id !== userId && (
               <div className="mt-1">
                 <PostBidBtn
                   offerId={item["@id"]}

@@ -1,23 +1,44 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
+import {
+  BaseQueryFn,
+  createApi,
+  FetchArgs,
+  fetchBaseQuery,
+  FetchBaseQueryError,
+} from "@reduxjs/toolkit/dist/query/react";
 import { RegisterBodyTypes } from "../../types/register-body.types";
 import { RootState } from "../store";
-import { SESSION_STORE_KEY } from "../slices/session";
+import { logout, SESSION_STORE_KEY } from "../slices/session.slice";
+
+const baseQuery = fetchBaseQuery({
+  baseUrl: process.env.REACT_APP_API_URL,
+  mode: "cors",
+  cache: "no-store",
+  prepareHeaders: (headers, { getState }) => {
+    const token = (getState() as RootState)[SESSION_STORE_KEY].token;
+    if (token) {
+      headers.set("Authorization", `Bearer ${token}`);
+    }
+    return headers;
+  },
+});
+
+const baseQueryWithLogout: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  FetchBaseQueryError
+> = async (args, api, extraOptions) => {
+  let result = await baseQuery(args, api, extraOptions);
+  if (result.error && result.error.status === 401) {
+    api.dispatch(logout());
+    return Promise.reject("Unauthorized");
+  }
+  return result;
+};
 
 export const API_STORE_KEY = "api";
 const api = createApi({
   reducerPath: API_STORE_KEY,
-  baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_API_URL,
-    mode: "cors",
-    cache: "no-store",
-    prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState)[SESSION_STORE_KEY].token;
-      if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
+  baseQuery: baseQueryWithLogout,
   refetchOnMountOrArgChange: true,
   refetchOnReconnect: true,
   tagTypes: ["ENTITY_OFFER", "ENTITY_BID"],
@@ -86,6 +107,7 @@ export const {
   useLazyTestEmailQuery,
   useAuthenticateMutation,
   useLazyWhoAmIQuery,
+  useWhoAmIQuery,
   useUpdateUserDataMutation,
 } = api;
 export default api;

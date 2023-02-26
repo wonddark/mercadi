@@ -1,5 +1,8 @@
 import api from "./api";
-import { POSTOfferParameters } from "../../types/offer.types";
+import {
+  GETOffersParameters,
+  POSTOfferParameters,
+} from "../../types/offer.types";
 
 const offersEndpoints = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -14,15 +17,13 @@ const offersEndpoints = api.injectEndpoints({
     getOffers: builder.query({
       query: ({
         page = 1,
-        itemsPerPage = 30,
+        itemsPerPage = 15,
         open = true,
-      }: {
-        page?: number;
-        itemsPerPage?: number;
-        open?: boolean;
-      }) => ({
+        name = "",
+        description = "",
+      }: GETOffersParameters) => ({
         url: "/offers",
-        params: { page, itemsPerPage, open },
+        params: { page, itemsPerPage, open, name, description },
       }),
       providesTags: ["ENTITY_OFFER"],
     }),
@@ -38,7 +39,7 @@ const offersEndpoints = api.injectEndpoints({
       query: ({
         userId,
         page = 1,
-        itemsPerPage = 30,
+        itemsPerPage = 15,
         open = true,
       }: {
         userId: string;
@@ -59,14 +60,20 @@ const offersEndpoints = api.injectEndpoints({
       }),
       invalidatesTags: ["ENTITY_OFFER"],
     }),
+    getOfferById: builder.query({
+      query: (offerId: string) => ({
+        url: `/offers/${offerId}`,
+      }),
+    }),
   }),
   overrideExisting: false,
 });
 
 export const {
   usePostOfferMutation,
-  useGetOffersQuery,
+  useLazyGetOffersQuery,
   usePostMediaMutation,
   useGetOffersByUserIdQuery,
   useCloseOfferMutation,
+  useGetOfferByIdQuery,
 } = offersEndpoints;

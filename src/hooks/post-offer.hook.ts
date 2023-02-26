@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { POSTOfferParameters } from "../types/offer.types";
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 type POSTOfferInputs = POSTOfferParameters;
 function usePostOffer() {
@@ -19,6 +21,14 @@ function usePostOffer() {
       initialBid: NaN,
       description: "",
     },
+    mode: "onChange",
+    resolver: yupResolver(
+      yup.object({
+        name: yup.string().required(),
+        initialBid: yup.number().min(1),
+        description: yup.string().min(70).max(255),
+      })
+    ),
   });
   const [medias, setMedias] = useState([] as any[]);
   const [postOffer, { isLoading }] = usePostOfferMutation();

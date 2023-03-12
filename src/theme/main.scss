@@ -1,5 +1,11 @@
 @import "../../node_modules/bootstrap/scss/functions";
 
+@font-face {
+  font-family: "URW Gothic L";
+  src: url("/fonts/urw_gothic_l_book.ttf");
+}
+
+$font-family-sans-serif: "URW Gothic L", sans-serif;
 $white: #fff;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;

@@ -5,15 +5,23 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function useIsLogged() {
-  useWhoAmIQuery({});
+  const { isFetching, isError, isSuccess } = useWhoAmIQuery({});
   const isLogged = useSelector(selectIsLogged);
   const navigate = useNavigate();
   function checkIsLogged() {
-    if (isLogged) {
-      navigate("/muro");
+    if (!isFetching) {
+      if (isSuccess && isLogged) {
+        navigate("/muro");
+      }
     }
   }
-  useEffect(checkIsLogged, [isLogged, navigate]);
+  useEffect(checkIsLogged, [
+    isFetching,
+    isError,
+    isSuccess,
+    isLogged,
+    navigate,
+  ]);
 }
 
 export default useIsLogged;

@@ -1,4 +1,7 @@
+import usePageTitle from "../hooks/page-title.hook";
+
 function Search() {
+  usePageTitle({ name: "Buscar" });
   return (
     <div className="container-fluid mt-3">
       <div className="row">

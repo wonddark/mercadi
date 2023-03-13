@@ -1,10 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { setDescription, setName } from "../../state/slices/search.slice";
-import { useAppDispatch } from "../../hooks/state.hooks";
+import { useNavigate } from "react-router-dom";
 
 function useSearch() {
   const [searchTerm, setSearchTerm] = useState("");
-  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const updateSearchTerm = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>) => {
@@ -12,8 +11,7 @@ function useSearch() {
   };
   const doSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(setName(searchTerm));
-    dispatch(setDescription(searchTerm));
+    navigate({ pathname: "/buscar", search: `q=${searchTerm}` });
   };
 
   return { searchTerm, updateSearchTerm, doSearch };

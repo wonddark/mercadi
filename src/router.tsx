@@ -18,7 +18,7 @@ import Registration from "./components/security/Registration";
 import CreateArticle from "./components/article/CreateArticle";
 import ViewOffer from "./components/ViewOffer";
 import FeedsColumn from "./components/FeedsColumn";
-import Search from "./components/Search";
+import SearchPage from "./components/SearchPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -87,7 +87,7 @@ const router = createBrowserRouter(
           }
         />
       </Route>
-      <Route path="/buscar" element={<Search />} />
+      <Route path="/buscar" element={<SearchPage />} />
     </Route>
   )
 );

@@ -2,7 +2,7 @@ import usePageTitle from "../hooks/page-title.hook";
 import { useSearchParams } from "react-router-dom";
 import { useLazyGetOffersQuery } from "../state/services/offers.endpoints";
 
-function Search() {
+function SearchPage() {
   usePageTitle({ name: "Buscar" });
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
@@ -21,4 +21,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default SearchPage;

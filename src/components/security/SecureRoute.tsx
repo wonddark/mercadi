@@ -3,8 +3,7 @@ import { selectIsLogged } from "../../state/slices/session.slice";
 import { Navigate } from "react-router-dom";
 
 function SecureRoute({ children }: { children: JSX.Element }) {
-  const state = useAppSelector((state) => state);
-  const isLogged = selectIsLogged(state);
+  const isLogged = useAppSelector(selectIsLogged);
   if (isLogged) {
     return children;
   } else {

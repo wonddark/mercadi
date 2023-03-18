@@ -3,9 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useUpdateUserDataMutation } from "../state/services/api";
 import { useAppSelector } from "./state.hooks";
-import { selectId, selectName } from "../state/slices/session.slice";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { selectId } from "../state/slices/session.slice";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function useCompleteRegistration() {
   const { handleSubmit, control } = useForm({
@@ -21,27 +20,24 @@ function useCompleteRegistration() {
       })
     ),
   });
-  const state = useAppSelector((state) => state);
-  const id = selectId(state);
-  const name = selectName(state);
+  const id = useAppSelector(selectId);
   const [updateUserData, { isLoading, isError }] = useUpdateUserDataMutation();
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const completeRegistration = (data: { name: string; lastname: string }) => {
-    updateUserData({ id, name: data.name, lastname: data.lastname });
+    updateUserData({ id, name: data.name, lastname: data.lastname })
+      .unwrap()
+      .then(() => {
+        if ("backTo" in state) {
+          navigate(state.backTo);
+        } else {
+          navigate("/muro");
+        }
+      });
   };
 
   const submitForm = handleSubmit(completeRegistration);
-
-  const goToUserFeed = () => {
-    name && navigate("/muro");
-  };
-
-  useEffect(
-    goToUserFeed,
-    // eslint-disable-next-line
-    [name]
-  );
 
   return { control, submitForm, isLoading, isError };
 }

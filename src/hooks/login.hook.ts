@@ -6,7 +6,7 @@ import {
   useAuthenticateMutation,
   useLazyWhoAmIQuery,
 } from "../state/services/api";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function useLogin() {
   const {
@@ -46,6 +46,8 @@ function useLogin() {
     trigger().finally();
   };
 
+  const { state } = useLocation();
+
   const login = (data: { email: string; password: string }) => {
     authenticate(data)
       .unwrap()
@@ -54,9 +56,13 @@ function useLogin() {
           .unwrap()
           .then((resp) => {
             if (resp.name && resp.lastname) {
-              navigate("/muro");
+              if ("backTo" in state) {
+                navigate(state.backTo);
+              } else {
+                navigate("/muro");
+              }
             } else {
-              navigate("/registro/completar");
+              navigate("/registro/completar", { state });
             }
           });
       });

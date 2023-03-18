@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useGetOfferByIdQuery } from "../state/services/offers.endpoints";
+import { useGetOfferByIdQuery } from "../../state/services/offers.endpoints";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import GoBackBtn from "./common/GoBackBtn";
-import usePageTitle from "../hooks/page-title.hook";
+import GoBackBtn from "../common/GoBackBtn";
+import usePageTitle from "../../hooks/page-title.hook";
 
 dayjs.extend(relativeTime);
 

@@ -16,7 +16,7 @@ import SecureRoute from "./components/security/SecureRoute";
 import HomePage from "./components/HomePage";
 import Registration from "./components/security/Registration";
 import CreateArticle from "./components/article/CreateArticle";
-import ViewOffer from "./components/ViewOffer";
+import ViewOffer from "./components/article/ViewOffer";
 import FeedsColumn from "./components/FeedsColumn";
 import SearchPage from "./components/SearchPage";
 

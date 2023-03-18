@@ -5,7 +5,7 @@ import { useAppSelector } from "../../hooks/state.hooks";
 import { formatMoney } from "../../helpers/formatters.helper";
 import { Link } from "react-router-dom";
 
-type Props = {
+export type FeedOfferProps = {
   item: {
     "@id": string;
     bids: any[];
@@ -23,7 +23,7 @@ type Props = {
   };
 };
 
-function FeedOffer({ item }: Props) {
+function FeedOffer({ item }: FeedOfferProps) {
   const state = useAppSelector((state) => state);
   const userId = selectId(state);
   const isAuthenticated = selectIsLogged(state);

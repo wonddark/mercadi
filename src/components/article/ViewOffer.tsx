@@ -6,6 +6,9 @@ import GoBackBtn from "../common/GoBackBtn";
 import usePageTitle from "../../hooks/page-title.hook";
 import { formatMoney } from "../../helpers/formatters.helper";
 import ArticleOptionsBtn from "../common/ArticleOptionsBtn";
+import PostBidBtn from "../bid/PostBidBtn";
+import { useAppSelector } from "../../hooks/state.hooks";
+import { selectId, selectIsLogged } from "../../state/slices/session.slice";
 
 dayjs.extend(relativeTime);
 
@@ -13,6 +16,8 @@ function ViewOffer() {
   const { offerId } = useParams();
   const { data, isLoading } = useGetOfferByIdQuery(`${offerId}`);
   usePageTitle({ name: data?.name, loading: isLoading });
+  const isAuthenticated = useAppSelector(selectIsLogged);
+  const userId = useAppSelector(selectId);
   return (
     <div className="container-xxl">
       <div className="row">
@@ -36,6 +41,29 @@ function ViewOffer() {
                   <i className="bi bi-flag-fill me-1" />
                   {formatMoney(data.highestBid.quantity)}
                 </p>
+                {isAuthenticated && data.user.id !== userId && (
+                  <div className="mt-1">
+                    <PostBidBtn
+                      offerId={data["@id"]}
+                      highestBid={data.highestBid.quantity}
+                    />
+                  </div>
+                )}
+                <div className="container">
+                  <div className="row gap-1 my-3">
+                    {data.medias.map((token: any) => (
+                      <button
+                        key={token.id}
+                        className="col offer-media border-0"
+                        style={{
+                          backgroundImage: `url("${
+                            process.env.REACT_APP_API_URL + token.contentUrl
+                          }")`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
               </>
             ) : null}
           </div>

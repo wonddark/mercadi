@@ -29,7 +29,7 @@ function useCompleteRegistration() {
     updateUserData({ id, name: data.name, lastname: data.lastname })
       .unwrap()
       .then(() => {
-        if ("backTo" in state) {
+        if (state && "backTo" in state) {
           navigate(state.backTo);
         } else {
           navigate("/muro");

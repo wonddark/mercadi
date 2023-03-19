@@ -56,7 +56,7 @@ function useLogin() {
           .unwrap()
           .then((resp) => {
             if (resp.name && resp.lastname) {
-              if ("backTo" in state) {
+              if (state && "backTo" in state) {
                 navigate(state.backTo);
               } else {
                 navigate("/muro");

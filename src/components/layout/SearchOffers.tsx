@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function useSearch() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,18 +19,23 @@ function useSearch() {
 
 function SearchOffers() {
   const { searchTerm, updateSearchTerm, doSearch } = useSearch();
+  const { pathname } = useLocation();
   return (
-    <form className="h-100 w-100" onSubmit={doSearch}>
-      <input
-        type="search"
-        placeholder="Buscar artículos..."
-        className="form-control"
-        name="search-field"
-        value={searchTerm}
-        onChange={updateSearchTerm}
-      />
-      <input type="submit" hidden />
-    </form>
+    <>
+      {!pathname.includes("buscar") ? (
+        <form className="h-100 w-100" onSubmit={doSearch}>
+          <input
+            type="search"
+            placeholder="Buscar artículos..."
+            className="form-control"
+            name="search-field"
+            value={searchTerm}
+            onChange={updateSearchTerm}
+          />
+          <input type="submit" hidden />
+        </form>
+      ) : null}
+    </>
   );
 }
 

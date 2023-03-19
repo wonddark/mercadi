@@ -9,7 +9,7 @@ function NotLoggedNavItems() {
         </Link>
       </li>
       <li className="nav-item">
-        <Link to="/registro" className="btn btn-success">
+        <Link to="/registro" className="btn btn-primary">
           <i className="bi bi-person-plus-fill me-md-2" />
           <span className="d-none d-md-inline">Crear cuenta</span>
         </Link>

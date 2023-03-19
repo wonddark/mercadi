@@ -58,14 +58,6 @@ function FeedOffer({ item }: FeedOfferProps) {
               <i className="bi bi-flag-fill me-1" />
               {formatMoney(item.highestBid.quantity)}
             </span>
-            {/*{isAuthenticated && item.user.id !== userId && (
-              <div className="mt-1">
-                <PostBidBtn
-                  offerId={item["@id"]}
-                  highestBid={item.highestBid.quantity}
-                />
-              </div>
-            )}*/}
           </div>
         </div>
       </div>

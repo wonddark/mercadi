@@ -10,7 +10,7 @@ function LoggedNavItems() {
       <li className="nav-item">
         <Link
           to="/perfil/ofertas/crear"
-          className="btn btn-success"
+          className="btn btn-primary"
           aria-label="Agregar oferta"
           title="Agregar nuevo artículo en venta"
         >

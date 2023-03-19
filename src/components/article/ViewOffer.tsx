@@ -17,24 +17,28 @@ function ViewOffer() {
     <div className="container-xxl">
       <div className="row">
         <div className="col col-1">
-          <GoBackBtn to="/muro" />
-          {!isLoading ? <ArticleOptionsBtn article={data} /> : null}
+          <div className="card">
+            <GoBackBtn to="/muro" />
+            {!isLoading ? <ArticleOptionsBtn article={data} /> : null}
+          </div>
         </div>
         <div className="col col-11">
-          {!isLoading ? (
-            <>
-              <h1>{data.name}</h1>
-              <p className="small">
-                por <strong>{data.user.name}</strong>,{" "}
-                {dayjs(data.publishedAt).fromNow()}
-              </p>
-              <p>{data.description}</p>
-              <p className="small fw-bold text-primary">
-                <i className="bi bi-flag-fill me-1" />
-                {formatMoney(data.highestBid.quantity)}
-              </p>
-            </>
-          ) : null}
+          <div className="card card-body">
+            {!isLoading ? (
+              <>
+                <h1>{data.name}</h1>
+                <p className="small">
+                  por <strong>{data.user.name}</strong>,{" "}
+                  {dayjs(data.publishedAt).fromNow()}
+                </p>
+                <p>{data.description}</p>
+                <p className="small fw-bold text-primary">
+                  <i className="bi bi-flag-fill me-1" />
+                  {formatMoney(data.highestBid.quantity)}
+                </p>
+              </>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

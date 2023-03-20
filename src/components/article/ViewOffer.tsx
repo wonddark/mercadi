@@ -19,55 +19,63 @@ function ViewOffer() {
   const isAuthenticated = useAppSelector(selectIsLogged);
   const userId = useAppSelector(selectId);
   return (
-    <div className="container-xxl">
+    <div className="container-xxl mt-3">
       <div className="row">
-        <div className="col col-1">
-          <div className="card">
-            <GoBackBtn to="/muro" />
-            {!isLoading ? <ArticleOptionsBtn article={data} /> : null}
-          </div>
-        </div>
-        <div className="col col-11">
-          <div className="card card-body">
-            {!isLoading ? (
-              <>
-                <h1>{data.name}</h1>
-                <p className="small">
-                  por <strong>{data.user.name}</strong>,{" "}
-                  {dayjs(data.publishedAt).fromNow()}
-                </p>
-                <p>{data.description}</p>
-                <p className="small fw-bold text-primary">
-                  <i className="bi bi-flag-fill me-1" />
-                  {formatMoney(data.highestBid.quantity)}
-                </p>
-                {isAuthenticated && data.user.id !== userId && (
-                  <div className="mt-1">
-                    <PostBidBtn
-                      offerId={data["@id"]}
-                      highestBid={data.highestBid.quantity}
-                    />
-                  </div>
-                )}
-                <div className="container">
-                  <div className="row gap-1 my-3">
-                    {data.medias.map((token: any) => (
-                      <button
-                        key={token.id}
-                        className="col offer-media border-0"
-                        style={{
-                          backgroundImage: `url("${
-                            process.env.REACT_APP_API_URL + token.contentUrl
-                          }")`,
-                        }}
-                      />
-                    ))}
-                  </div>
+        <div className="col col-12 col-lg-8">
+          <div className="container-xxl">
+            <div className="row">
+              <div className="col col-1">
+                <div className="card">
+                  <GoBackBtn to="/muro" />
+                  {!isLoading ? <ArticleOptionsBtn article={data} /> : null}
                 </div>
-              </>
-            ) : null}
+              </div>
+              <div className="col col-11">
+                <div className="card card-body">
+                  {!isLoading ? (
+                    <>
+                      <h1>{data.name}</h1>
+                      <p className="small">
+                        por <strong>{data.user.name}</strong>,{" "}
+                        {dayjs(data.publishedAt).fromNow()}
+                      </p>
+                      <p>{data.description}</p>
+                      <p className="small fw-bold text-primary">
+                        <i className="bi bi-flag-fill me-1" />
+                        {formatMoney(data.highestBid.quantity)}
+                      </p>
+                      {isAuthenticated && data.user.id !== userId && (
+                        <div className="mt-1">
+                          <PostBidBtn
+                            offerId={data["@id"]}
+                            highestBid={data.highestBid.quantity}
+                          />
+                        </div>
+                      )}
+                      <div className="container">
+                        <div className="row gap-1 my-3">
+                          {data.medias.map((token: any) => (
+                            <button
+                              key={token.id}
+                              className="col offer-media border-0"
+                              style={{
+                                backgroundImage: `url("${
+                                  process.env.REACT_APP_API_URL +
+                                  token.contentUrl
+                                }")`,
+                              }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <div className="col d-none d-lg-block col-lg-4"></div>
       </div>
     </div>
   );

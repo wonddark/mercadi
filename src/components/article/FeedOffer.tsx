@@ -27,7 +27,7 @@ function FeedOffer({ item }: FeedOfferProps) {
         <div className="row">
           <div className="col">
             <Link
-              to={`/muro/oferta/${item.id}`}
+              to={`/oferta/${item.id}`}
               className="fw-light fs-4 lh-sm d-block text-decoration-none"
             >
               {item.name}

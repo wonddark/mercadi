@@ -43,15 +43,8 @@ const router = createBrowserRouter(
       <Route path="acceder" element={<LoginPage />} />
       <Route path="muro" element={<HomeFeed />}>
         <Route index element={<FeedsColumn />} />
-        <Route
-          path="oferta/:offerId"
-          element={
-            <SecureRoute>
-              <ViewOffer />
-            </SecureRoute>
-          }
-        />
       </Route>
+      <Route path="oferta/:offerId" element={<ViewOffer />} />
       <Route
         path="perfil"
         element={

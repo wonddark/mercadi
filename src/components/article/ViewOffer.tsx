@@ -44,14 +44,6 @@ function ViewOffer() {
                         <i className="bi bi-flag-fill me-1" />
                         {formatMoney(data.highestBid.quantity)}
                       </p>
-                      {isAuthenticated && data.user.id !== userId && (
-                        <div className="mt-1">
-                          <PostBidBtn
-                            offerId={data["@id"]}
-                            highestBid={data.highestBid.quantity}
-                          />
-                        </div>
-                      )}
                       <div className="container">
                         <div className="row gap-1 my-3">
                           {data.medias.map((token: any) => (
@@ -75,7 +67,18 @@ function ViewOffer() {
             </div>
           </div>
         </div>
-        <div className="col d-none d-lg-block col-lg-4"></div>
+        <div className="col d-none d-lg-block col-lg-4">
+          <div className="card card-body">
+            {isAuthenticated && data.user.id !== userId ? (
+              <div className="mt-1">
+                <PostBidBtn
+                  offerId={data["@id"]}
+                  highestBid={data.highestBid.quantity}
+                />
+              </div>
+            ) : null}
+          </div>
+        </div>
       </div>
     </div>
   );

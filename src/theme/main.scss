@@ -47,6 +47,10 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../node_modules/bootstrap/scss/transitions";
 @import "../../node_modules/bootstrap/scss/bootstrap-utilities";
 
+#root {
+  height: 100vh;
+}
+
 ::-webkit-scrollbar {
   width: 3px;
   height: 3px;

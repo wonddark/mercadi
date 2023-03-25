@@ -5,61 +5,27 @@
   src: url("/fonts/urw_gothic_l_book.ttf");
 }
 
+$variable-prefix: s-;
 $font-family-sans-serif: "URW Gothic L", sans-serif;
-$white: #fff;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$purple: #6f42c1;
-$purple-extra-light: tint-color($purple, 97%);
-$purple-100: tint-color($purple, 80%);
-$purple-200: tint-color($purple, 60%);
-$purple-300: tint-color($purple, 40%);
-$purple-400: tint-color($purple, 20%);
-$purple-500: $purple;
-$purple-600: shade-color($purple, 20%);
-$purple-700: shade-color($purple, 40%);
-$purple-800: shade-color($purple, 60%);
-$purple-900: shade-color($purple, 80%);
-$purple-950: shade-color($purple, 90%);
-$yellow: #ffc107;
-$yellow-extra-light: tint-color($yellow, 97%);
-$yellow-100: tint-color($yellow, 80%);
-$yellow-200: tint-color($yellow, 60%);
-$yellow-300: tint-color($yellow, 40%);
-$yellow-400: tint-color($yellow, 20%);
-$yellow-500: $yellow;
-$yellow-600: shade-color($yellow, 20%);
-$yellow-700: shade-color($yellow, 40%);
-$yellow-800: shade-color($yellow, 60%);
-$yellow-900: shade-color($yellow, 80%);
-$yellow-950: shade-color($yellow, 90%);
-$primary: $purple-500;
-$success: $yellow-400;
-$light: $purple-100;
-$dark: $purple-700;
-$navbar-dark: $purple-900;
+$green: #198754;
+$primary: $green;
+$red: #dc3545;
+$danger: $red;
+$gray-600: #6c757d;
+$info: $gray-600;
+$navbar-dark: shade-color($primary, 80%);
 $dropdown-dark-bg: $navbar-dark;
-$body-bg: $purple-extra-light;
-$body-color: $yellow-900;
-$cancel: $gray-300;
-$light-gray: $gray-200;
+$body-bg: tint-color($primary, 98%);
+$body-color: shade-color($primary, 90%);
+$border-radius-sm: 0.25rem;
+$btn-border-radius: $border-radius-sm;
 
 @import "../../node_modules/bootstrap/scss/variables";
 
 $custom-colors: (
   "navbar-dark": $navbar-dark,
-  "cancel": $cancel,
-  "light-gray": $light-gray
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
-$input-bg: $white;
 
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/reboot";
@@ -82,14 +48,14 @@ $input-bg: $white;
 @import "../../node_modules/bootstrap/scss/bootstrap-utilities";
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
   height: 3px;
   background-color: #f5f5f5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: $purple-700;
-  border: 1px solid $purple-700;
+  background-color: shade-color($primary, 70%);
+  border: 1px solid shade-color($primary, 70%);
   border-radius: $border-radius-lg;
 }
 
@@ -99,13 +65,13 @@ $input-bg: $white;
 }
 
 ::selection {
-  background: $purple-200;
+  background: tint-color($primary, 80%);
 }
 
 hr {
   margin-top: map-get($spacers, 4);
   margin-bottom: map-get($spacers, 4);
-  border-color: $yellow-700;
+  border-color: shade-color($primary, 70%);
   border-width: 2px;
 }
 
@@ -113,13 +79,9 @@ $form-accented-bg: var(--bs-light-rgb);
 $form-accented-gradient: radial-gradient(circle at center bottom, rgba($white, 0.25), rgba($white, 0));
 
 .form-accented {
-  --bs-bg-opacity: 1;
-
   padding: map-get($spacers, 4);
-  border: map-get($border-widths, 3);
-  border-radius: $border-radius-xl;
-  background-color: rgba($form-accented-bg, var(--bs-bg-opacity));
-  background-image: $form-accented-gradient;
+  border-radius: $border-radius-sm;
+  box-shadow: $box-shadow;
 }
 
 @include media-breakpoint-up("md") {
@@ -129,12 +91,12 @@ $form-accented-gradient: radial-gradient(circle at center bottom, rgba($white, 0
 }
 
 .form-accented p:first-child {
-  margin-bottom: map-get($spacers, 5);
+  margin-bottom: map-get($spacers, 3);
   text-align: center;
   line-height: 1;
 }
 
-$dark-success: $yellow-700;
+$dark-success: tint-color($primary, 45%);
 $form-accented-link-color: $dark-success;
 $form-accented-shade-percent: 20%;
 

@@ -24,15 +24,20 @@ function SearchOffers() {
     <>
       {!pathname.includes("buscar") ? (
         <form className="h-100 w-100" onSubmit={doSearch}>
-          <input
-            type="search"
-            placeholder="Buscar artículos..."
-            className="form-control"
-            name="search-field"
-            value={searchTerm}
-            onChange={updateSearchTerm}
-          />
-          <input type="submit" hidden />
+          <div className="input-group">
+            <input
+              type="search"
+              placeholder="Buscar artículos..."
+              className="form-control shadow-none"
+              style={{ borderRight: "none" }}
+              name="search-field"
+              value={searchTerm}
+              onChange={updateSearchTerm}
+            />
+            <button className="btn btn-light" type="submit">
+              <i className="bi bi-search" />
+            </button>
+          </div>
         </form>
       ) : null}
     </>

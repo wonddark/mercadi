@@ -81,7 +81,7 @@ function RegistrationForm() {
         Crear cuenta
       </button>
       <hr className="my-4" />
-      <small className="text-muted">
+      <small>
         Al hacer click en Crear cuenta aceptas nuestros términos de uso.
       </small>
       <Link to="/acceder">Accede a tu cuenta</Link>

@@ -4,7 +4,7 @@ function NotLoggedNavItems() {
   return (
     <>
       <li className="nav-item d-none d-md-inline me-md-1">
-        <Link to="/acceder" className="nav-link link-light">
+        <Link to="/acceder" className="nav-link">
           <span className="">Acceder</span>
         </Link>
       </li>

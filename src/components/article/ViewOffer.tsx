@@ -69,7 +69,7 @@ function ViewOffer() {
           </div>
         </div>
         <div className="col d-none d-lg-block col-lg-4">
-          {isAuthenticated && data.user.id !== userId ? (
+          {isAuthenticated && !isLoading && data.user.id !== userId ? (
             <div className="mt-1">
               <PostBidBtn
                 offerId={data["@id"]}

@@ -41,7 +41,7 @@ function ViewOffer() {
                         {dayjs(data.publishedAt).fromNow()}
                       </p>
                       <p>{data.description}</p>
-                      <p className="small fw-bold text-primary">
+                      <p className="small fw-bold text-primary m-0">
                         <i className="bi bi-flag-fill me-1" />
                         {formatMoney(data.highestBid.quantity)}
                         <span
@@ -51,22 +51,24 @@ function ViewOffer() {
                           Oferta actual
                         </span>
                       </p>
-                      <div className="container">
-                        <div className="row gap-1 my-3">
-                          {data.medias.map((token: any) => (
-                            <button
-                              key={token.id}
-                              className="col offer-media border-0"
-                              style={{
-                                backgroundImage: `url("${
-                                  process.env.REACT_APP_API_URL +
-                                  token.contentUrl
-                                }")`,
-                              }}
-                            />
-                          ))}
+                      {data.medias.length > 0 ? (
+                        <div className="container mt-1">
+                          <div className="row gap-1 my-3">
+                            {data.medias.map((token: any) => (
+                              <button
+                                key={token.id}
+                                className="col offer-media border-0"
+                                style={{
+                                  backgroundImage: `url("${
+                                    process.env.REACT_APP_API_URL +
+                                    token.contentUrl
+                                  }")`,
+                                }}
+                              />
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      ) : null}
                     </>
                   ) : null}
                 </div>

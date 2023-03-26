@@ -44,6 +44,12 @@ function ViewOffer() {
                       <p className="small fw-bold text-primary">
                         <i className="bi bi-flag-fill me-1" />
                         {formatMoney(data.highestBid.quantity)}
+                        <span
+                          className="text-info ms-1"
+                          style={{ fontSize: "0.7rem" }}
+                        >
+                          Oferta actual
+                        </span>
                       </p>
                       <div className="container">
                         <div className="row gap-1 my-3">

@@ -47,10 +47,6 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../node_modules/bootstrap/scss/transitions";
 @import "../../node_modules/bootstrap/scss/bootstrap-utilities";
 
-#root {
-  height: 100vh;
-}
-
 ::-webkit-scrollbar {
   width: 3px;
   height: 3px;
@@ -84,8 +80,13 @@ $form-accented-gradient: radial-gradient(circle at center bottom, rgba($white, 0
 
 .form-accented {
   padding: map-get($spacers, 2) map-get($spacers, 2) map-get($spacers, 3);
-  border-radius: $border-radius-sm;
-  box-shadow: $box-shadow;
+}
+
+@include media-breakpoint-up("md") {
+  .form-accented {
+    border-radius: $border-radius-sm;
+    box-shadow: $box-shadow;
+  }
 }
 
 @include media-breakpoint-up("lg") {

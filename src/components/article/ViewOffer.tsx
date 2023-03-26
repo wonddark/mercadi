@@ -52,12 +52,12 @@ function ViewOffer() {
                         </span>
                       </p>
                       {data.medias.length > 0 ? (
-                        <div className="container mt-1">
+                        <div className="container-xxl mt-1">
                           <div className="row gap-1 my-3">
                             {data.medias.map((token: any) => (
                               <button
                                 key={token.id}
-                                className="col offer-media border-0"
+                                className="col article-media border-0"
                                 style={{
                                   backgroundImage: `url("${
                                     process.env.REACT_APP_API_URL +

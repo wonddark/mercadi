@@ -9,6 +9,7 @@ import ArticleOptionsBtn from "../common/ArticleOptionsBtn";
 import PostBidBtn from "../bid/PostBidBtn";
 import { useAppSelector } from "../../hooks/state.hooks";
 import { selectId, selectIsLogged } from "../../state/slices/session.slice";
+import LoginForm from "../security/LoginForm";
 
 dayjs.extend(relativeTime);
 
@@ -68,16 +69,16 @@ function ViewOffer() {
           </div>
         </div>
         <div className="col d-none d-lg-block col-lg-4">
-          <div className="card card-body">
-            {isAuthenticated && data.user.id !== userId ? (
-              <div className="mt-1">
-                <PostBidBtn
-                  offerId={data["@id"]}
-                  highestBid={data.highestBid.quantity}
-                />
-              </div>
-            ) : null}
-          </div>
+          {isAuthenticated && data.user.id !== userId ? (
+            <div className="mt-1">
+              <PostBidBtn
+                offerId={data["@id"]}
+                highestBid={data.highestBid.quantity}
+              />
+            </div>
+          ) : (
+            <LoginForm />
+          )}
         </div>
       </div>
     </div>

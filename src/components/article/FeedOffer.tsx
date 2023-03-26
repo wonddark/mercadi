@@ -43,7 +43,7 @@ function FeedOffer({ item }: FeedOfferProps) {
                 {item.medias.slice(0, 4).map((token) => (
                   <div
                     key={token.id}
-                    className="col offer-media"
+                    className="col article-media"
                     style={{
                       backgroundImage: `url("${
                         process.env.REACT_APP_API_URL + token.contentUrl

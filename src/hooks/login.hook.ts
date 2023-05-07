@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {
@@ -7,6 +7,7 @@ import {
   useLazyWhoAmIQuery,
 } from "../state/services/api";
 import { useLocation, useNavigate } from "react-router-dom";
+import httpStatus from "http-status";
 
 function useLogin() {
   const {
@@ -48,6 +49,7 @@ function useLogin() {
 
   const { state } = useLocation();
 
+  const [wrongCredentials, setWrongCredentials] = useState(false);
   const login = (data: { email: string; password: string }) => {
     authenticate(data)
       .unwrap()
@@ -65,6 +67,11 @@ function useLogin() {
               navigate("/registro/completar", { state });
             }
           });
+      })
+      .catch((err) => {
+        if (err.status === httpStatus.UNAUTHORIZED) {
+          setWrongCredentials(true);
+        }
       });
   };
 
@@ -75,6 +82,7 @@ function useLogin() {
     submitForm,
     control,
     isValid,
+    wrongCredentials,
     isLoading: isAuthenticating || isGettingPersonalInfo,
     isError: errorAuthenticating || errorGettingPersonalInfo,
   };

@@ -10,6 +10,7 @@ import PostBidBtn from "../bid/PostBidBtn";
 import { useAppSelector } from "../../hooks/state.hooks";
 import { selectId, selectIsLogged } from "../../state/slices/session.slice";
 import LoginForm from "../security/LoginForm";
+import Breadcrumbs from "../common/Breadcrumbs";
 
 dayjs.extend(relativeTime);
 
@@ -22,20 +23,31 @@ function ViewOffer() {
   return (
     <div className="container-xxl mt-3">
       <div className="row">
-        <div className="col col-12 col-lg-8">
+        <div className="col col-12 col-md-8">
           <div className="container-xxl">
+            <Breadcrumbs />
             <div className="row">
-              <div className="col col-1">
+              <div className="d-none d-lg-block col-lg-1">
                 <div className="card">
                   <GoBackBtn to="/muro" />
                   {!isLoading ? <ArticleOptionsBtn article={data} /> : null}
                 </div>
               </div>
-              <div className="col col-11">
+              <div className="col-lg-11">
+                <div className="card d-flex d-lg-none">
+                  <GoBackBtn to="/muro" />
+                </div>
                 <div className="card card-body">
                   {!isLoading ? (
                     <>
-                      <h1>{data.name}</h1>
+                      <div className="row">
+                        <div className="col-11">
+                          <h1>{data.name}</h1>
+                        </div>
+                        <div className="col-1">
+                          <ArticleOptionsBtn article={data} />
+                        </div>
+                      </div>
                       <p className="small">
                         por <strong>{data.user.name}</strong>,{" "}
                         {dayjs(data.publishedAt).fromNow()}
@@ -76,14 +88,16 @@ function ViewOffer() {
             </div>
           </div>
         </div>
-        <div className="col d-none d-lg-block col-lg-4">
-          {isAuthenticated && !isLoading && data.user.id !== userId ? (
-            <div className="mt-1">
-              <PostBidBtn
-                offerId={data["@id"]}
-                highestBid={data.highestBid.quantity}
-              />
-            </div>
+        <div className="col d-none d-md-block col-md-4">
+          {isAuthenticated ? (
+            !isLoading && data.user.id !== userId ? (
+              <div className="mt-1">
+                <PostBidBtn
+                  offerId={data["@id"]}
+                  highestBid={data.highestBid.quantity}
+                />
+              </div>
+            ) : null
           ) : (
             <LoginForm />
           )}

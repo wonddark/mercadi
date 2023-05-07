@@ -3,11 +3,22 @@ import { Link } from "react-router-dom";
 import useLogin from "../../hooks/login.hook";
 
 function LoginForm() {
-  const { registerPassword, submitForm, control, isValid, isLoading } =
-    useLogin();
+  const {
+    registerPassword,
+    submitForm,
+    control,
+    isValid,
+    isLoading,
+    wrongCredentials,
+  } = useLogin();
   return (
     <form onSubmit={submitForm} className="form-accented">
       <p className="display-6">Acceder</p>
+      {wrongCredentials ? (
+        <div className="alert alert-danger" role="alert">
+          A simple danger alert—check it out!
+        </div>
+      ) : null}
       <Controller
         name="email"
         control={control}

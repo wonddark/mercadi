@@ -2,6 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import sessionReducer, { SESSION_STORE_KEY } from "./slices/session.slice";
 import api, { API_STORE_KEY, reducer as apiReducer } from "./services/api";
 import pageTitleReducer, { PAGE_TITLE_KEY } from "./slices/page-title.slice";
+import breadcrumbReducer, {
+  BREADCRUMB_STORE_KEY,
+} from "./slices/breadcrumb.slice";
 
 const STORAGE_KEY = "subastia";
 const persistedState = (() => {
@@ -23,6 +26,7 @@ export const store = configureStore({
     [SESSION_STORE_KEY]: sessionReducer,
     [API_STORE_KEY]: apiReducer,
     [PAGE_TITLE_KEY]: pageTitleReducer,
+    [BREADCRUMB_STORE_KEY]: breadcrumbReducer,
   },
   preloadedState: persistedState,
   middleware: (getDefaultMiddleware) =>

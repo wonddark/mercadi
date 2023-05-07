@@ -16,7 +16,7 @@ function LoginForm() {
       <p className="display-6">Acceder</p>
       {wrongCredentials ? (
         <div className="alert alert-danger" role="alert">
-          A simple danger alert—check it out!
+          Credenciales incorrectas
         </div>
       ) : null}
       <Controller

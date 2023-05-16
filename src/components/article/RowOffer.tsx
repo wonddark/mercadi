@@ -15,7 +15,7 @@ function RowOffer({
 }: Props) {
   return (
     <div className="card card-body my-1" style={{ cursor: "pointer" }}>
-      <a href={`/muro/oferta/${id}`} className="text-decoration-none text-body">
+      <a href={`/oferta/${id}`} className="text-decoration-none text-body">
         <div className="row">
           <div className="col">{name}</div>
           <div className="col text-end">{formatMoney(bids[0].quantity)}</div>

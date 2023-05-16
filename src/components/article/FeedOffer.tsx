@@ -27,7 +27,7 @@ function FeedOffer({ item }: FeedOfferProps) {
         <div className="row">
           <div className="col">
             <Link
-              to={`/muro/oferta/${item.id}`}
+              to={`/oferta/${item.id}`}
               className="fw-light fs-4 lh-sm d-block text-decoration-none"
             >
               {item.name}
@@ -43,7 +43,7 @@ function FeedOffer({ item }: FeedOfferProps) {
                 {item.medias.slice(0, 4).map((token) => (
                   <div
                     key={token.id}
-                    className="col offer-media"
+                    className="col article-media"
                     style={{
                       backgroundImage: `url("${
                         process.env.REACT_APP_API_URL + token.contentUrl

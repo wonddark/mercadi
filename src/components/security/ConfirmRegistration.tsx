@@ -1,4 +1,4 @@
-import { ReactComponent as EmailSent } from "../../assets/undraw_mail_sent.svg";
+import {ReactComponent as EmailSent} from "../../assets/undraw_mail_sent.svg";
 import useConfirmRegistration from "../../hooks/confirm-registration.hook";
 import usePageTitle from "../../hooks/page-title.hook";
 import useIsLogged from "../../hooks/is-logged.hook";
@@ -20,7 +20,7 @@ function ConfirmRegistration() {
           <p className="lead mb-4">
             Hemos recibido tu solicitud y la hemos respondido con un mensaje que
             contiene los pasos necesarios para confirmar tu registro en
-            Subastia, por favor, ve a tu bandeja de entrada, confirma el
+            {process.env.REACT_APP_APP_NAME}, por favor, ve a tu bandeja de entrada, confirma el
             registro y nos vemos aquí de nuevo
           </p>
           <form className="my-3">

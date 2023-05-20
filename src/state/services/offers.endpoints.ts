@@ -18,12 +18,11 @@ const offersEndpoints = api.injectEndpoints({
       query: ({
         page = 1,
         itemsPerPage = 15,
-        open = true,
-        name = "",
-        description = "",
+        open = undefined,
+        query = "",
       }: GETOffersParameters) => ({
         url: "/offers",
-        params: { page, itemsPerPage, open, name, description },
+        params: { page, itemsPerPage, open, query },
       }),
       providesTags: ["ENTITY_OFFER"],
     }),

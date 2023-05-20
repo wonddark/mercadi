@@ -16,8 +16,9 @@ import SecureRoute from "./components/security/SecureRoute";
 import HomePage from "./components/HomePage";
 import Registration from "./components/security/Registration";
 import CreateArticle from "./components/article/CreateArticle";
-import ViewOffer from "./components/ViewOffer";
+import ViewOffer from "./components/article/ViewOffer";
 import FeedsColumn from "./components/FeedsColumn";
+import SearchPage from "./components/SearchPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,15 +43,8 @@ const router = createBrowserRouter(
       <Route path="acceder" element={<LoginPage />} />
       <Route path="muro" element={<HomeFeed />}>
         <Route index element={<FeedsColumn />} />
-        <Route
-          path="oferta/:offerId"
-          element={
-            <SecureRoute>
-              <ViewOffer />
-            </SecureRoute>
-          }
-        />
       </Route>
+      <Route path="oferta/:offerId" element={<ViewOffer />} />
       <Route
         path="perfil"
         element={
@@ -86,6 +80,7 @@ const router = createBrowserRouter(
           }
         />
       </Route>
+      <Route path="/buscar" element={<SearchPage />} />
     </Route>
   )
 );

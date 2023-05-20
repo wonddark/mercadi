@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {
   useAuthenticateMutation,
   useLazyWhoAmIQuery,
 } from "../state/services/api";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import httpStatus from "http-status";
 
 function useLogin() {
   const {
@@ -46,6 +47,9 @@ function useLogin() {
     trigger().finally();
   };
 
+  const { state } = useLocation();
+
+  const [wrongCredentials, setWrongCredentials] = useState(false);
   const login = (data: { email: string; password: string }) => {
     authenticate(data)
       .unwrap()
@@ -54,11 +58,20 @@ function useLogin() {
           .unwrap()
           .then((resp) => {
             if (resp.name && resp.lastname) {
-              navigate("/muro");
+              if (state && "backTo" in state) {
+                navigate(state.backTo);
+              } else {
+                navigate("/muro");
+              }
             } else {
-              navigate("/registro/completar");
+              navigate("/registro/completar", { state });
             }
           });
+      })
+      .catch((err) => {
+        if (err.status === httpStatus.UNAUTHORIZED) {
+          setWrongCredentials(true);
+        }
       });
   };
 
@@ -69,6 +82,7 @@ function useLogin() {
     submitForm,
     control,
     isValid,
+    wrongCredentials,
     isLoading: isAuthenticating || isGettingPersonalInfo,
     isError: errorAuthenticating || errorGettingPersonalInfo,
   };

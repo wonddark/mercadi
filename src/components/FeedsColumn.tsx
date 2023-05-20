@@ -8,7 +8,7 @@ function FeedsColumn() {
   return (
     <div className="feed-column container-xxl">
       {isLoading ? (
-        [1, 2, 3, 4, 5].map((item) => <FeedOfferPlaceholder key={item} />)
+        <FeedOfferPlaceholder />
       ) : data.length > 0 ? (
         <div
           ref={infinityRef}

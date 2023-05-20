@@ -7,10 +7,10 @@ function LoggedNavItems() {
   const { name, closeSession } = useProfile();
   return (
     <>
-      <li className="nav-item me-1">
+      <li className="nav-item">
         <Link
           to="/perfil/ofertas/crear"
-          className="btn btn-success"
+          className="btn btn-primary"
           aria-label="Agregar oferta"
           title="Agregar nuevo artículo en venta"
         >
@@ -18,10 +18,10 @@ function LoggedNavItems() {
           <span className="d-none d-sm-inline">Crear artículo</span>
         </Link>
       </li>
-      <li className="nav-item me-1">
+      <li className="nav-item dropdown">
         <button
           id="dropdown-notifications"
-          className="btn bg-transparent text-white dropdown-toggle"
+          className="btn btn-link text-white"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           aria-label="Notifications"
@@ -68,13 +68,13 @@ function LoggedNavItems() {
       </li>
       <li className="nav-item dropdown">
         <button
-          className="btn bg-transparent text-white dropdown-toggle"
+          className="btn btn-link text-white"
           id="dropdown-profile"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           aria-label="Profile"
         >
-          <i className="bi bi-person-circle me-md-2" />
+          <i className="bi bi-person-circle" />
         </button>
         <ul
           className="dropdown-menu dropdown-menu-dark dropdown-menu-end"

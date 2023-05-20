@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function SidebarNoOffers() {
   return (
-    <div className="card card-body mt-2">
+    <div className="card card-body mt-2 border-0">
       <WebShopping style={{ width: "60%", height: "auto", margin: "0 auto" }} />
-      <p className="lead">
+      <p className="small mt-1">
         No tienes ofertas abiertas en este momento. Para ver tus ofertas
         cerradas ve <Link to="/perfil/ofertas">aquí</Link>
       </p>

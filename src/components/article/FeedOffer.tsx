@@ -1,11 +1,8 @@
 import dayjs from "dayjs";
-import PostBidBtn from "../bid/PostBidBtn";
-import { selectId, selectIsLogged } from "../../state/slices/session.slice";
-import { useAppSelector } from "../../hooks/state.hooks";
 import { formatMoney } from "../../helpers/formatters.helper";
 import { Link } from "react-router-dom";
 
-type Props = {
+export type FeedOfferProps = {
   item: {
     "@id": string;
     bids: any[];
@@ -23,17 +20,14 @@ type Props = {
   };
 };
 
-function FeedOffer({ item }: Props) {
-  const state = useAppSelector((state) => state);
-  const userId = selectId(state);
-  const isAuthenticated = selectIsLogged(state);
+function FeedOffer({ item }: FeedOfferProps) {
   return (
     <div className="card card-body shadow-sm mb-4">
       <div className="container">
         <div className="row">
           <div className="col">
             <Link
-              to={`/muro/oferta/${item.id}`}
+              to={`/oferta/${item.id}`}
               className="fw-light fs-4 lh-sm d-block text-decoration-none"
             >
               {item.name}
@@ -49,7 +43,7 @@ function FeedOffer({ item }: Props) {
                 {item.medias.slice(0, 4).map((token) => (
                   <div
                     key={token.id}
-                    className="col offer-media"
+                    className="col article-media"
                     style={{
                       backgroundImage: `url("${
                         process.env.REACT_APP_API_URL + token.contentUrl
@@ -64,14 +58,6 @@ function FeedOffer({ item }: Props) {
               <i className="bi bi-flag-fill me-1" />
               {formatMoney(item.highestBid.quantity)}
             </span>
-            {isAuthenticated && item.user.id !== userId && (
-              <div className="mt-1">
-                <PostBidBtn
-                  offerId={item["@id"]}
-                  highestBid={item.highestBid.quantity}
-                />
-              </div>
-            )}
           </div>
         </div>
       </div>

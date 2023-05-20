@@ -1,4 +1,4 @@
-# Subastia
+# Stocked
 ###### Web application for handling auction activities
 
 ### Users will be able to:

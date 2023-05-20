@@ -1,14 +1,14 @@
 import { useAppSelector } from "../../hooks/state.hooks";
 import { selectIsLogged } from "../../state/slices/session.slice";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 function SecureRoute({ children }: { children: JSX.Element }) {
-  const state = useAppSelector((state) => state);
-  const isLogged = selectIsLogged(state);
+  const isLogged = useAppSelector(selectIsLogged);
+  const { pathname } = useLocation();
   if (isLogged) {
     return children;
   } else {
-    return <Navigate to="/acceder" />;
+    return <Navigate to="/acceder" state={{ backTo: pathname }} />;
   }
 }
 

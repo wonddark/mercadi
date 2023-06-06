@@ -4,7 +4,7 @@ import {RootState} from "../store";
 export const PAGE_TITLE_KEY = "page-title";
 
 type PAGE_TITLE_STATE = string;
-const SITE_NAME = process.env.APP_NAME;
+const SITE_NAME = process.env.REACT_APP_APP_NAME;
 const SITE_SLOGAN = "El precio ideal para tus ventas";
 const initialState: PAGE_TITLE_STATE = `${SITE_NAME} - ${SITE_SLOGAN}`;
 

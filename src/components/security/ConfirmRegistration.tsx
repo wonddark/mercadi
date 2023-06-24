@@ -38,7 +38,7 @@ function ConfirmRegistration() {
                 onClick={submitValidation}
                 disabled={!Boolean(validationId)}
               >
-                Validar
+                <i className="bi bi-check-circle-fill" /> Validar registro
               </button>
               <button
                 type="button"

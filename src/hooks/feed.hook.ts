@@ -1,4 +1,4 @@
-import { useLazyGetOffersQuery } from "../state/services/offers.endpoints";
+import { useLazyGetOffersQuery } from "../state/services/items.endpoints";
 import { useEffect, useState } from "react";
 import useInfiniteScroll from "react-easy-infinite-scroll-hook";
 

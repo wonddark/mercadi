@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 export type FeedOfferProps = {
   item: {
     "@id": string;
-    bids: any[];
     description: string;
     highestBid: any;
     id: string;
@@ -17,6 +16,7 @@ export type FeedOfferProps = {
       name: string;
       lastname: string;
     };
+    bids: { highestOffer: number };
   };
 };
 
@@ -56,7 +56,7 @@ function FeedOffer({ item }: FeedOfferProps) {
             <p className="m-0">{item.description}</p>
             <span className="d-block mt-3 small fw-bold text-primary">
               <i className="bi bi-flag-fill me-1" />
-              {formatMoney(item.highestBid.quantity)}
+              {formatMoney(`${item.bids.highestOffer}`)}
             </span>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import {
   usePostMediaMutation,
   usePostOfferMutation,
-} from "../state/services/offers.endpoints";
+} from "../state/services/items.endpoints";
 import { useForm } from "react-hook-form";
 import { POSTOfferParameters } from "../types/offer.types";
 import { ChangeEvent, useState } from "react";

@@ -7,13 +7,13 @@
 
 $variable-prefix: s-;
 $font-family-sans-serif: "URW Gothic L", sans-serif;
-$green: #198754;
-$primary: $green;
+$p-color: #006685;
+$primary: $p-color;
 $red: #dc3545;
 $danger: $red;
 $gray-600: #6c757d;
 $info: $gray-600;
-$navbar-dark: shade-color($primary, 80%);
+$navbar-dark: shade-color($primary, 65%);
 $dropdown-dark-bg: $navbar-dark;
 $body-bg: tint-color($primary, 98%);
 $body-color: shade-color($primary, 90%);

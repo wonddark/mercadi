@@ -19,8 +19,12 @@ $body-bg: tint-color($primary, 98%);
 $body-color: shade-color($primary, 90%);
 $border-radius-sm: 0.25rem;
 $btn-border-radius: $border-radius-sm;
+$input-btn-focus-box-shadow: none;
+$form-select-focus-box-shadow: none;
+$form-range-thumb-focus-box-shadow: none;
 
 @import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
 
 $custom-colors: (
   "navbar-dark": $navbar-dark,

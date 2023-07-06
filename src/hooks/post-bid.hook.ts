@@ -20,11 +20,11 @@ function usePostBid({ offerId, highestBid, successCallback }: Props) {
       quantity: "",
     },
     mode: "onChange",
-    resolver: yupResolver(
+    resolver: yupResolver<BidInputs>(
       yup.object({
         offer: yup.string().required(),
         quantity: yup.number().required().min(highestBid),
-      })
+      }),
     ),
   });
 

@@ -7,8 +7,8 @@
 
 $variable-prefix: s-;
 $font-family-sans-serif: "URW Gothic L", sans-serif;
-$teal: #00637C;
-$primary: $teal;
+$crystal-teal: #00637C;
+$primary: $crystal-teal;
 $red: #dc3545;
 $danger: $red;
 $gray-600: #6c757d;
@@ -19,7 +19,8 @@ $body-bg: tint-color($primary, 98%);
 $body-color: shade-color($primary, 90%);
 $border-radius-sm: 0.25rem;
 $btn-border-radius: $border-radius-sm;
-$input-btn-focus-box-shadow: none;
+$focus-ring-box-shadow: none;
+$focus-ring-width: 0;
 $form-select-focus-box-shadow: none;
 $form-range-thumb-focus-box-shadow: none;
 

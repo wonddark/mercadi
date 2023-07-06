@@ -1,13 +1,13 @@
 import api from "./api";
 import {
   GETOffersParameters,
-  POSTOfferParameters,
-} from "../../types/offer.types";
+  POSTItemParameters,
+} from "../../types/item.types";
 
 const itemsEndpoints = api.injectEndpoints({
   endpoints: (builder) => ({
-    postOffer: builder.mutation({
-      query: (args: POSTOfferParameters) => ({
+    postItem: builder.mutation({
+      query: (args: POSTItemParameters) => ({
         url: "/items",
         method: "POST",
         body: args,
@@ -69,7 +69,7 @@ const itemsEndpoints = api.injectEndpoints({
 });
 
 export const {
-  usePostOfferMutation,
+  usePostItemMutation,
   useLazyGetOffersQuery,
   usePostMediaMutation,
   useGetOffersByUserIdQuery,

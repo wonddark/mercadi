@@ -4,62 +4,80 @@ import usePostItem from "../../hooks/post-item.hook";
 import usePageTitle from "../../hooks/page-title.hook";
 
 function CreateArticle() {
-  const { control, updateMedias, submit, goBackToFeed, isValid, isLoading } =
-    usePostItem();
+  const {
+    control,
+    fields,
+    append,
+    remove,
+    updateMedias,
+    submit,
+    goBackToFeed,
+    isValid,
+    isLoading,
+  } = usePostItem();
   usePageTitle({ name: "Crear artículo" });
   return (
     <div className="row mt-3">
       <div className="col col-12 col-lg-8 mx-auto">
-        <form onSubmit={submit}>
+        <form onSubmit={submit} noValidate>
           <Controller
             control={control}
             name="description"
-            render={({ field }) => (
+            render={({ field, fieldState: { invalid, error } }) => (
               <div className="form-floating mb-3">
                 <input
                   type="text"
-                  className="form-control"
+                  className={`form-control${invalid ? " is-invalid" : ""}`}
                   placeholder="Título/descripción"
                   id="item-description"
                   {...field}
                 />
                 <label htmlFor="item-description">Descripción</label>
+                {invalid ? (
+                  <div className="invalid-feedback">{error?.message}</div>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={control}
             name="price"
-            render={({ field }) => (
+            render={({ field, fieldState: { invalid, error } }) => (
               <div className="form-floating mb-3">
                 <input
                   type="number"
                   min={50}
                   max={1000000}
-                  className="form-control"
+                  className={`form-control${invalid ? " is-invalid" : ""}`}
                   placeholder="Precio"
                   id="item-price"
                   {...field}
                 />
                 <label htmlFor="item-price">Precio</label>
+                {invalid ? (
+                  <div className="invalid-feedback">{error?.message}</div>
+                ) : null}
               </div>
             )}
           />
           <Controller
             control={control}
             name="additionalInfo"
-            render={({ field }) => (
+            render={({ field, fieldState: { invalid, error } }) => (
               <div className="form-floating mb-3">
                 <textarea
-                  className="form-control"
+                  className={`form-control${invalid ? " is-invalid" : ""}`}
                   placeholder="Información adicional"
                   id="item-additional-info"
-                  style={{ height: "180px" }}
+                  style={{ height: "240px" }}
                   {...field}
                 />
                 <label htmlFor="item-additional-info">
                   Información adicional
                 </label>
+                {invalid ? (
+                  <div className="invalid-feedback">{error?.message}</div>
+                ) : null}
               </div>
             )}
           />
@@ -101,6 +119,23 @@ function CreateArticle() {
               </div>
             )}
           />
+          <Controller
+            control={control}
+            name="conditionStatus"
+            render={({ field }) => (
+              <div className="mb-3">
+                <select className="form-select" {...field}>
+                  <option value={undefined}>No aplica</option>
+                  <option value={0}>Artículo nuevo</option>
+                  <option value={1}>De uso sin detalles</option>
+                  <option value={2}>De uso con detalles menores</option>
+                  <option value={3}>Detalles estéticos pero trabajando</option>
+                  <option value={4}>Reparado</option>
+                  <option value={5}>Para piezas</option>
+                </select>
+              </div>
+            )}
+          />
           <div className="mb-3">
             <input
               type="file"
@@ -111,6 +146,50 @@ function CreateArticle() {
               multiple
               onChange={updateMedias}
             />
+          </div>
+          <div className="mb-3">
+            {fields.map((item, index) => (
+              <Controller
+                key={item.id}
+                control={control}
+                render={({ field, fieldState: { invalid, error } }) => (
+                  <div key={item.id} className="input-group mb-3">
+                    <input
+                      type="tel"
+                      className={`form-control${invalid ? " is-invalid" : ""}`}
+                      placeholder="+5300000000"
+                      aria-label="Recipient's username"
+                      aria-describedby="button-addon2"
+                      {...field}
+                    />
+                    <button
+                      className="btn btn-sm btn-outline-secondary"
+                      type="button"
+                      onClick={() => remove(index)}
+                    >
+                      <i className="bi bi-dash-circle-fill" />
+                    </button>
+                    {invalid ? (
+                      <div className="invalid-feedback">{error?.message}</div>
+                    ) : null}
+                  </div>
+                )}
+                name={`contactPhones.${index}.phone`}
+              />
+            ))}
+            <button
+              className="btn btn-primary"
+              onClick={() => append({ phone: "" })}
+            >
+              Agregar
+            </button>
+            <button
+              className="btn btn-link text-warning text-decoration-none ms-1"
+              onClick={() => remove()}
+              disabled={fields.length === 0}
+            >
+              Quitar todos
+            </button>
           </div>
           <div className="text-end">
             <button

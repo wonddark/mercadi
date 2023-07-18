@@ -3,8 +3,9 @@ export type POSTItemParameters = {
   price: number;
   bidding: boolean;
   contactPhones: string[];
-  additionalInfo: string;
+  additionalInfo: string | undefined;
   homeDelivery: number;
+  conditionStatus: number | undefined;
 };
 
 export type GETOffersParameters = {

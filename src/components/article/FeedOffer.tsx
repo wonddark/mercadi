@@ -25,25 +25,62 @@ export type FeedOfferProps = {
 };
 
 function FeedOffer({ item }: FeedOfferProps) {
+  function formatContacts() {
+    if (item.contactPhones.length > 0) {
+      if (item.contactPhones.length > 1) {
+        return (
+          <div className="d-flex flex-column mb-1">
+            <strong>Contactos</strong>
+            {item.contactPhones.map((item, index) => (
+              <a key={index} href={`tel:${item}`}>
+                <i className="bi bi-telephone-inbound-fill me-1" />
+                <span>{item}</span>
+              </a>
+            ))}
+          </div>
+        );
+      } else {
+        return (
+          <div className="d-flex flex-column mb-1">
+            <strong>Contacto</strong>
+            {item.contactPhones.map((item, index) => (
+              <a key={index} href={`tel:${item}`}>
+                <i className="bi bi-telephone-inbound-fill me-1" />
+                <span>{item}</span>
+              </a>
+            ))}
+          </div>
+        );
+      }
+    } else {
+      return (
+        <div className="mb-1">
+          <i className="bi bi-telephone-inbound-fill me-1" />
+          <span>Sin información de contacto</span>
+        </div>
+      );
+    }
+  }
+
   function formatHomeDelivery() {
     switch (item.homeDelivery) {
       case 0:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-truck me-1" />{" "}
             <span>Sin entrega a domicilio</span>
           </div>
         );
       case 1:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-truck me-1" />{" "}
             <span>Entrega a domicilio incluida</span>
           </div>
         );
       case 2:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-truck me-1" />{" "}
             <span>Entrega a domicilio con costo adicional</span>
           </div>
@@ -55,13 +92,13 @@ function FeedOffer({ item }: FeedOfferProps) {
     switch (item.bidding) {
       case true:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-bar-chart-steps me-1" /> <span>En subasta</span>
           </div>
         );
       case false:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-bar-chart-steps me-1" />{" "}
             <span>Sin subasta</span>
           </div>
@@ -73,14 +110,14 @@ function FeedOffer({ item }: FeedOfferProps) {
     switch (item.additionalInfo.length > 0) {
       case true:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-info-square-fill me-1" />{" "}
             <span>Información adicional disponible</span>
           </div>
         );
       case false:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-info-square-fill me-1" />{" "}
             <span>Información adicional no disponible</span>
           </div>
@@ -92,40 +129,40 @@ function FeedOffer({ item }: FeedOfferProps) {
     switch (item.conditionStatus) {
       case 0:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-box2-fill me-1" /> <span>Nuevo</span>
           </div>
         );
       case 1:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-box2-fill me-1" />{" "}
             <span>De uso sin detalles</span>
           </div>
         );
       case 2:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-box2-fill me-1" />{" "}
             <span>De uso con detalles menores</span>
           </div>
         );
       case 3:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-box2-fill me-1" />{" "}
             <span>Detalles estéticos pero trabajando</span>
           </div>
         );
       case 4:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-box2-fill me-1" /> <span>Reparado</span>
           </div>
         );
       case 5:
         return (
-          <div>
+          <div className="mb-1">
             <i className="bi bi-box2-fill me-1" /> <span>Para piezas</span>
           </div>
         );
@@ -172,22 +209,11 @@ function FeedOffer({ item }: FeedOfferProps) {
             ))}
           </div>
           <div className="col-12 col-md-8">
-            <div className="d-flex flex-column mb-1">
-              <strong>
-                {item.contactPhones.length > 0
-                  ? `Contacto${item.contactPhones.length > 1 ? "s" : ""}`
-                  : "Sin información de contacto"}
-              </strong>
-              {item.contactPhones.map((item, index) => (
-                <a key={index} href={`tel:${item}`}>
-                  {item}
-                </a>
-              ))}
-            </div>
+            {formatContacts()}
             {formatHomeDelivery()}
             {formatBidding()}
-            {formatAdditionalInfo()}
             {formatConditionStatus()}
+            {formatAdditionalInfo()}
           </div>
         </div>
       </div>

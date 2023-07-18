@@ -5,9 +5,30 @@ import NotLoggedNavItems from "./NotLoggedNavItems";
 import { Link } from "react-router-dom";
 import { ReactComponent as SiteLogo } from "../../assets/navbar-logo.svg";
 import SearchOffers from "./SearchOffers";
+import { useEffect, useState } from "react";
 
 function UserNav() {
   const isAuthenticated = useSelector(selectIsLogged);
+  const [currentTheme, setCurrentTheme] = useState(
+    localStorage.getItem("theme") || "light",
+  );
+
+  const setTheme = (theme: string) => {
+    if (
+      theme === "auto" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      document.documentElement.setAttribute("data-bs-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-bs-theme", theme);
+    }
+    setCurrentTheme(theme);
+  };
+
+  useEffect(() => {
+    setTheme("auto");
+  }, []);
+
   return (
     <header className="bg-navbar-dark pb-2 pb-md-0">
       <nav className="navbar navbar-expand navbar-dark bg-navbar-dark">
@@ -21,6 +42,57 @@ function UserNav() {
             </li>
             {isAuthenticated && <LoggedNavItems />}
             {!isAuthenticated && <NotLoggedNavItems />}
+            <li className="nav-item dropdown">
+              <button
+                id="dropdown-notifications"
+                className="btn btn-link text-white"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Notifications"
+              >
+                <i
+                  className={`bi ${
+                    currentTheme === "auto"
+                      ? "bi-circle-half"
+                      : currentTheme === "light"
+                      ? "bi-sun-fill"
+                      : "bi-moon-stars-fill"
+                  }`}
+                />
+              </button>
+              <ul
+                className="dropdown-menu dropdown-menu-dark dropdown-menu-end"
+                aria-labelledby="dropdown-notifications"
+              >
+                <li>
+                  <span className="dropdown-header">Tema</span>
+                </li>
+                <li>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => setTheme("light")}
+                  >
+                    <i className="bi bi-sun-fill" /> Claro
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => setTheme("dark")}
+                  >
+                    <i className="bi bi-moon-stars-fill" /> Oscuro
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => setTheme("auto")}
+                  >
+                    <i className="bi bi-circle-half" /> Automático
+                  </button>
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
       </nav>

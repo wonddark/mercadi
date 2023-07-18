@@ -16,6 +16,7 @@ $info: $gray-600;
 $navbar-dark: shade-color($primary, 80%);
 $dropdown-dark-bg: $navbar-dark;
 $body-bg: tint-color($primary, 98%);
+$body-bg-dark: shade-color($primary, 90%);
 $body-color: shade-color($primary, 90%);
 $border-radius-sm: 0.25rem;
 $btn-border-radius: $border-radius-sm;

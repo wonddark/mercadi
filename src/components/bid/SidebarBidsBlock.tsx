@@ -11,14 +11,16 @@ function SidebarBidsBlock({ data }: { data: any }) {
             quantity: number;
             deletable: boolean;
             offer: { id: string; name: string };
+            bids: { highestOffer: number };
           }) => (
             <BidsQuickView
               key={item.id}
               id={item.id}
               offerId={item.offer.id}
-              offerName={item.offer.name}
+              offerDescription={item.offer.name}
               userBid={item.quantity}
               isDeletable={item.deletable}
+              bids={item.bids}
             />
           )
         )

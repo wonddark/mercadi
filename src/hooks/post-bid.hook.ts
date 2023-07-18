@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { usePostBidMutation } from "../state/services/bids.endpoints";
+import { usePostBidMutation } from "../state/services/offers.endpoints";
 import { BidInputs } from "../types/bid.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -20,11 +20,11 @@ function usePostBid({ offerId, highestBid, successCallback }: Props) {
       quantity: "",
     },
     mode: "onChange",
-    resolver: yupResolver(
+    resolver: yupResolver<BidInputs>(
       yup.object({
         offer: yup.string().required(),
         quantity: yup.number().required().min(highestBid),
-      })
+      }),
     ),
   });
 

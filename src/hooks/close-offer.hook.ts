@@ -1,4 +1,4 @@
-import { useCloseOfferMutation } from "../state/services/offers.endpoints";
+import { useCloseOfferMutation } from "../state/services/items.endpoints";
 
 function useCloseOffer({
   offerId,

@@ -7,8 +7,8 @@
 
 $variable-prefix: s-;
 $font-family-sans-serif: "URW Gothic L", sans-serif;
-$green: #198754;
-$primary: $green;
+$crystal-teal: #00637C;
+$primary: $crystal-teal;
 $red: #dc3545;
 $danger: $red;
 $gray-600: #6c757d;
@@ -16,11 +16,17 @@ $info: $gray-600;
 $navbar-dark: shade-color($primary, 80%);
 $dropdown-dark-bg: $navbar-dark;
 $body-bg: tint-color($primary, 98%);
+$body-bg-dark: shade-color($primary, 90%);
 $body-color: shade-color($primary, 90%);
 $border-radius-sm: 0.25rem;
 $btn-border-radius: $border-radius-sm;
+$focus-ring-box-shadow: none;
+$focus-ring-width: 0;
+$form-select-focus-box-shadow: none;
+$form-range-thumb-focus-box-shadow: none;
 
 @import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
 
 $custom-colors: (
   "navbar-dark": $navbar-dark,
@@ -132,7 +138,7 @@ $form-accented-shade-percent: 20%;
 .article-media {
   background-size: cover;
   background-position: center;
-  height: 77px;
+  height: 150px;
 }
 
 .quick-access-container {

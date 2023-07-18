@@ -1,20 +1,11 @@
-import FeedQuickAccess from "./FeedQuickAccess";
-import { useAppSelector } from "../hooks/state.hooks";
-import { selectId, selectIsLogged } from "../state/slices/session.slice";
-import MustBeAuthenticated from "./MustBeAuthenticated";
 import { Outlet } from "react-router-dom";
 
 function HomeFeed() {
-  const isLogged = useAppSelector(selectIsLogged);
-  const userId = useAppSelector(selectId);
   return (
     <div className="container-xxl mt-3">
       <div className="row">
-        <div className="col col-12 col-lg-8">
+        <div className="col col-12 col-lg-8 mx-auto">
           <Outlet />
-        </div>
-        <div className="col d-none d-lg-block col-lg-4">
-          {isLogged && userId ? <FeedQuickAccess /> : <MustBeAuthenticated />}
         </div>
       </div>
     </div>

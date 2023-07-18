@@ -1,6 +1,6 @@
 import { useAppSelector } from "./state.hooks";
 import { selectId } from "../state/slices/session.slice";
-import { useGetBidsPerUserQuery } from "../state/services/bids.endpoints";
+import { useGetBidsPerUserQuery } from "../state/services/offers.endpoints";
 
 function useUserOffers({
   itemsPerPage = 30,

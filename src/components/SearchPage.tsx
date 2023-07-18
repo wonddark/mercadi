@@ -1,6 +1,6 @@
 import usePageTitle from "../hooks/page-title.hook";
 import { useSearchParams } from "react-router-dom";
-import { useLazyGetOffersQuery } from "../state/services/offers.endpoints";
+import { useLazyGetOffersQuery } from "../state/services/items.endpoints";
 import { ChangeEventHandler, useEffect, useState } from "react";
 import FeedOffer, { FeedOfferProps } from "./article/FeedOffer";
 

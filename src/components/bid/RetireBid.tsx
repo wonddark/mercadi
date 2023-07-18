@@ -1,5 +1,5 @@
 import CommonDlg from "../common/CommonDlg";
-import { useDeleteBidMutation } from "../../state/services/bids.endpoints";
+import { useDeleteBidMutation } from "../../state/services/offers.endpoints";
 
 interface Props {
   isOpen: boolean;

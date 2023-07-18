@@ -14,11 +14,24 @@ function HomePage() {
           <h1 className="display-4 fw-bold lh-1 mb-3">
             <SiteLogo style={{ width: "5em", height: "auto", fill: "#000" }} />
           </h1>
-          <p>
-            <em>El precio ideal para tus ventas</em>
+          <p className="col-lg-10 fs-5">
+            Valoramos tu tiempo, tu dinero y tu satisfacción
           </p>
-          <p className="col-lg-10 fs-4">
-            El lugar para encontrar la mejor oferta para tus artículos en venta
+          <p>
+            <ul className="list-unstyled">
+              <li>
+                <i className="bi bi-check-circle-fill text-primary"></i>{" "}
+                Contenido fuertemente moderado, nada fuera de tema
+              </li>
+              <li>
+                <i className="bi bi-check-circle-fill text-primary"></i> Toda la
+                información necesaria ordenada y categorizada
+              </li>
+              <li>
+                <i className="bi bi-check-circle-fill text-primary"></i>{" "}
+                Búsqueda perfilada y optimizada para resultados más exactos
+              </li>
+            </ul>
           </p>
         </div>
         <div className="d-none d-md-block col-md-6 col-lg-5 mx-auto">

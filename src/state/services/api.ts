@@ -40,7 +40,7 @@ const api = createApi({
   baseQuery: baseQueryWithLogout,
   refetchOnMountOrArgChange: true,
   refetchOnReconnect: true,
-  tagTypes: ["ENTITY_OFFER", "ENTITY_BID"],
+  tagTypes: ["ENTITY_ITEM", "ENTITY_BID"],
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (arg: RegisterBodyTypes) => ({

@@ -11,12 +11,13 @@ function SidebarArticlesBlock({ data }: { data: any }) {
             name: string;
             currentBid: string;
             highestBid: any;
+            bids: { highestOffer: number };
           }) => (
             <OfferQuickView
               id={item.id}
               name={item.name}
               key={item.id}
-              highestBid={item.highestBid.quantity}
+              highestBid={`${item.bids.highestOffer}`}
             />
           )
         )

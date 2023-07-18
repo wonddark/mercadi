@@ -2,19 +2,23 @@ import {
   usePostItemMutation,
   usePostMediaMutation,
 } from "../state/services/items.endpoints";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import { POSTItemParameters } from "../types/item.types";
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+type FormValues = Omit<POSTItemParameters, "contactPhones"> & {
+  contactPhones: { phone: string }[] | undefined;
+};
+
 function usePostItem() {
   const {
     handleSubmit,
     control,
     formState: { isValid },
-  } = useForm<POSTItemParameters>({
+  } = useForm<FormValues>({
     defaultValues: {
       description: "",
       price: NaN,
@@ -22,18 +26,31 @@ function usePostItem() {
       contactPhones: [],
       additionalInfo: "",
       homeDelivery: 0,
+      conditionStatus: undefined,
     },
     mode: "onChange",
     resolver: yupResolver(
       yup.object({
-        description: yup.string().required().min(70).max(255),
-        price: yup.number().required().min(1),
+        description: yup.string().required().min(8).max(255),
+        price: yup.number().required().min(10),
         bidding: yup.boolean().required(),
-        contactPhones: yup.array().required(),
-        additionalInfo: yup.string().required(),
+        contactPhones: yup.array(
+          yup.object({
+            phone: yup
+              .string()
+              .matches(/^\+53[0-9]{8}$/, "Por favor introduce un número válido")
+              .required(),
+          }),
+        ),
+        additionalInfo: yup.string(),
         homeDelivery: yup.number().required().oneOf([0, 1, 2]),
+        conditionStatus: yup.number(),
       }),
     ),
+  });
+  const { fields, append, remove } = useFieldArray<FormValues>({
+    control,
+    name: "contactPhones",
   });
   const [medias, setMedias] = useState([] as any[]);
   const [postItem, { isLoading }] = usePostItemMutation();
@@ -54,8 +71,12 @@ function usePostItem() {
     navigate("/muro");
   };
 
-  const saveItem = (data: POSTItemParameters) => {
-    postItem(data)
+  const saveItem = (data: FormValues) => {
+    const input: POSTItemParameters = {
+      ...data,
+      contactPhones: data.contactPhones?.map((item) => item.phone) ?? [],
+    };
+    postItem(input)
       .unwrap()
       .then((res) => {
         if (medias.length > 0) {
@@ -79,6 +100,9 @@ function usePostItem() {
 
   return {
     control,
+    fields,
+    append,
+    remove,
     updateMedias,
     submit,
     goBackToFeed,

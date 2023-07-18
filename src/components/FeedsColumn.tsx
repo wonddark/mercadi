@@ -10,14 +10,7 @@ function FeedsColumn() {
       {isLoading ? (
         <FeedOfferPlaceholder />
       ) : data.length > 0 ? (
-        <div
-          ref={infinityRef}
-          style={{
-            height: "85vh",
-            overflow: "auto",
-            paddingRight: "7px",
-          }}
-        >
+        <div ref={infinityRef}>
           {data.map((item) => (
             <FeedOffer key={item.id} item={item} />
           ))}

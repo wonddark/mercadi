@@ -6,31 +6,144 @@ export type FeedOfferProps = {
   item: {
     "@id": string;
     description: string;
-    highestBid: any;
     id: string;
     medias: any[];
-    name: string;
     publishedAt: string;
     user: {
       id: string;
       name: string;
       lastname: string;
     };
+    contactPhones: string[];
+    bidding: boolean;
+    price: number;
+    homeDelivery: number;
     bids: { highestOffer: number };
+    additionalInfo: string;
+    conditionStatus: number | null;
   };
 };
 
 function FeedOffer({ item }: FeedOfferProps) {
+  function formatHomeDelivery() {
+    switch (item.homeDelivery) {
+      case 0:
+        return (
+          <div>
+            <i className="bi bi-truck me-1" />{" "}
+            <span>Sin entrega a domicilio</span>
+          </div>
+        );
+      case 1:
+        return (
+          <div>
+            <i className="bi bi-truck me-1" />{" "}
+            <span>Entrega a domicilio incluida</span>
+          </div>
+        );
+      case 2:
+        return (
+          <div>
+            <i className="bi bi-truck me-1" />{" "}
+            <span>Entrega a domicilio con costo adicional</span>
+          </div>
+        );
+    }
+  }
+
+  function formatBidding() {
+    switch (item.bidding) {
+      case true:
+        return (
+          <div>
+            <i className="bi bi-bar-chart-steps me-1" /> <span>En subasta</span>
+          </div>
+        );
+      case false:
+        return (
+          <div>
+            <i className="bi bi-bar-chart-steps me-1" />{" "}
+            <span>Sin subasta</span>
+          </div>
+        );
+    }
+  }
+
+  function formatAdditionalInfo() {
+    switch (item.additionalInfo.length > 0) {
+      case true:
+        return (
+          <div>
+            <i className="bi bi-info-square-fill me-1" />{" "}
+            <span>Información adicional disponible</span>
+          </div>
+        );
+      case false:
+        return (
+          <div>
+            <i className="bi bi-info-square-fill me-1" />{" "}
+            <span>Información adicional no disponible</span>
+          </div>
+        );
+    }
+  }
+
+  function formatConditionStatus() {
+    switch (item.conditionStatus) {
+      case 0:
+        return (
+          <div>
+            <i className="bi bi-box2-fill me-1" /> <span>Nuevo</span>
+          </div>
+        );
+      case 1:
+        return (
+          <div>
+            <i className="bi bi-box2-fill me-1" />{" "}
+            <span>De uso sin detalles</span>
+          </div>
+        );
+      case 2:
+        return (
+          <div>
+            <i className="bi bi-box2-fill me-1" />{" "}
+            <span>De uso con detalles menores</span>
+          </div>
+        );
+      case 3:
+        return (
+          <div>
+            <i className="bi bi-box2-fill me-1" />{" "}
+            <span>Detalles estéticos pero trabajando</span>
+          </div>
+        );
+      case 4:
+        return (
+          <div>
+            <i className="bi bi-box2-fill me-1" /> <span>Reparado</span>
+          </div>
+        );
+      case 5:
+        return (
+          <div>
+            <i className="bi bi-box2-fill me-1" /> <span>Para piezas</span>
+          </div>
+        );
+      default:
+        return null;
+    }
+  }
+
   return (
     <div className="card card-body shadow-sm mb-4">
-      <div className="container">
+      <div className="container mb-5">
         <div className="row">
-          <div className="col">
+          <div className="col-12 mb-2">
             <Link
               to={`/oferta/${item.id}`}
               className="fw-light fs-4 lh-sm d-block text-decoration-none"
             >
-              {item.name}
+              {item.description}
             </Link>
             <span className="small">
               {`${item.user.name} ${item.user.lastname}`}
@@ -38,26 +151,43 @@ function FeedOffer({ item }: FeedOfferProps) {
             <span className="ms-2 small text-muted">
               {dayjs(item.publishedAt).format("DD/MM/YYYY HH:mm")}
             </span>
-            <div className="container">
-              <div className="row gap-1 my-3">
-                {item.medias.slice(0, 4).map((token) => (
-                  <div
-                    key={token.id}
-                    className="col article-media"
-                    style={{
-                      backgroundImage: `url("${
-                        process.env.REACT_APP_API_URL + token.contentUrl
-                      }")`,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-            <p className="m-0">{item.description}</p>
-            <span className="d-block mt-3 small fw-bold text-primary">
+            <span className="d-block mt-3 small fw-bold">
               <i className="bi bi-flag-fill me-1" />
-              {formatMoney(`${item.bids.highestOffer}`)}
+              {formatMoney(
+                `${item.bidding ? item.bids.highestOffer : item.price}`,
+              )}
             </span>
+          </div>
+          <div className="col-12 col-md-4">
+            {item.medias.slice(0, 1).map((token) => (
+              <div
+                key={token.id}
+                className="col article-media"
+                style={{
+                  backgroundImage: `url("${
+                    process.env.REACT_APP_API_URL + token.contentUrl
+                  }")`,
+                }}
+              />
+            ))}
+          </div>
+          <div className="col-12 col-md-8">
+            <div className="d-flex flex-column mb-1">
+              <strong>
+                {item.contactPhones.length > 0
+                  ? `Contacto${item.contactPhones.length > 1 ? "s" : ""}`
+                  : "Sin información de contacto"}
+              </strong>
+              {item.contactPhones.map((item, index) => (
+                <a key={index} href={`tel:${item}`}>
+                  {item}
+                </a>
+              ))}
+            </div>
+            {formatHomeDelivery()}
+            {formatBidding()}
+            {formatAdditionalInfo()}
+            {formatConditionStatus()}
           </div>
         </div>
       </div>
